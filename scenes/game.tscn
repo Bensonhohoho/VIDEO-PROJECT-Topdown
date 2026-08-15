@@ -1,0 +1,630 @@
+[gd_scene format=3 uid="uid://c66f2tiagg1sr"]
+
+[ext_resource type="PackedScene" uid="uid://bl4cf0hyyhtbm" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://4y0iag1d8ktc" path="res://scenes/coin.tscn" id="2_coin"]
+[ext_resource type="Texture2D" uid="uid://bv2mo7a1pn6uh" path="res://assets/project_star/ground_stone_repeat.png" id="3_ground"]
+[ext_resource type="Script" uid="uid://du82y6vr13ac5" path="res://scripts/game_manager.gd" id="4_game_manager"]
+[ext_resource type="FontFile" uid="uid://dvtck01iuvd76" path="res://brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="5_font"]
+[ext_resource type="Script" uid="uid://cvhlg0e3fmuey" path="res://scripts/queue_entrance.gd" id="6_queue_entrance"]
+[ext_resource type="Script" uid="uid://ckxaeem58727a" path="res://scripts/score_hud.gd" id="7_score_hud"]
+[ext_resource type="Script" uid="uid://bemepujlmtrnn" path="res://scripts/score_placeholder_manager.gd" id="8_score_placeholder_manager"]
+[ext_resource type="Texture2D" uid="uid://dbjp3ngwiime6" path="res://assets/BackgroundImage/festival/festival_stage.png" id="9_stage"]
+[ext_resource type="Texture2D" uid="uid://ca4727wmgodqw" path="res://assets/BackgroundImage/festival/festival_vote_board.png" id="10_vote_board"]
+[ext_resource type="Texture2D" uid="uid://8vv4kxbnfyck" path="res://assets/BackgroundImage/festival/festival_bunting_long.png" id="12_bunting"]
+[ext_resource type="Texture2D" uid="uid://lb2eoqrlkg2v" path="res://assets/BackgroundImage/festival/festival_flower_bed.png" id="13_flower_bed"]
+[ext_resource type="Texture2D" uid="uid://w4rtub3mruvr" path="res://assets/BackgroundImage/festival/festival_ropes_long.png" id="14_ropes"]
+[ext_resource type="Texture2D" uid="uid://ceshrgew11k4i" path="res://assets/BackgroundImage/festival/festival_bench.png" id="15_bench"]
+[ext_resource type="Texture2D" uid="uid://dv7q3eim71rcb" path="res://assets/project_star/mission_board.png" id="16_notice_board"]
+[ext_resource type="Texture2D" uid="uid://bh1j80r2hel8w" path="res://assets/BackgroundImage/festival/festival_tree_round.png" id="17_tree_round"]
+[ext_resource type="Texture2D" uid="uid://c7pc2q4xnolb6" path="res://assets/BackgroundImage/festival/festival_flower_cart.png" id="18_flower_cart"]
+[ext_resource type="Texture2D" uid="uid://btw2cogbwjiut" path="res://assets/project_star/drink_stall.png" id="19_drink_booth"]
+[ext_resource type="Texture2D" uid="uid://d36jbre14tqua" path="res://assets/BackgroundImage/festival/festival_food_truck.png" id="20_food_truck"]
+[ext_resource type="Texture2D" uid="uid://c35441ju6177i" path="res://assets/project_star/registration_entrance.png" id="21_arch"]
+[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="22_pause_menu"]
+[ext_resource type="PackedScene" uid="uid://brchrhujnygbu" path="res://scenes/npc.tscn" id="24_npc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_skyscraper_entrance"]
+size = Vector2(300, 76)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mission_board"]
+size = Vector2(190, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ranking_screen"]
+size = Vector2(92, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_merch_booth"]
+size = Vector2(170, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drink_stall"]
+size = Vector2(190, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vendor"]
+size = Vector2(26, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_voting_area"]
+size = Vector2(118, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_queue_entrance"]
+size = Vector2(132, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tree"]
+size = Vector2(54, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bench"]
+size = Vector2(84, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_flower_cart"]
+size = Vector2(96, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_map_boundary_horizontal"]
+size = Vector2(3600, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_map_boundary_vertical"]
+size = Vector2(80, 3600)
+
+[node name="Game" type="Node2D" unique_id=1177641961]
+
+[node name="Ground" type="Node2D" parent="." unique_id=8664438]
+z_index = -100
+
+[node name="GroundTile00" type="Sprite2D" parent="Ground" unique_id=703361754]
+position = Vector2(-1254, -1254)
+texture = ExtResource("3_ground")
+
+[node name="GroundTile01" type="Sprite2D" parent="Ground" unique_id=457299028]
+position = Vector2(0, -1254)
+texture = ExtResource("3_ground")
+
+[node name="GroundTile02" type="Sprite2D" parent="Ground" unique_id=1118442639]
+position = Vector2(1254, -1254)
+texture = ExtResource("3_ground")
+
+[node name="GroundTile10" type="Sprite2D" parent="Ground" unique_id=2005934719]
+position = Vector2(-1254, 0)
+texture = ExtResource("3_ground")
+
+[node name="GroundTile11" type="Sprite2D" parent="Ground" unique_id=1420905411]
+texture = ExtResource("3_ground")
+
+[node name="GroundTile12" type="Sprite2D" parent="Ground" unique_id=1066344371]
+position = Vector2(1254, 0)
+texture = ExtResource("3_ground")
+
+[node name="GroundTile20" type="Sprite2D" parent="Ground" unique_id=2072179268]
+position = Vector2(-1254, 1254)
+texture = ExtResource("3_ground")
+
+[node name="GroundTile21" type="Sprite2D" parent="Ground" unique_id=774779887]
+position = Vector2(0, 1254)
+texture = ExtResource("3_ground")
+
+[node name="GroundTile22" type="Sprite2D" parent="Ground" unique_id=163711910]
+position = Vector2(1254, 1254)
+texture = ExtResource("3_ground")
+
+[node name="MapObjects" type="Node2D" parent="." unique_id=2118902541]
+y_sort_enabled = true
+
+[node name="Player" parent="MapObjects" unique_id=2049840162 instance=ExtResource("1_player")]
+z_index = 0
+position = Vector2(0, 260)
+move_speed = 165.0
+acceleration = 1200.0
+deceleration = 1400.0
+
+[node name="Camera2D" type="Camera2D" parent="MapObjects/Player" unique_id=1594711468]
+zoom = Vector2(2.4, 2.4)
+limit_left = -1550
+limit_top = -1550
+limit_right = 1550
+limit_bottom = 1550
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="SkyscraperEntrance" type="StaticBody2D" parent="MapObjects" unique_id=1680254131]
+position = Vector2(650, -640)
+
+[node name="Sprite2D" type="Sprite2D" parent="MapObjects/SkyscraperEntrance" unique_id=972000082]
+position = Vector2(0, -128)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("9_stage")
+
+[node name="Label" type="Label" parent="MapObjects/SkyscraperEntrance" unique_id=930354450]
+offset_left = -108.0
+offset_top = -300.0
+offset_right = 108.0
+offset_bottom = -280.0
+theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 10
+text = "SKYSCRAPER"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/SkyscraperEntrance" unique_id=315226424]
+position = Vector2(0, -38)
+shape = SubResource("RectangleShape2D_skyscraper_entrance")
+
+[node name="MissionBoard" type="StaticBody2D" parent="MapObjects" unique_id=469401875]
+position = Vector2(-650, -470)
+
+[node name="Sprite2D" type="Sprite2D" parent="MapObjects/MissionBoard" unique_id=1649530769]
+position = Vector2(0, -96)
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("16_notice_board")
+
+[node name="Label" type="Label" parent="MapObjects/MissionBoard" unique_id=853943077]
+offset_left = -58.0
+offset_top = -98.0
+offset_right = 58.0
+offset_bottom = -84.0
+theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 7
+text = "MISSIONS"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/MissionBoard" unique_id=237611989]
+position = Vector2(0, -18)
+shape = SubResource("RectangleShape2D_mission_board")
+
+[node name="IdolRankingScreen" type="StaticBody2D" parent="MapObjects" unique_id=1923708667]
+position = Vector2(120, -360)
+
+[node name="Sprite2D" type="Sprite2D" parent="MapObjects/IdolRankingScreen" unique_id=1204891479]
+position = Vector2(0, -74)
+scale = Vector2(0.62, 0.62)
+texture = ExtResource("10_vote_board")
+
+[node name="Label" type="Label" parent="MapObjects/IdolRankingScreen" unique_id=872379449]
+offset_left = -58.0
+offset_top = -128.0
+offset_right = 58.0
+offset_bottom = -114.0
+theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 7
+text = "RANKING"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/IdolRankingScreen" unique_id=942712099]
+position = Vector2(0, -18)
+shape = SubResource("RectangleShape2D_ranking_screen")
+
+[node name="MerchandiseBooth" type="StaticBody2D" parent="MapObjects" unique_id=1699515275]
+position = Vector2(-580, 180)
+
+[node name="Sprite2D" type="Sprite2D" parent="MapObjects/MerchandiseBooth" unique_id=1015216786]
+position = Vector2(0, -68)
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("20_food_truck")
+
+[node name="Label" type="Label" parent="MapObjects/MerchandiseBooth" unique_id=227360268]
+offset_left = -72.0
+offset_top = -134.0
+offset_right = 72.0
+offset_bottom = -120.0
+theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 7
+text = "MERCH"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/MerchandiseBooth" unique_id=1667909599]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_merch_booth")
+
+[node name="DrinkStall" type="StaticBody2D" parent="MapObjects" unique_id=1796452090]
+position = Vector2(360, 230)
+
+[node name="Sprite2D" type="Sprite2D" parent="MapObjects/DrinkStall" unique_id=1345320874]
+position = Vector2(0, -108)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("19_drink_booth")
+
+[node name="Label" type="Label" parent="MapObjects/DrinkStall" unique_id=2138376146]
+offset_left = -70.0
+offset_top = -148.0
+offset_right = 70.0
+offset_bottom = -134.0
+theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 7
+text = "DRINKS"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/DrinkStall" unique_id=1257418124]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_drink_stall")
+
+[node name="DrinkVendor" type="StaticBody2D" parent="MapObjects" unique_id=2022735983]
+position = Vector2(515, 265)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/DrinkVendor" unique_id=1676386689]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_vendor")
+
+[node name="VotingArea" type="StaticBody2D" parent="MapObjects" unique_id=785759650]
+position = Vector2(-200, 520)
+
+[node name="Sprite2D" type="Sprite2D" parent="MapObjects/VotingArea" unique_id=1691862936]
+position = Vector2(0, -62)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("10_vote_board")
+
+[node name="Label" type="Label" parent="MapObjects/VotingArea" unique_id=223314238]
+offset_left = -58.0
+offset_top = -118.0
+offset_right = 58.0
+offset_bottom = -104.0
+theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 7
+text = "VOTING"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/VotingArea" unique_id=1107208595]
+position = Vector2(0, -18)
+shape = SubResource("RectangleShape2D_voting_area")
+
+[node name="QueueEntrance" type="Area2D" parent="MapObjects" unique_id=1156184559]
+position = Vector2(-200, 700)
+collision_mask = 2
+script = ExtResource("6_queue_entrance")
+
+[node name="Visual" type="Sprite2D" parent="MapObjects/QueueEntrance" unique_id=1916602152]
+position = Vector2(0, -122)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("21_arch")
+
+[node name="Label" type="Label" parent="MapObjects/QueueEntrance" unique_id=654967762]
+offset_left = -58.0
+offset_top = -154.0
+offset_right = 58.0
+offset_bottom = -134.0
+theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 7
+text = "SIGN IN UP/W"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/QueueEntrance" unique_id=578939423]
+position = Vector2(0, -28)
+shape = SubResource("RectangleShape2D_queue_entrance")
+
+[node name="InteractionPoint" type="Marker2D" parent="MapObjects/QueueEntrance" unique_id=1730826993]
+
+[node name="QueueNPC" parent="MapObjects" unique_id=283988453 instance=ExtResource("24_npc")]
+position = Vector2(-82, 710)
+
+[node name="TreeNorthWest" type="StaticBody2D" parent="MapObjects" unique_id=1337769775]
+position = Vector2(-940, -760)
+
+[node name="Sprite2D" type="Sprite2D" parent="MapObjects/TreeNorthWest" unique_id=343476080]
+position = Vector2(0, -64)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("17_tree_round")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/TreeNorthWest" unique_id=304037223]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_tree")
+
+[node name="TreeNorthEast" type="StaticBody2D" parent="MapObjects" unique_id=2040705331]
+position = Vector2(1000, -660)
+
+[node name="Sprite2D" type="Sprite2D" parent="MapObjects/TreeNorthEast" unique_id=1722182911]
+position = Vector2(0, -64)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("17_tree_round")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/TreeNorthEast" unique_id=2040864228]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_tree")
+
+[node name="RestBench" type="StaticBody2D" parent="MapObjects" unique_id=909634791]
+position = Vector2(680, 360)
+
+[node name="Sprite2D" type="Sprite2D" parent="MapObjects/RestBench" unique_id=705633385]
+position = Vector2(0, -18)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("15_bench")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/RestBench" unique_id=1102904455]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_bench")
+
+[node name="FlowerCart" type="StaticBody2D" parent="MapObjects" unique_id=1892572424]
+position = Vector2(-900, 540)
+
+[node name="Sprite2D" type="Sprite2D" parent="MapObjects/FlowerCart" unique_id=1061926231]
+position = Vector2(0, -40)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("18_flower_cart")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/FlowerCart" unique_id=2084404605]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_flower_cart")
+
+[node name="FlowerBedLeft" type="Sprite2D" parent="MapObjects" unique_id=13129746]
+position = Vector2(-360, -40)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("13_flower_bed")
+
+[node name="FlowerBedRight" type="Sprite2D" parent="MapObjects" unique_id=1524035819]
+position = Vector2(500, -40)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("13_flower_bed")
+
+[node name="CentralRopes" type="Sprite2D" parent="MapObjects" unique_id=9024370]
+position = Vector2(0, 90)
+scale = Vector2(0.48, 0.48)
+texture = ExtResource("14_ropes")
+
+[node name="BuntingNorth" type="Sprite2D" parent="MapObjects" unique_id=921589807]
+position = Vector2(0, -760)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("12_bunting")
+
+[node name="coin" parent="MapObjects" unique_id=1783570862 instance=ExtResource("2_coin")]
+position = Vector2(-420, 30)
+
+[node name="coin2" parent="MapObjects" unique_id=804454266 instance=ExtResource("2_coin")]
+position = Vector2(-360, 30)
+
+[node name="coin3" parent="MapObjects" unique_id=835715979 instance=ExtResource("2_coin")]
+position = Vector2(240, 40)
+
+[node name="coin4" parent="MapObjects" unique_id=328413164 instance=ExtResource("2_coin")]
+position = Vector2(300, 40)
+
+[node name="coin5" parent="MapObjects" unique_id=1968820394 instance=ExtResource("2_coin")]
+position = Vector2(560, -250)
+
+[node name="coin6" parent="MapObjects" unique_id=237308528 instance=ExtResource("2_coin")]
+position = Vector2(620, -250)
+
+[node name="coin7" parent="MapObjects" unique_id=1839963877 instance=ExtResource("2_coin")]
+position = Vector2(-760, 360)
+
+[node name="coin8" parent="MapObjects" unique_id=1435951843 instance=ExtResource("2_coin")]
+position = Vector2(-700, 360)
+
+[node name="NPC" parent="MapObjects" unique_id=1187534551 instance=ExtResource("24_npc")]
+position = Vector2(517, 262)
+
+[node name="CollisionObjects" type="Node2D" parent="." unique_id=950322824]
+
+[node name="NorthBoundary" type="StaticBody2D" parent="CollisionObjects" unique_id=403319807]
+position = Vector2(0, -1800)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/NorthBoundary" unique_id=285150683]
+shape = SubResource("RectangleShape2D_map_boundary_horizontal")
+
+[node name="SouthBoundary" type="StaticBody2D" parent="CollisionObjects" unique_id=1088230157]
+position = Vector2(0, 1800)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/SouthBoundary" unique_id=2022584208]
+shape = SubResource("RectangleShape2D_map_boundary_horizontal")
+
+[node name="WestBoundary" type="StaticBody2D" parent="CollisionObjects" unique_id=753987040]
+position = Vector2(-1800, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/WestBoundary" unique_id=45478044]
+shape = SubResource("RectangleShape2D_map_boundary_vertical")
+
+[node name="EastBoundary" type="StaticBody2D" parent="CollisionObjects" unique_id=1498311246]
+position = Vector2(1800, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/EastBoundary" unique_id=1055794476]
+shape = SubResource("RectangleShape2D_map_boundary_vertical")
+
+[node name="ScorePlaceholderMarkers" type="Node2D" parent="." unique_id=874926767]
+
+[node name="Marker1" type="Marker2D" parent="ScorePlaceholderMarkers" unique_id=814514272]
+position = Vector2(-1020, -200)
+
+[node name="Marker2" type="Marker2D" parent="ScorePlaceholderMarkers" unique_id=538087219]
+position = Vector2(-940, -200)
+
+[node name="Marker3" type="Marker2D" parent="ScorePlaceholderMarkers" unique_id=56744354]
+position = Vector2(-860, -200)
+
+[node name="Marker4" type="Marker2D" parent="ScorePlaceholderMarkers" unique_id=97954492]
+position = Vector2(820, -160)
+
+[node name="Marker5" type="Marker2D" parent="ScorePlaceholderMarkers" unique_id=1037306961]
+position = Vector2(900, -160)
+
+[node name="Marker6" type="Marker2D" parent="ScorePlaceholderMarkers" unique_id=107699328]
+position = Vector2(980, -160)
+
+[node name="Marker7" type="Marker2D" parent="ScorePlaceholderMarkers" unique_id=2073582983]
+position = Vector2(-60, 900)
+
+[node name="Marker8" type="Marker2D" parent="ScorePlaceholderMarkers" unique_id=1575681944]
+position = Vector2(20, 900)
+
+[node name="Marker9" type="Marker2D" parent="ScorePlaceholderMarkers" unique_id=1035564427]
+position = Vector2(100, 900)
+
+[node name="Marker10" type="Marker2D" parent="ScorePlaceholderMarkers" unique_id=245575499]
+position = Vector2(180, 900)
+
+[node name="ScorePlaceholderManager" type="Node2D" parent="." unique_id=325353767]
+script = ExtResource("8_score_placeholder_manager")
+
+[node name="GameManager" type="Node" parent="." unique_id=1834708231]
+unique_name_in_owner = true
+script = ExtResource("4_game_manager")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1337485004]
+
+[node name="ScoreLabel" type="Label" parent="UI" unique_id=322714244]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 16
+text = "Score: 0"
+horizontal_alignment = 2
+autowrap_mode = 2
+script = ExtResource("7_score_hud")
+
+[node name="RoundScoreLabel" type="Label" parent="UI" unique_id=160483425]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -176.0
+offset_top = 46.0
+offset_right = -16.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 16
+text = "Submitted: 0 / 30"
+horizontal_alignment = 2
+autowrap_mode = 2
+script = ExtResource("7_score_hud")
+display_mode = 1
+
+[node name="SubmitScoreButton" type="Button" parent="UI" unique_id=443316070]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -176.0
+offset_top = 82.0
+offset_right = -16.0
+offset_bottom = 114.0
+theme_override_font_sizes/font_size = 14
+text = "Submit Score"
+
+[node name="VictoryLabel" type="Label" parent="UI" unique_id=2042738882]
+visible = false
+offset_left = -152.0
+offset_top = -12.0
+offset_right = 188.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.95, 0.78, 0.1, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 16
+text = "Victory! Goal Completed"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="SubmitScoreWindow" type="Control" parent="UI" unique_id=275593149]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -132.0
+offset_right = 180.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="UI/SubmitScoreWindow" unique_id=2095320002]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="UI/SubmitScoreWindow/Panel" unique_id=775288929]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 16.0
+offset_right = 340.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 22
+text = "Submit Score"
+horizontal_alignment = 1
+
+[node name="CurrentScoreLabel" type="Label" parent="UI/SubmitScoreWindow/Panel" unique_id=215166925]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 58.0
+offset_right = 336.0
+offset_bottom = 84.0
+theme_override_font_sizes/font_size = 18
+text = "Current Score: 0"
+
+[node name="SubmitCostLabel" type="Label" parent="UI/SubmitScoreWindow/Panel" unique_id=918244230]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 88.0
+offset_right = 336.0
+offset_bottom = 114.0
+theme_override_font_sizes/font_size = 18
+text = "Required Submit Score: 10"
+
+[node name="TargetScoreLabel" type="Label" parent="UI/SubmitScoreWindow/Panel" unique_id=966000384]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 118.0
+offset_right = 336.0
+offset_bottom = 144.0
+theme_override_font_sizes/font_size = 18
+text = "Level Target Score: 30"
+
+[node name="SubmittedScoreLabel" type="Label" parent="UI/SubmitScoreWindow/Panel" unique_id=434667036]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 148.0
+offset_right = 336.0
+offset_bottom = 174.0
+theme_override_font_sizes/font_size = 18
+text = "Submitted Score: 0 / 30"
+
+[node name="WarningLabel" type="Label" parent="UI/SubmitScoreWindow/Panel" unique_id=753670531]
+visible = false
+layout_mode = 0
+offset_left = 24.0
+offset_top = 178.0
+offset_right = 336.0
+offset_bottom = 204.0
+theme_override_colors/font_color = Color(0.9, 0.15, 0.1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Not enough score to submit."
+horizontal_alignment = 1
+
+[node name="ButtonRow" type="HBoxContainer" parent="UI/SubmitScoreWindow/Panel" unique_id=1281230876]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 216.0
+offset_right = 336.0
+offset_bottom = 250.0
+theme_override_constants/separation = 12
+
+[node name="ConfirmButton" type="Button" parent="UI/SubmitScoreWindow/Panel/ButtonRow" unique_id=626380456]
+custom_minimum_size = Vector2(112, 32)
+layout_mode = 2
+text = "Confirm"
+
+[node name="CancelButton" type="Button" parent="UI/SubmitScoreWindow/Panel/ButtonRow" unique_id=719800503]
+custom_minimum_size = Vector2(112, 32)
+layout_mode = 2
+text = "Cancel"
+
+[node name="PauseMenu" parent="." unique_id=1542305349 instance=ExtResource("22_pause_menu")]
+
+[node name="ControlsHint" type="Label" parent="." unique_id=2061467082]
+offset_left = -138.0
+offset_top = 98.0
+offset_right = 74.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 8
+text = "WASD / ARROWS"
+
+[connection signal="body_entered" from="MapObjects/QueueEntrance" to="MapObjects/QueueEntrance" method="_on_body_entered"]
+[connection signal="body_exited" from="MapObjects/QueueEntrance" to="MapObjects/QueueEntrance" method="_on_body_exited"]
+[connection signal="pressed" from="UI/SubmitScoreButton" to="GameManager" method="open_submit_window"]

@@ -1,0 +1,41 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://oxsmkgtihp2e"]
+
+[ext_resource type="Texture2D" uid="uid://b86i8bjwukthy" path="res://assets/sprites/NPC_Idle.png" id="1_npc_idle"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_0"]
+atlas = ExtResource("1_npc_idle")
+region = Rect2(0, 0, 267, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_1"]
+atlas = ExtResource("1_npc_idle")
+region = Rect2(267, 0, 267, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_2"]
+atlas = ExtResource("1_npc_idle")
+region = Rect2(534, 0, 267, 336)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idle_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idle_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idle_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idle_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idle_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idle_0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}]

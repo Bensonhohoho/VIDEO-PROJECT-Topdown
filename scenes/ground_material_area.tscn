@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/ground_material_area.gd" id="1_ground_material_script"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground_material"]
+size = Vector2(128, 32)
+
+[node name="GroundMaterialArea" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_ground_material_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ground_material")

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://brchrhujnygbu"]
+
+[ext_resource type="Script" uid="uid://37noyirgtknc" path="res://scripts/npc.gd" id="1_npc_script"]
+[ext_resource type="SpriteFrames" uid="uid://oxsmkgtihp2e" path="res://assets/sprites/npc_sprite_frames.tres" id="2_npc_sprite_frames"]
+
+[node name="NPC" type="Node2D" unique_id=75585039 groups=["npc"]]
+script = ExtResource("1_npc_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=474242181]
+position = Vector2(0, -65)
+scale = Vector2(0.445, 0.445)
+sprite_frames = ExtResource("2_npc_sprite_frames")
+animation = &"idle"
