@@ -33,6 +33,7 @@ func _ready() -> void:
 
 
 func _on_replay_pressed() -> void:
+	SaveManager.set_score(0)
 	SaveManager.start_new_round(level_target_score)
 	var error := get_tree().change_scene_to_file(game_scene_path)
 	if error != OK:

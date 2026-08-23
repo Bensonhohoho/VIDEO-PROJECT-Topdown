@@ -1,0 +1,2577 @@
+[gd_scene load_steps=40 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/main_map/decorations_natural_shadows.png" id="1_decorations"]
+
+[sub_resource type="AtlasTexture" id="Atlas_BushA"]
+atlas = ExtResource("1_decorations")
+region = Rect2(655, 58, 80, 82)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_BushB"]
+atlas = ExtResource("1_decorations")
+region = Rect2(765, 51, 94, 94)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_HedgeRect"]
+atlas = ExtResource("1_decorations")
+region = Rect2(728, 185, 151, 60)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_HedgeCorner"]
+atlas = ExtResource("1_decorations")
+region = Rect2(575, 275, 152, 108)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_FlowerLong"]
+atlas = ExtResource("1_decorations")
+region = Rect2(37, 413, 244, 80)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_FlowerMedium"]
+atlas = ExtResource("1_decorations")
+region = Rect2(306, 413, 194, 86)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_FlowersSmall"]
+atlas = ExtResource("1_decorations")
+region = Rect2(547, 537, 58, 56)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_TreeA"]
+atlas = ExtResource("1_decorations")
+region = Rect2(30, 625, 95, 140)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_TreeB"]
+atlas = ExtResource("1_decorations")
+region = Rect2(146, 618, 97, 148)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_TreeC"]
+atlas = ExtResource("1_decorations")
+region = Rect2(266, 619, 101, 147)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_TreePine"]
+atlas = ExtResource("1_decorations")
+region = Rect2(391, 617, 87, 145)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_BalloonsA"]
+atlas = ExtResource("1_decorations")
+region = Rect2(748, 622, 59, 140)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_BalloonsB"]
+atlas = ExtResource("1_decorations")
+region = Rect2(864, 625, 64, 137)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_LampA"]
+atlas = ExtResource("1_decorations")
+region = Rect2(51, 797, 27, 130)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_LampB"]
+atlas = ExtResource("1_decorations")
+region = Rect2(235, 792, 27, 136)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_LampFlower"]
+atlas = ExtResource("1_decorations")
+region = Rect2(810, 780, 41, 151)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_FenceSmall"]
+atlas = ExtResource("1_decorations")
+region = Rect2(883, 843, 67, 73)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_FenceCorner"]
+atlas = ExtResource("1_decorations")
+region = Rect2(988, 819, 84, 96)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_FenceLong"]
+atlas = ExtResource("1_decorations")
+region = Rect2(1106, 821, 124, 112)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_ArchGate"]
+atlas = ExtResource("1_decorations")
+region = Rect2(34, 959, 220, 223)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_BushSmall"]
+atlas = ExtResource("1_decorations")
+region = Rect2(57, 70, 59, 64)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_BushLarge"]
+atlas = ExtResource("1_decorations")
+region = Rect2(1024, 21, 144, 136)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_HedgeLong"]
+atlas = ExtResource("1_decorations")
+region = Rect2(455, 181, 247, 64)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_HedgeVertical"]
+atlas = ExtResource("1_decorations")
+region = Rect2(128, 260, 47, 121)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_HedgeCornerRight"]
+atlas = ExtResource("1_decorations")
+region = Rect2(885, 277, 89, 105)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_FlowerRound"]
+atlas = ExtResource("1_decorations")
+region = Rect2(761, 411, 106, 98)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_FlowerTriangle"]
+atlas = ExtResource("1_decorations")
+region = Rect2(1009, 409, 92, 93)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_FlowersAlt"]
+atlas = ExtResource("1_decorations")
+region = Rect2(631, 542, 69, 43)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_TreeFruit"]
+atlas = ExtResource("1_decorations")
+region = Rect2(626, 632, 96, 129)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_BalloonsC"]
+atlas = ExtResource("1_decorations")
+region = Rect2(970, 631, 53, 131)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Atlas_LampBanner"]
+atlas = ExtResource("1_decorations")
+region = Rect2(680, 760, 108, 172)
+filter_clip = true
+
+[sub_resource type="CircleShape2D" id="Shape_tree_trunk"]
+radius = 13.0
+
+[sub_resource type="RectangleShape2D" id="Shape_hedge"]
+size = Vector2(84, 22)
+
+[sub_resource type="RectangleShape2D" id="Shape_corner_hedge"]
+size = Vector2(60, 30)
+
+[sub_resource type="RectangleShape2D" id="Shape_hedge_long"]
+size = Vector2(100, 22)
+
+[sub_resource type="RectangleShape2D" id="Shape_hedge_vertical"]
+size = Vector2(24, 58)
+
+[sub_resource type="RectangleShape2D" id="Shape_fence"]
+size = Vector2(68, 18)
+
+[sub_resource type="RectangleShape2D" id="Shape_arch_pillar"]
+size = Vector2(22, 54)
+
+[node name="Decorations" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Trees" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Bushes" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Hedges" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="FlowerBeds" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Balloons" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Lamps" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Fences" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="ArchGate" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="TreeNorthWestEdge" type="StaticBody2D" parent="Trees"]
+position = Vector2(-710, -315)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeNorthWestEdge"]
+position = Vector2(0, -56)
+scale = Vector2(0.8, 0.8)
+texture = SubResource("Atlas_TreeA")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeNorthWestEdge"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="TreeNorthEastA" type="StaticBody2D" parent="Trees"]
+position = Vector2(340, -350)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeNorthEastA"]
+position = Vector2(0, -56)
+scale = Vector2(0.8, 0.8)
+texture = SubResource("Atlas_TreeA")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeNorthEastA"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="TreeNorthEastB" type="StaticBody2D" parent="Trees"]
+position = Vector2(455, -390)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeNorthEastB"]
+position = Vector2(0, -56.24)
+scale = Vector2(0.76, 0.76)
+texture = SubResource("Atlas_TreeB")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeNorthEastB"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="TreeNorthEastC" type="StaticBody2D" parent="Trees"]
+position = Vector2(575, -350)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeNorthEastC"]
+position = Vector2(0, -55.86)
+scale = Vector2(0.76, 0.76)
+texture = SubResource("Atlas_TreeC")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeNorthEastC"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="TreeNorthEastPine" type="StaticBody2D" parent="Trees"]
+position = Vector2(700, -385)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeNorthEastPine"]
+position = Vector2(0, -55.825)
+scale = Vector2(0.77, 0.77)
+texture = SubResource("Atlas_TreePine")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeNorthEastPine"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="TreeSouthWestA" type="StaticBody2D" parent="Trees"]
+position = Vector2(-690, 480)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeSouthWestA"]
+position = Vector2(0, -56)
+scale = Vector2(0.8, 0.8)
+texture = SubResource("Atlas_TreeA")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeSouthWestA"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="TreeSouthWestB" type="StaticBody2D" parent="Trees"]
+position = Vector2(-540, 470)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeSouthWestB"]
+position = Vector2(0, -56.24)
+scale = Vector2(0.76, 0.76)
+texture = SubResource("Atlas_TreeB")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeSouthWestB"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="TreeSouthEastA" type="StaticBody2D" parent="Trees"]
+position = Vector2(540, 470)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeSouthEastA"]
+position = Vector2(0, -55.86)
+scale = Vector2(0.76, 0.76)
+texture = SubResource("Atlas_TreeC")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeSouthEastA"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="TreeSouthEastPine" type="StaticBody2D" parent="Trees"]
+position = Vector2(690, 480)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeSouthEastPine"]
+position = Vector2(0, -55.825)
+scale = Vector2(0.77, 0.77)
+texture = SubResource("Atlas_TreePine")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeSouthEastPine"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="BushStageLeft" type="Node2D" parent="Bushes"]
+position = Vector2(-250, -175)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushStageLeft"]
+position = Vector2(0, -22.55)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_BushA")
+
+[node name="BushStageRight" type="Node2D" parent="Bushes"]
+position = Vector2(250, -175)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushStageRight"]
+position = Vector2(0, -23.5)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_BushB")
+
+[node name="BushMissionLeft" type="Node2D" parent="Bushes"]
+position = Vector2(-660, 40)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushMissionLeft"]
+position = Vector2(0, -22.55)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_BushA")
+
+[node name="BushMissionRight" type="Node2D" parent="Bushes"]
+position = Vector2(-400, 40)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushMissionRight"]
+position = Vector2(0, -23.5)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_BushB")
+
+[node name="BushRegistrationLeft" type="Node2D" parent="Bushes"]
+position = Vector2(-650, 290)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushRegistrationLeft"]
+position = Vector2(0, -23.5)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_BushB")
+
+[node name="BushRegistrationRight" type="Node2D" parent="Bushes"]
+position = Vector2(-260, 290)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushRegistrationRight"]
+position = Vector2(0, -22.55)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_BushA")
+
+[node name="BushMerchandiseLeft" type="Node2D" parent="Bushes"]
+position = Vector2(450, 90)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushMerchandiseLeft"]
+position = Vector2(0, -22.55)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_BushA")
+
+[node name="BushDrinkRight" type="Node2D" parent="Bushes"]
+position = Vector2(680, 300)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDrinkRight"]
+position = Vector2(0, -23.5)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_BushB")
+
+[node name="HedgeNorthRightA" type="StaticBody2D" parent="Hedges"]
+position = Vector2(300, -248)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeNorthRightA"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_HedgeRect")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeNorthRightA"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_hedge")
+
+[node name="HedgeNorthRightB" type="StaticBody2D" parent="Hedges"]
+position = Vector2(420, -248)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeNorthRightB"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_HedgeRect")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeNorthRightB"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_hedge")
+
+[node name="HedgeNorthRightC" type="StaticBody2D" parent="Hedges"]
+position = Vector2(540, -248)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeNorthRightC"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_HedgeRect")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeNorthRightC"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_hedge")
+
+[node name="HedgeNorthRightD" type="StaticBody2D" parent="Hedges"]
+position = Vector2(670, -248)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeNorthRightD"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_HedgeRect")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeNorthRightD"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_hedge")
+
+[node name="HedgeSouthWest" type="StaticBody2D" parent="Hedges"]
+position = Vector2(-640, 405)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeSouthWest"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_HedgeRect")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeSouthWest"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_hedge")
+
+[node name="HedgeCenterLeft" type="StaticBody2D" parent="Hedges"]
+position = Vector2(-220, 300)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeCenterLeft"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_HedgeRect")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeCenterLeft"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_hedge")
+
+[node name="HedgeCenterRight" type="StaticBody2D" parent="Hedges"]
+position = Vector2(250, 300)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeCenterRight"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_HedgeRect")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeCenterRight"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_hedge")
+
+[node name="HedgeFarRight" type="StaticBody2D" parent="Hedges"]
+position = Vector2(680, 250)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeFarRight"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_HedgeRect")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeFarRight"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_hedge")
+
+[node name="CornerHedgeNorthWest" type="StaticBody2D" parent="Hedges"]
+position = Vector2(-715, -230)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/CornerHedgeNorthWest"]
+position = Vector2(0, -24.84)
+scale = Vector2(0.46, 0.46)
+texture = SubResource("Atlas_HedgeCorner")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/CornerHedgeNorthWest"]
+position = Vector2(0, -12)
+shape = SubResource("Shape_corner_hedge")
+
+[node name="CornerHedgeNorthEast" type="StaticBody2D" parent="Hedges"]
+position = Vector2(735, -248)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/CornerHedgeNorthEast"]
+position = Vector2(0, -24.84)
+scale = Vector2(0.46, 0.46)
+texture = SubResource("Atlas_HedgeCorner")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/CornerHedgeNorthEast"]
+position = Vector2(0, -12)
+shape = SubResource("Shape_corner_hedge")
+
+[node name="CornerHedgeSouthWest" type="StaticBody2D" parent="Hedges"]
+position = Vector2(-710, 250)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/CornerHedgeSouthWest"]
+position = Vector2(0, -24.84)
+scale = Vector2(0.46, 0.46)
+texture = SubResource("Atlas_HedgeCorner")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/CornerHedgeSouthWest"]
+position = Vector2(0, -12)
+shape = SubResource("Shape_corner_hedge")
+
+[node name="CornerHedgeSouthEast" type="StaticBody2D" parent="Hedges"]
+position = Vector2(720, 250)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/CornerHedgeSouthEast"]
+position = Vector2(0, -24.84)
+scale = Vector2(0.46, 0.46)
+texture = SubResource("Atlas_HedgeCorner")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/CornerHedgeSouthEast"]
+position = Vector2(0, -12)
+shape = SubResource("Shape_corner_hedge")
+
+[node name="FlowerBedNorthRightA" type="Node2D" parent="FlowerBeds"]
+position = Vector2(340, -305)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerBedNorthRightA"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_FlowerLong")
+
+[node name="FlowerBedNorthRightB" type="Node2D" parent="FlowerBeds"]
+position = Vector2(500, -305)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerBedNorthRightB"]
+position = Vector2(0, -19.35)
+scale = Vector2(0.45, 0.45)
+texture = SubResource("Atlas_FlowerMedium")
+
+[node name="FlowerBedNorthRightC" type="Node2D" parent="FlowerBeds"]
+position = Vector2(660, -305)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerBedNorthRightC"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_FlowerLong")
+
+[node name="FlowerBedRegistration" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-570, 275)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerBedRegistration"]
+position = Vector2(0, -19.35)
+scale = Vector2(0.45, 0.45)
+texture = SubResource("Atlas_FlowerMedium")
+
+[node name="FlowerBedCenterLeft" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-185, 260)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerBedCenterLeft"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_FlowerLong")
+
+[node name="FlowerBedDrink" type="Node2D" parent="FlowerBeds"]
+position = Vector2(590, 260)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerBedDrink"]
+position = Vector2(0, -19.35)
+scale = Vector2(0.45, 0.45)
+texture = SubResource("Atlas_FlowerMedium")
+
+[node name="FlowersNorthA" type="Node2D" parent="FlowerBeds"]
+position = Vector2(340, -292)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowersNorthA"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="FlowersNorthB" type="Node2D" parent="FlowerBeds"]
+position = Vector2(455, -330)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowersNorthB"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="FlowersNorthC" type="Node2D" parent="FlowerBeds"]
+position = Vector2(575, -292)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowersNorthC"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="FlowersNorthD" type="Node2D" parent="FlowerBeds"]
+position = Vector2(700, -325)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowersNorthD"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="FlowersSouthWestA" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-690, 430)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowersSouthWestA"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="FlowersSouthWestB" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-540, 420)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowersSouthWestB"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="FlowersSouthEastA" type="Node2D" parent="FlowerBeds"]
+position = Vector2(540, 420)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowersSouthEastA"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="FlowersSouthEastB" type="Node2D" parent="FlowerBeds"]
+position = Vector2(690, 430)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowersSouthEastB"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="BalloonsRankingLeft" type="Node2D" parent="Balloons"]
+position = Vector2(-235, -230)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsRankingLeft"]
+position = Vector2(0, -39.2)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_BalloonsA")
+
+[node name="BalloonsRankingRight" type="Node2D" parent="Balloons"]
+position = Vector2(235, -230)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsRankingRight"]
+position = Vector2(0, -38.36)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_BalloonsB")
+
+[node name="BalloonsMission" type="Node2D" parent="Balloons"]
+position = Vector2(-665, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsMission"]
+position = Vector2(0, -39.2)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_BalloonsA")
+
+[node name="BalloonsRegistration" type="Node2D" parent="Balloons"]
+position = Vector2(-500, 285)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsRegistration"]
+position = Vector2(0, -38.36)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_BalloonsB")
+
+[node name="BalloonsMerchandise" type="Node2D" parent="Balloons"]
+position = Vector2(730, 50)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsMerchandise"]
+position = Vector2(0, -39.2)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_BalloonsA")
+
+[node name="BalloonsDrink" type="Node2D" parent="Balloons"]
+position = Vector2(690, 285)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsDrink"]
+position = Vector2(0, -38.36)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_BalloonsB")
+
+[node name="LampSkyscraperLeft" type="Node2D" parent="Lamps"]
+position = Vector2(-665, -210)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampSkyscraperLeft"]
+position = Vector2(0, -35.75)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_LampA")
+
+[node name="LampSkyscraperRight" type="Node2D" parent="Lamps"]
+position = Vector2(-285, -210)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampSkyscraperRight"]
+position = Vector2(0, -36.04)
+scale = Vector2(0.53, 0.53)
+texture = SubResource("Atlas_LampB")
+
+[node name="LampRankingLeft" type="Node2D" parent="Lamps"]
+position = Vector2(-235, -155)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampRankingLeft"]
+position = Vector2(0, -37.75)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_LampFlower")
+
+[node name="LampRankingRight" type="Node2D" parent="Lamps"]
+position = Vector2(235, -155)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampRankingRight"]
+position = Vector2(0, -37.75)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_LampFlower")
+
+[node name="LampFountainLeft" type="Node2D" parent="Lamps"]
+position = Vector2(-230, 100)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampFountainLeft"]
+position = Vector2(0, -35.75)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_LampA")
+
+[node name="LampFountainRight" type="Node2D" parent="Lamps"]
+position = Vector2(230, 100)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampFountainRight"]
+position = Vector2(0, -36.04)
+scale = Vector2(0.53, 0.53)
+texture = SubResource("Atlas_LampB")
+
+[node name="LampRegistration" type="Node2D" parent="Lamps"]
+position = Vector2(-500, 340)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampRegistration"]
+position = Vector2(0, -37.75)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_LampFlower")
+
+[node name="LampMerchandise" type="Node2D" parent="Lamps"]
+position = Vector2(715, 110)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampMerchandise"]
+position = Vector2(0, -37.75)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_LampFlower")
+
+[node name="LampArchLeft" type="Node2D" parent="Lamps"]
+position = Vector2(-115, 450)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampArchLeft"]
+position = Vector2(0, -35.75)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_LampA")
+
+[node name="LampArchRight" type="Node2D" parent="Lamps"]
+position = Vector2(115, 450)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampArchRight"]
+position = Vector2(0, -36.04)
+scale = Vector2(0.53, 0.53)
+texture = SubResource("Atlas_LampB")
+
+[node name="FenceSouthWestA" type="StaticBody2D" parent="Fences"]
+position = Vector2(-410, 470)
+
+[node name="Sprite2D" type="Sprite2D" parent="Fences/FenceSouthWestA"]
+position = Vector2(0, -34.72)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FenceLong")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fences/FenceSouthWestA"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_fence")
+
+[node name="FenceSouthWestB" type="StaticBody2D" parent="Fences"]
+position = Vector2(-300, 470)
+
+[node name="Sprite2D" type="Sprite2D" parent="Fences/FenceSouthWestB"]
+position = Vector2(0, -31.2)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_FenceCorner")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fences/FenceSouthWestB"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_fence")
+
+[node name="FenceSouthEastA" type="StaticBody2D" parent="Fences"]
+position = Vector2(300, 470)
+
+[node name="Sprite2D" type="Sprite2D" parent="Fences/FenceSouthEastA"]
+position = Vector2(0, -31.2)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_FenceCorner")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fences/FenceSouthEastA"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_fence")
+
+[node name="FenceSouthEastB" type="StaticBody2D" parent="Fences"]
+position = Vector2(410, 470)
+
+[node name="Sprite2D" type="Sprite2D" parent="Fences/FenceSouthEastB"]
+position = Vector2(0, -34.72)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FenceLong")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fences/FenceSouthEastB"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_fence")
+
+[node name="MainEntranceArch" type="StaticBody2D" parent="ArchGate"]
+position = Vector2(0, 450)
+
+[node name="Sprite2D" type="Sprite2D" parent="ArchGate/MainEntranceArch"]
+position = Vector2(0, -69.13)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_ArchGate")
+
+[node name="LeftPillarCollision" type="CollisionShape2D" parent="ArchGate/MainEntranceArch"]
+position = Vector2(-51, -27)
+shape = SubResource("Shape_arch_pillar")
+
+[node name="RightPillarCollision" type="CollisionShape2D" parent="ArchGate/MainEntranceArch"]
+position = Vector2(51, -27)
+shape = SubResource("Shape_arch_pillar")
+
+[node name="TreeNorthWestFrame" type="StaticBody2D" parent="Trees"]
+position = Vector2(-700, -430)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeNorthWestFrame"]
+position = Vector2(0, -56.24)
+scale = Vector2(0.76, 0.76)
+texture = SubResource("Atlas_TreeB")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeNorthWestFrame"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="TreeStageWestFrame" type="StaticBody2D" parent="Trees"]
+position = Vector2(-270, -400)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeStageWestFrame"]
+position = Vector2(0, -55.825)
+scale = Vector2(0.77, 0.77)
+texture = SubResource("Atlas_TreePine")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeStageWestFrame"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="TreeStageEastFrame" type="StaticBody2D" parent="Trees"]
+position = Vector2(320, -445)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeStageEastFrame"]
+position = Vector2(0, -55.86)
+scale = Vector2(0.76, 0.76)
+texture = SubResource("Atlas_TreeC")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeStageEastFrame"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="TreeNorthEastFrame" type="StaticBody2D" parent="Trees"]
+position = Vector2(750, -420)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeNorthEastFrame"]
+position = Vector2(0, -56)
+scale = Vector2(0.8, 0.8)
+texture = SubResource("Atlas_TreeA")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeNorthEastFrame"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="TreeSouthInnerLeft" type="StaticBody2D" parent="Trees"]
+position = Vector2(-180, 500)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeSouthInnerLeft"]
+position = Vector2(0, -56)
+scale = Vector2(0.8, 0.8)
+texture = SubResource("Atlas_TreeA")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeSouthInnerLeft"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="TreeSouthInnerRight" type="StaticBody2D" parent="Trees"]
+position = Vector2(180, 500)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeSouthInnerRight"]
+position = Vector2(0, -55.86)
+scale = Vector2(0.76, 0.76)
+texture = SubResource("Atlas_TreeC")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeSouthInnerRight"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="BushNorthWestOuter" type="Node2D" parent="Bushes"]
+position = Vector2(-735, -275)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushNorthWestOuter"]
+position = Vector2(0, -23.5)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_BushB")
+
+[node name="BushSkyscraperLeft" type="Node2D" parent="Bushes"]
+position = Vector2(-615, -330)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushSkyscraperLeft"]
+position = Vector2(0, -22.55)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_BushA")
+
+[node name="BushSkyscraperRight" type="Node2D" parent="Bushes"]
+position = Vector2(-335, -330)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushSkyscraperRight"]
+position = Vector2(0, -23.5)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_BushB")
+
+[node name="BushStageWestCluster" type="Node2D" parent="Bushes"]
+position = Vector2(-260, -245)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushStageWestCluster"]
+position = Vector2(0, -22.55)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_BushA")
+
+[node name="BushNorthEastClusterA" type="Node2D" parent="Bushes"]
+position = Vector2(300, -330)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushNorthEastClusterA"]
+position = Vector2(0, -23.5)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_BushB")
+
+[node name="BushNorthEastClusterB" type="Node2D" parent="Bushes"]
+position = Vector2(410, -315)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushNorthEastClusterB"]
+position = Vector2(0, -22.55)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_BushA")
+
+[node name="BushNorthEastClusterC" type="Node2D" parent="Bushes"]
+position = Vector2(535, -310)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushNorthEastClusterC"]
+position = Vector2(0, -23.5)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_BushB")
+
+[node name="BushNorthEastClusterD" type="Node2D" parent="Bushes"]
+position = Vector2(650, -315)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushNorthEastClusterD"]
+position = Vector2(0, -22.55)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_BushA")
+
+[node name="BushFountainNorthWest" type="Node2D" parent="Bushes"]
+position = Vector2(-210, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushFountainNorthWest"]
+position = Vector2(0, -22.55)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_BushA")
+
+[node name="BushFountainNorthEast" type="Node2D" parent="Bushes"]
+position = Vector2(210, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushFountainNorthEast"]
+position = Vector2(0, -23.5)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_BushB")
+
+[node name="BushFountainSouthWest" type="Node2D" parent="Bushes"]
+position = Vector2(-235, 190)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushFountainSouthWest"]
+position = Vector2(0, -23.5)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_BushB")
+
+[node name="BushFountainSouthEast" type="Node2D" parent="Bushes"]
+position = Vector2(235, 190)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushFountainSouthEast"]
+position = Vector2(0, -22.55)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_BushA")
+
+[node name="HedgeStageWestEdge" type="StaticBody2D" parent="Hedges"]
+position = Vector2(-300, -245)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeStageWestEdge"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_HedgeRect")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeStageWestEdge"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_hedge")
+
+[node name="HedgeStageEastEdge" type="StaticBody2D" parent="Hedges"]
+position = Vector2(260, -245)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeStageEastEdge"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_HedgeRect")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeStageEastEdge"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_hedge")
+
+[node name="HedgeSouthFarLeft" type="StaticBody2D" parent="Hedges"]
+position = Vector2(-740, 405)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeSouthFarLeft"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_HedgeRect")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeSouthFarLeft"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_hedge")
+
+[node name="HedgeSouthLeftInner" type="StaticBody2D" parent="Hedges"]
+position = Vector2(-500, 420)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeSouthLeftInner"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_HedgeRect")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeSouthLeftInner"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_hedge")
+
+[node name="HedgeArchLeft" type="StaticBody2D" parent="Hedges"]
+position = Vector2(-155, 420)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeArchLeft"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_HedgeRect")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeArchLeft"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_hedge")
+
+[node name="HedgeArchRight" type="StaticBody2D" parent="Hedges"]
+position = Vector2(155, 420)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeArchRight"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_HedgeRect")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeArchRight"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_hedge")
+
+[node name="HedgeSouthRightInner" type="StaticBody2D" parent="Hedges"]
+position = Vector2(500, 420)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeSouthRightInner"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_HedgeRect")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeSouthRightInner"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_hedge")
+
+[node name="HedgeSouthFarRight" type="StaticBody2D" parent="Hedges"]
+position = Vector2(740, 405)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeSouthFarRight"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_HedgeRect")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeSouthFarRight"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_hedge")
+
+[node name="FlowerBedNorthWestTree" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-700, -365)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerBedNorthWestTree"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_FlowerLong")
+
+[node name="FlowerBedStageWestTree" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-300, -345)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerBedStageWestTree"]
+position = Vector2(0, -19.35)
+scale = Vector2(0.45, 0.45)
+texture = SubResource("Atlas_FlowerMedium")
+
+[node name="FlowerBedMissionOuter" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-620, -30)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerBedMissionOuter"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_FlowerLong")
+
+[node name="FlowerBedMissionInner" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-430, -30)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerBedMissionInner"]
+position = Vector2(0, -19.35)
+scale = Vector2(0.45, 0.45)
+texture = SubResource("Atlas_FlowerMedium")
+
+[node name="FlowerBedRegistrationOuter" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-700, 225)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerBedRegistrationOuter"]
+position = Vector2(0, -19.35)
+scale = Vector2(0.45, 0.45)
+texture = SubResource("Atlas_FlowerMedium")
+
+[node name="FlowerBedDrinkOuter" type="Node2D" parent="FlowerBeds"]
+position = Vector2(700, 205)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerBedDrinkOuter"]
+position = Vector2(0, -16.8)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_FlowerLong")
+
+[node name="FlowersFountainNorthWest" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-210, 15)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowersFountainNorthWest"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="FlowersFountainNorthEast" type="Node2D" parent="FlowerBeds"]
+position = Vector2(210, 15)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowersFountainNorthEast"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="FlowersFountainSouthWest" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-235, 190)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowersFountainSouthWest"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="FlowersFountainSouthEast" type="Node2D" parent="FlowerBeds"]
+position = Vector2(235, 190)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowersFountainSouthEast"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="FlowersNorthWestTreeBase" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-660, -385)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowersNorthWestTreeBase"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="FlowersStageWestTreeBase" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-315, -385)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowersStageWestTreeBase"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="FlowersSouthInnerLeft" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-180, 450)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowersSouthInnerLeft"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="FlowersSouthInnerRight" type="Node2D" parent="FlowerBeds"]
+position = Vector2(180, 450)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowersSouthInnerRight"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="BalloonsStageUpperLeft" type="Node2D" parent="Balloons"]
+position = Vector2(-210, -330)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsStageUpperLeft"]
+position = Vector2(0, -39.2)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_BalloonsA")
+
+[node name="BalloonsStageUpperRight" type="Node2D" parent="Balloons"]
+position = Vector2(210, -330)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsStageUpperRight"]
+position = Vector2(0, -38.36)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_BalloonsB")
+
+[node name="BalloonsFountainLeft" type="Node2D" parent="Balloons"]
+position = Vector2(-265, 170)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsFountainLeft"]
+position = Vector2(0, -38.36)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_BalloonsB")
+
+[node name="BalloonsFountainRight" type="Node2D" parent="Balloons"]
+position = Vector2(265, 170)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsFountainRight"]
+position = Vector2(0, -39.2)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_BalloonsA")
+
+[node name="LampMissionRoad" type="Node2D" parent="Lamps"]
+position = Vector2(-620, 120)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampMissionRoad"]
+position = Vector2(0, -35.75)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_LampA")
+
+[node name="LampFountainRoadLeft" type="Node2D" parent="Lamps"]
+position = Vector2(-340, 120)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampFountainRoadLeft"]
+position = Vector2(0, -36.04)
+scale = Vector2(0.53, 0.53)
+texture = SubResource("Atlas_LampB")
+
+[node name="LampFountainRoadRight" type="Node2D" parent="Lamps"]
+position = Vector2(340, 120)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampFountainRoadRight"]
+position = Vector2(0, -35.75)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_LampA")
+
+[node name="LampMerchandiseRoad" type="Node2D" parent="Lamps"]
+position = Vector2(620, 120)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampMerchandiseRoad"]
+position = Vector2(0, -36.04)
+scale = Vector2(0.53, 0.53)
+texture = SubResource("Atlas_LampB")
+
+[node name="LampSouthRoadLeft" type="Node2D" parent="Lamps"]
+position = Vector2(-330, 365)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampSouthRoadLeft"]
+position = Vector2(0, -37.75)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_LampFlower")
+
+[node name="LampSouthRoadRight" type="Node2D" parent="Lamps"]
+position = Vector2(330, 365)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampSouthRoadRight"]
+position = Vector2(0, -37.75)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_LampFlower")
+
+[node name="FenceSouthWestOuter" type="StaticBody2D" parent="Fences"]
+position = Vector2(-760, 505)
+
+[node name="Sprite2D" type="Sprite2D" parent="Fences/FenceSouthWestOuter"]
+position = Vector2(0, -34.72)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FenceLong")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fences/FenceSouthWestOuter"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_fence")
+
+[node name="FenceSouthWestFrame" type="StaticBody2D" parent="Fences"]
+position = Vector2(-625, 505)
+
+[node name="Sprite2D" type="Sprite2D" parent="Fences/FenceSouthWestFrame"]
+position = Vector2(0, -31.2)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_FenceCorner")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fences/FenceSouthWestFrame"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_fence")
+
+[node name="FenceSouthEastFrame" type="StaticBody2D" parent="Fences"]
+position = Vector2(625, 505)
+
+[node name="Sprite2D" type="Sprite2D" parent="Fences/FenceSouthEastFrame"]
+position = Vector2(0, -31.2)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_FenceCorner")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fences/FenceSouthEastFrame"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_fence")
+
+[node name="FenceSouthEastOuter" type="StaticBody2D" parent="Fences"]
+position = Vector2(760, 505)
+
+[node name="Sprite2D" type="Sprite2D" parent="Fences/FenceSouthEastOuter"]
+position = Vector2(0, -34.72)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FenceLong")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fences/FenceSouthEastOuter"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_fence")
+
+[node name="TreeNorthWestDenseA" type="StaticBody2D" parent="Trees"]
+position = Vector2(-760, -420)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeNorthWestDenseA"]
+position = Vector2(0, -52.89)
+scale = Vector2(0.82, 0.82)
+texture = SubResource("Atlas_TreeFruit")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeNorthWestDenseA"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="TreeNorthWestDenseB" type="StaticBody2D" parent="Trees"]
+position = Vector2(-680, -200)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeNorthWestDenseB"]
+position = Vector2(0, -55.86)
+scale = Vector2(0.76, 0.76)
+texture = SubResource("Atlas_TreeC")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeNorthWestDenseB"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="TreeStageWestDense" type="StaticBody2D" parent="Trees"]
+position = Vector2(-250, -470)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeStageWestDense"]
+position = Vector2(0, -52.89)
+scale = Vector2(0.82, 0.82)
+texture = SubResource("Atlas_TreeFruit")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeStageWestDense"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="TreeNorthEastDenseA" type="StaticBody2D" parent="Trees"]
+position = Vector2(260, -430)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeNorthEastDenseA"]
+position = Vector2(0, -56.24)
+scale = Vector2(0.76, 0.76)
+texture = SubResource("Atlas_TreeB")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeNorthEastDenseA"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="TreeNorthEastDenseB" type="StaticBody2D" parent="Trees"]
+position = Vector2(510, -455)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeNorthEastDenseB"]
+position = Vector2(0, -52.89)
+scale = Vector2(0.82, 0.82)
+texture = SubResource("Atlas_TreeFruit")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeNorthEastDenseB"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="TreeNorthEastDenseC" type="StaticBody2D" parent="Trees"]
+position = Vector2(665, -465)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeNorthEastDenseC"]
+position = Vector2(0, -55.86)
+scale = Vector2(0.76, 0.76)
+texture = SubResource("Atlas_TreeC")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeNorthEastDenseC"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="TreeSouthWestDense" type="StaticBody2D" parent="Trees"]
+position = Vector2(-380, 500)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeSouthWestDense"]
+position = Vector2(0, -52.89)
+scale = Vector2(0.82, 0.82)
+texture = SubResource("Atlas_TreeFruit")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeSouthWestDense"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="TreeSouthEastDense" type="StaticBody2D" parent="Trees"]
+position = Vector2(380, 500)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeSouthEastDense"]
+position = Vector2(0, -56.24)
+scale = Vector2(0.76, 0.76)
+texture = SubResource("Atlas_TreeB")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees/TreeSouthEastDense"]
+position = Vector2(0, -9)
+shape = SubResource("Shape_tree_trunk")
+
+[node name="BushDenseNorthWestA" type="Node2D" parent="Bushes"]
+position = Vector2(-745, -340)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDenseNorthWestA"]
+position = Vector2(0, -20.8)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_BushSmall")
+
+[node name="BushDenseNorthWestB" type="Node2D" parent="Bushes"]
+position = Vector2(-690, -250)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDenseNorthWestB"]
+position = Vector2(0, -28.56)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_BushLarge")
+
+[node name="BushDenseNorthWestC" type="Node2D" parent="Bushes"]
+position = Vector2(-735, -140)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDenseNorthWestC"]
+position = Vector2(0, -22.55)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_BushA")
+
+[node name="BushDenseStageWestA" type="Node2D" parent="Bushes"]
+position = Vector2(-285, -445)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDenseStageWestA"]
+position = Vector2(0, -20.8)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_BushSmall")
+
+[node name="BushDenseStageWestB" type="Node2D" parent="Bushes"]
+position = Vector2(-235, -360)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDenseStageWestB"]
+position = Vector2(0, -28.56)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_BushLarge")
+
+[node name="BushDenseStageWestC" type="Node2D" parent="Bushes"]
+position = Vector2(-280, -285)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDenseStageWestC"]
+position = Vector2(0, -23.5)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_BushB")
+
+[node name="BushDenseNorthEastA" type="Node2D" parent="Bushes"]
+position = Vector2(275, -350)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDenseNorthEastA"]
+position = Vector2(0, -20.8)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_BushSmall")
+
+[node name="BushDenseNorthEastB" type="Node2D" parent="Bushes"]
+position = Vector2(390, -420)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDenseNorthEastB"]
+position = Vector2(0, -28.56)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_BushLarge")
+
+[node name="BushDenseNorthEastC" type="Node2D" parent="Bushes"]
+position = Vector2(500, -370)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDenseNorthEastC"]
+position = Vector2(0, -20.8)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_BushSmall")
+
+[node name="BushDenseNorthEastD" type="Node2D" parent="Bushes"]
+position = Vector2(610, -410)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDenseNorthEastD"]
+position = Vector2(0, -28.56)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_BushLarge")
+
+[node name="BushDenseNorthEastE" type="Node2D" parent="Bushes"]
+position = Vector2(710, -300)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDenseNorthEastE"]
+position = Vector2(0, -23.5)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_BushB")
+
+[node name="BushDenseMissionA" type="Node2D" parent="Bushes"]
+position = Vector2(-720, -20)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDenseMissionA"]
+position = Vector2(0, -20.8)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_BushSmall")
+
+[node name="BushDenseMissionB" type="Node2D" parent="Bushes"]
+position = Vector2(-600, -70)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDenseMissionB"]
+position = Vector2(0, -28.56)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_BushLarge")
+
+[node name="BushDenseMissionC" type="Node2D" parent="Bushes"]
+position = Vector2(-445, -60)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDenseMissionC"]
+position = Vector2(0, -20.8)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_BushSmall")
+
+[node name="BushDenseRegistrationA" type="Node2D" parent="Bushes"]
+position = Vector2(-720, 180)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDenseRegistrationA"]
+position = Vector2(0, -28.56)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_BushLarge")
+
+[node name="BushDenseRegistrationB" type="Node2D" parent="Bushes"]
+position = Vector2(-600, 220)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDenseRegistrationB"]
+position = Vector2(0, -20.8)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_BushSmall")
+
+[node name="BushDenseRegistrationC" type="Node2D" parent="Bushes"]
+position = Vector2(-250, 220)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDenseRegistrationC"]
+position = Vector2(0, -23.5)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_BushB")
+
+[node name="BushDenseMerchandiseA" type="Node2D" parent="Bushes"]
+position = Vector2(420, -20)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDenseMerchandiseA"]
+position = Vector2(0, -20.8)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_BushSmall")
+
+[node name="BushDenseMerchandiseB" type="Node2D" parent="Bushes"]
+position = Vector2(700, -20)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDenseMerchandiseB"]
+position = Vector2(0, -28.56)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_BushLarge")
+
+[node name="BushDenseDrinkA" type="Node2D" parent="Bushes"]
+position = Vector2(740, 180)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushDenseDrinkA"]
+position = Vector2(0, -20.8)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_BushSmall")
+
+[node name="HedgeLongNorthWest" type="StaticBody2D" parent="Hedges"]
+position = Vector2(-720, -180)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeLongNorthWest"]
+position = Vector2(0, -13.44)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_HedgeLong")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeLongNorthWest"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_hedge_long")
+
+[node name="HedgeVerticalNorthWest" type="StaticBody2D" parent="Hedges"]
+position = Vector2(-760, -260)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeVerticalNorthWest"]
+position = Vector2(0, -30.25)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_HedgeVertical")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeVerticalNorthWest"]
+position = Vector2(0, -18)
+shape = SubResource("Shape_hedge_vertical")
+
+[node name="HedgeVerticalStageWest" type="StaticBody2D" parent="Hedges"]
+position = Vector2(-235, -350)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeVerticalStageWest"]
+position = Vector2(0, -30.25)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_HedgeVertical")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeVerticalStageWest"]
+position = Vector2(0, -18)
+shape = SubResource("Shape_hedge_vertical")
+
+[node name="HedgeLongStageWest" type="StaticBody2D" parent="Hedges"]
+position = Vector2(-285, -205)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeLongStageWest"]
+position = Vector2(0, -13.44)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_HedgeLong")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeLongStageWest"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_hedge_long")
+
+[node name="HedgeLongNorthEast" type="StaticBody2D" parent="Hedges"]
+position = Vector2(380, -205)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeLongNorthEast"]
+position = Vector2(0, -13.44)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_HedgeLong")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeLongNorthEast"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_hedge_long")
+
+[node name="HedgeVerticalNorthEast" type="StaticBody2D" parent="Hedges"]
+position = Vector2(760, -300)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeVerticalNorthEast"]
+position = Vector2(0, -30.25)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_HedgeVertical")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeVerticalNorthEast"]
+position = Vector2(0, -18)
+shape = SubResource("Shape_hedge_vertical")
+
+[node name="HedgeLongRegistrationLeft" type="StaticBody2D" parent="Hedges"]
+position = Vector2(-680, 205)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeLongRegistrationLeft"]
+position = Vector2(0, -13.44)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_HedgeLong")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeLongRegistrationLeft"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_hedge_long")
+
+[node name="HedgeLongRegistrationRight" type="StaticBody2D" parent="Hedges"]
+position = Vector2(-210, 205)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeLongRegistrationRight"]
+position = Vector2(0, -13.44)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_HedgeLong")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeLongRegistrationRight"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_hedge_long")
+
+[node name="HedgeVerticalRegistrationOuter" type="StaticBody2D" parent="Hedges"]
+position = Vector2(-750, 170)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeVerticalRegistrationOuter"]
+position = Vector2(0, -30.25)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_HedgeVertical")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeVerticalRegistrationOuter"]
+position = Vector2(0, -18)
+shape = SubResource("Shape_hedge_vertical")
+
+[node name="HedgeLongDrinkLeft" type="StaticBody2D" parent="Hedges"]
+position = Vector2(310, 205)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeLongDrinkLeft"]
+position = Vector2(0, -13.44)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_HedgeLong")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeLongDrinkLeft"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_hedge_long")
+
+[node name="HedgeLongDrinkRight" type="StaticBody2D" parent="Hedges"]
+position = Vector2(710, 205)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeLongDrinkRight"]
+position = Vector2(0, -13.44)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_HedgeLong")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeLongDrinkRight"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_hedge_long")
+
+[node name="HedgeVerticalDrinkOuter" type="StaticBody2D" parent="Hedges"]
+position = Vector2(760, 160)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hedges/HedgeVerticalDrinkOuter"]
+position = Vector2(0, -30.25)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_HedgeVertical")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hedges/HedgeVerticalDrinkOuter"]
+position = Vector2(0, -18)
+shape = SubResource("Shape_hedge_vertical")
+
+[node name="FlowerDenseNorthWestA" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-760, -355)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseNorthWestA"]
+position = Vector2(0, -26.95)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_FlowerRound")
+
+[node name="FlowerDenseNorthWestB" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-690, -245)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseNorthWestB"]
+position = Vector2(0, -26.97)
+scale = Vector2(0.58, 0.58)
+texture = SubResource("Atlas_FlowerTriangle")
+
+[node name="FlowerDenseStageWestA" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-250, -455)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseStageWestA"]
+position = Vector2(0, -26.95)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_FlowerRound")
+
+[node name="FlowerDenseStageWestB" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-235, -370)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseStageWestB"]
+position = Vector2(0, -16.125)
+scale = Vector2(0.75, 0.75)
+texture = SubResource("Atlas_FlowersAlt")
+
+[node name="FlowerDenseStageWestC" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-285, -280)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseStageWestC"]
+position = Vector2(0, -26.97)
+scale = Vector2(0.58, 0.58)
+texture = SubResource("Atlas_FlowerTriangle")
+
+[node name="FlowerDenseNorthWestC" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-710, -120)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseNorthWestC"]
+position = Vector2(0, -16.125)
+scale = Vector2(0.75, 0.75)
+texture = SubResource("Atlas_FlowersAlt")
+
+[node name="FlowerDenseNorthEastA" type="Node2D" parent="FlowerBeds"]
+position = Vector2(260, -360)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseNorthEastA"]
+position = Vector2(0, -26.95)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_FlowerRound")
+
+[node name="FlowerDenseNorthEastB" type="Node2D" parent="FlowerBeds"]
+position = Vector2(370, -430)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseNorthEastB"]
+position = Vector2(0, -26.97)
+scale = Vector2(0.58, 0.58)
+texture = SubResource("Atlas_FlowerTriangle")
+
+[node name="FlowerDenseNorthEastC" type="Node2D" parent="FlowerBeds"]
+position = Vector2(480, -390)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseNorthEastC"]
+position = Vector2(0, -26.95)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_FlowerRound")
+
+[node name="FlowerDenseNorthEastD" type="Node2D" parent="FlowerBeds"]
+position = Vector2(590, -430)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseNorthEastD"]
+position = Vector2(0, -16.125)
+scale = Vector2(0.75, 0.75)
+texture = SubResource("Atlas_FlowersAlt")
+
+[node name="FlowerDenseNorthEastE" type="Node2D" parent="FlowerBeds"]
+position = Vector2(710, -350)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseNorthEastE"]
+position = Vector2(0, -26.97)
+scale = Vector2(0.58, 0.58)
+texture = SubResource("Atlas_FlowerTriangle")
+
+[node name="FlowerDenseNorthEastF" type="Node2D" parent="FlowerBeds"]
+position = Vector2(310, -220)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseNorthEastF"]
+position = Vector2(0, -19.35)
+scale = Vector2(0.45, 0.45)
+texture = SubResource("Atlas_FlowerMedium")
+
+[node name="FlowerDenseNorthEastG" type="Node2D" parent="FlowerBeds"]
+position = Vector2(500, -215)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseNorthEastG"]
+position = Vector2(0, -26.95)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_FlowerRound")
+
+[node name="FlowerDenseNorthEastH" type="Node2D" parent="FlowerBeds"]
+position = Vector2(690, -215)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseNorthEastH"]
+position = Vector2(0, -26.97)
+scale = Vector2(0.58, 0.58)
+texture = SubResource("Atlas_FlowerTriangle")
+
+[node name="FlowerDenseMissionA" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-710, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseMissionA"]
+position = Vector2(0, -26.95)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_FlowerRound")
+
+[node name="FlowerDenseMissionB" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-590, -60)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseMissionB"]
+position = Vector2(0, -26.97)
+scale = Vector2(0.58, 0.58)
+texture = SubResource("Atlas_FlowerTriangle")
+
+[node name="FlowerDenseMissionC" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-440, -50)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseMissionC"]
+position = Vector2(0, -16.125)
+scale = Vector2(0.75, 0.75)
+texture = SubResource("Atlas_FlowersAlt")
+
+[node name="FlowerDenseRegistrationA" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-710, 185)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseRegistrationA"]
+position = Vector2(0, -26.95)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_FlowerRound")
+
+[node name="FlowerDenseRegistrationB" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-585, 210)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseRegistrationB"]
+position = Vector2(0, -26.97)
+scale = Vector2(0.58, 0.58)
+texture = SubResource("Atlas_FlowerTriangle")
+
+[node name="FlowerDenseMerchandiseA" type="Node2D" parent="FlowerBeds"]
+position = Vector2(420, -15)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseMerchandiseA"]
+position = Vector2(0, -26.95)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_FlowerRound")
+
+[node name="FlowerDenseMerchandiseB" type="Node2D" parent="FlowerBeds"]
+position = Vector2(690, -20)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseMerchandiseB"]
+position = Vector2(0, -26.97)
+scale = Vector2(0.58, 0.58)
+texture = SubResource("Atlas_FlowerTriangle")
+
+[node name="FlowerDenseDrinkA" type="Node2D" parent="FlowerBeds"]
+position = Vector2(720, 185)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseDrinkA"]
+position = Vector2(0, -26.95)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_FlowerRound")
+
+[node name="FlowerDenseDrinkB" type="Node2D" parent="FlowerBeds"]
+position = Vector2(300, 210)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseDrinkB"]
+position = Vector2(0, -26.97)
+scale = Vector2(0.58, 0.58)
+texture = SubResource("Atlas_FlowerTriangle")
+
+[node name="FlowerDenseDrinkC" type="Node2D" parent="FlowerBeds"]
+position = Vector2(630, 210)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerDenseDrinkC"]
+position = Vector2(0, -16.125)
+scale = Vector2(0.75, 0.75)
+texture = SubResource("Atlas_FlowersAlt")
+
+[node name="BalloonsDenseSkyscraperLeft" type="Node2D" parent="Balloons"]
+position = Vector2(-730, -150)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsDenseSkyscraperLeft"]
+position = Vector2(0, -37.99)
+scale = Vector2(0.58, 0.58)
+texture = SubResource("Atlas_BalloonsC")
+
+[node name="BalloonsDenseSkyscraperRight" type="Node2D" parent="Balloons"]
+position = Vector2(-255, -200)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsDenseSkyscraperRight"]
+position = Vector2(0, -39.2)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_BalloonsA")
+
+[node name="BalloonsDenseStageLeft" type="Node2D" parent="Balloons"]
+position = Vector2(-150, -175)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsDenseStageLeft"]
+position = Vector2(0, -37.99)
+scale = Vector2(0.58, 0.58)
+texture = SubResource("Atlas_BalloonsC")
+
+[node name="BalloonsDenseStageRight" type="Node2D" parent="Balloons"]
+position = Vector2(150, -175)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsDenseStageRight"]
+position = Vector2(0, -38.36)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_BalloonsB")
+
+[node name="BalloonsDenseMissionRight" type="Node2D" parent="Balloons"]
+position = Vector2(-400, 70)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsDenseMissionRight"]
+position = Vector2(0, -37.99)
+scale = Vector2(0.58, 0.58)
+texture = SubResource("Atlas_BalloonsC")
+
+[node name="BalloonsDenseRegistrationOuter" type="Node2D" parent="Balloons"]
+position = Vector2(-700, 260)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsDenseRegistrationOuter"]
+position = Vector2(0, -39.2)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_BalloonsA")
+
+[node name="BalloonsDenseMerchandiseLeft" type="Node2D" parent="Balloons"]
+position = Vector2(400, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsDenseMerchandiseLeft"]
+position = Vector2(0, -37.99)
+scale = Vector2(0.58, 0.58)
+texture = SubResource("Atlas_BalloonsC")
+
+[node name="BalloonsDenseDrinkLeft" type="Node2D" parent="Balloons"]
+position = Vector2(350, 270)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsDenseDrinkLeft"]
+position = Vector2(0, -38.36)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_BalloonsB")
+
+[node name="LampBannerSkyscraperLeft" type="Node2D" parent="Lamps"]
+position = Vector2(-620, -190)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampBannerSkyscraperLeft"]
+position = Vector2(0, -38.7)
+scale = Vector2(0.45, 0.45)
+texture = SubResource("Atlas_LampBanner")
+
+[node name="LampBannerSkyscraperRight" type="Node2D" parent="Lamps"]
+position = Vector2(-330, -190)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampBannerSkyscraperRight"]
+position = Vector2(0, -38.7)
+scale = Vector2(0.45, 0.45)
+texture = SubResource("Atlas_LampBanner")
+
+[node name="LampBannerStageLeft" type="Node2D" parent="Lamps"]
+position = Vector2(-280, -145)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampBannerStageLeft"]
+position = Vector2(0, -38.7)
+scale = Vector2(0.45, 0.45)
+texture = SubResource("Atlas_LampBanner")
+
+[node name="LampBannerStageRight" type="Node2D" parent="Lamps"]
+position = Vector2(280, -145)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampBannerStageRight"]
+position = Vector2(0, -38.7)
+scale = Vector2(0.45, 0.45)
+texture = SubResource("Atlas_LampBanner")
+
+[node name="LampDenseMissionOuter" type="Node2D" parent="Lamps"]
+position = Vector2(-735, 95)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampDenseMissionOuter"]
+position = Vector2(0, -35.75)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_LampA")
+
+[node name="LampDenseMissionInner" type="Node2D" parent="Lamps"]
+position = Vector2(-430, 110)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampDenseMissionInner"]
+position = Vector2(0, -37.75)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_LampFlower")
+
+[node name="LampDenseMerchandiseInner" type="Node2D" parent="Lamps"]
+position = Vector2(430, 110)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampDenseMerchandiseInner"]
+position = Vector2(0, -37.75)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_LampFlower")
+
+[node name="LampDenseMerchandiseOuter" type="Node2D" parent="Lamps"]
+position = Vector2(735, 95)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampDenseMerchandiseOuter"]
+position = Vector2(0, -36.04)
+scale = Vector2(0.53, 0.53)
+texture = SubResource("Atlas_LampB")
+
+[node name="LampDenseLowerWest" type="Node2D" parent="Lamps"]
+position = Vector2(-650, 355)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampDenseLowerWest"]
+position = Vector2(0, -38.7)
+scale = Vector2(0.45, 0.45)
+texture = SubResource("Atlas_LampBanner")
+
+[node name="LampDenseLowerEast" type="Node2D" parent="Lamps"]
+position = Vector2(650, 355)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampDenseLowerEast"]
+position = Vector2(0, -38.7)
+scale = Vector2(0.45, 0.45)
+texture = SubResource("Atlas_LampBanner")
+
+[node name="FenceDenseSouthFarLeft" type="StaticBody2D" parent="Fences"]
+position = Vector2(-730, 480)
+
+[node name="Sprite2D" type="Sprite2D" parent="Fences/FenceDenseSouthFarLeft"]
+position = Vector2(0, -24.82)
+scale = Vector2(0.68, 0.68)
+texture = SubResource("Atlas_FenceSmall")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fences/FenceDenseSouthFarLeft"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_fence")
+
+[node name="FenceDenseSouthLeftA" type="StaticBody2D" parent="Fences"]
+position = Vector2(-500, 505)
+
+[node name="Sprite2D" type="Sprite2D" parent="Fences/FenceDenseSouthLeftA"]
+position = Vector2(0, -34.72)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FenceLong")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fences/FenceDenseSouthLeftA"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_fence")
+
+[node name="FenceDenseSouthLeftB" type="StaticBody2D" parent="Fences"]
+position = Vector2(-250, 505)
+
+[node name="Sprite2D" type="Sprite2D" parent="Fences/FenceDenseSouthLeftB"]
+position = Vector2(0, -31.2)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_FenceCorner")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fences/FenceDenseSouthLeftB"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_fence")
+
+[node name="FenceDenseSouthRightB" type="StaticBody2D" parent="Fences"]
+position = Vector2(250, 505)
+
+[node name="Sprite2D" type="Sprite2D" parent="Fences/FenceDenseSouthRightB"]
+position = Vector2(0, -31.2)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_FenceCorner")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fences/FenceDenseSouthRightB"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_fence")
+
+[node name="FenceDenseSouthRightA" type="StaticBody2D" parent="Fences"]
+position = Vector2(500, 505)
+
+[node name="Sprite2D" type="Sprite2D" parent="Fences/FenceDenseSouthRightA"]
+position = Vector2(0, -34.72)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FenceLong")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fences/FenceDenseSouthRightA"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_fence")
+
+[node name="FenceDenseSouthFarRight" type="StaticBody2D" parent="Fences"]
+position = Vector2(730, 480)
+
+[node name="Sprite2D" type="Sprite2D" parent="Fences/FenceDenseSouthFarRight"]
+position = Vector2(0, -24.82)
+scale = Vector2(0.68, 0.68)
+texture = SubResource("Atlas_FenceSmall")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fences/FenceDenseSouthFarRight"]
+position = Vector2(0, -8)
+shape = SubResource("Shape_fence")
+
+[node name="BushCenterNorthWest" type="Node2D" parent="Bushes"]
+position = Vector2(-200, -115)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushCenterNorthWest"]
+position = Vector2(0, -20.8)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_BushSmall")
+
+[node name="BushCenterNorthEast" type="Node2D" parent="Bushes"]
+position = Vector2(200, -115)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushCenterNorthEast"]
+position = Vector2(0, -20.8)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_BushSmall")
+
+[node name="BushCenterWestUpper" type="Node2D" parent="Bushes"]
+position = Vector2(-260, -45)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushCenterWestUpper"]
+position = Vector2(0, -22.55)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_BushA")
+
+[node name="BushCenterEastUpper" type="Node2D" parent="Bushes"]
+position = Vector2(260, -45)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushCenterEastUpper"]
+position = Vector2(0, -23.5)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_BushB")
+
+[node name="BushCenterWestMiddle" type="Node2D" parent="Bushes"]
+position = Vector2(-285, 55)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushCenterWestMiddle"]
+position = Vector2(0, -28.56)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_BushLarge")
+
+[node name="BushCenterEastMiddle" type="Node2D" parent="Bushes"]
+position = Vector2(285, 55)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushCenterEastMiddle"]
+position = Vector2(0, -28.56)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_BushLarge")
+
+[node name="BushCenterWestLower" type="Node2D" parent="Bushes"]
+position = Vector2(-285, 150)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushCenterWestLower"]
+position = Vector2(0, -20.8)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_BushSmall")
+
+[node name="BushCenterEastLower" type="Node2D" parent="Bushes"]
+position = Vector2(285, 150)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushCenterEastLower"]
+position = Vector2(0, -20.8)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_BushSmall")
+
+[node name="BushCenterSouthWest" type="Node2D" parent="Bushes"]
+position = Vector2(-200, 230)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushCenterSouthWest"]
+position = Vector2(0, -22.55)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_BushA")
+
+[node name="BushCenterSouthEast" type="Node2D" parent="Bushes"]
+position = Vector2(200, 230)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushCenterSouthEast"]
+position = Vector2(0, -23.5)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_BushB")
+
+[node name="BushPlazaWestUpper" type="Node2D" parent="Bushes"]
+position = Vector2(-350, -40)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushPlazaWestUpper"]
+position = Vector2(0, -20.8)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_BushSmall")
+
+[node name="BushPlazaEastUpper" type="Node2D" parent="Bushes"]
+position = Vector2(350, -40)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushPlazaEastUpper"]
+position = Vector2(0, -20.8)
+scale = Vector2(0.65, 0.65)
+texture = SubResource("Atlas_BushSmall")
+
+[node name="BushPlazaWestMiddle" type="Node2D" parent="Bushes"]
+position = Vector2(-350, 70)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushPlazaWestMiddle"]
+position = Vector2(0, -28.56)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_BushLarge")
+
+[node name="BushPlazaEastMiddle" type="Node2D" parent="Bushes"]
+position = Vector2(350, 70)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushPlazaEastMiddle"]
+position = Vector2(0, -28.56)
+scale = Vector2(0.42, 0.42)
+texture = SubResource("Atlas_BushLarge")
+
+[node name="BushPlazaLowerWest" type="Node2D" parent="Bushes"]
+position = Vector2(-185, 285)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushPlazaLowerWest"]
+position = Vector2(0, -22.55)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_BushA")
+
+[node name="BushPlazaLowerEast" type="Node2D" parent="Bushes"]
+position = Vector2(185, 285)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bushes/BushPlazaLowerEast"]
+position = Vector2(0, -23.5)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_BushB")
+
+[node name="FlowerCenterNorthWest" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-150, -125)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerCenterNorthWest"]
+position = Vector2(0, -26.95)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_FlowerRound")
+
+[node name="FlowerCenterNorthEast" type="Node2D" parent="FlowerBeds"]
+position = Vector2(150, -125)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerCenterNorthEast"]
+position = Vector2(0, -26.95)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_FlowerRound")
+
+[node name="FlowerCenterWestUpper" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-235, -90)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerCenterWestUpper"]
+position = Vector2(0, -26.97)
+scale = Vector2(0.58, 0.58)
+texture = SubResource("Atlas_FlowerTriangle")
+
+[node name="FlowerCenterEastUpper" type="Node2D" parent="FlowerBeds"]
+position = Vector2(235, -90)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerCenterEastUpper"]
+position = Vector2(0, -26.97)
+scale = Vector2(0.58, 0.58)
+texture = SubResource("Atlas_FlowerTriangle")
+
+[node name="FlowerCenterWestUpperSmall" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-300, -15)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerCenterWestUpperSmall"]
+position = Vector2(0, -16.125)
+scale = Vector2(0.75, 0.75)
+texture = SubResource("Atlas_FlowersAlt")
+
+[node name="FlowerCenterEastUpperSmall" type="Node2D" parent="FlowerBeds"]
+position = Vector2(300, -15)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerCenterEastUpperSmall"]
+position = Vector2(0, -16.125)
+scale = Vector2(0.75, 0.75)
+texture = SubResource("Atlas_FlowersAlt")
+
+[node name="FlowerCenterWestMiddleSmall" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-310, 70)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerCenterWestMiddleSmall"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="FlowerCenterEastMiddleSmall" type="Node2D" parent="FlowerBeds"]
+position = Vector2(310, 70)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerCenterEastMiddleSmall"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="FlowerCenterWestLower" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-315, 150)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerCenterWestLower"]
+position = Vector2(0, -26.95)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_FlowerRound")
+
+[node name="FlowerCenterEastLower" type="Node2D" parent="FlowerBeds"]
+position = Vector2(315, 150)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerCenterEastLower"]
+position = Vector2(0, -26.95)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_FlowerRound")
+
+[node name="FlowerCenterSouthWest" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-260, 215)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerCenterSouthWest"]
+position = Vector2(0, -16.125)
+scale = Vector2(0.75, 0.75)
+texture = SubResource("Atlas_FlowersAlt")
+
+[node name="FlowerCenterSouthEast" type="Node2D" parent="FlowerBeds"]
+position = Vector2(260, 215)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerCenterSouthEast"]
+position = Vector2(0, -16.125)
+scale = Vector2(0.75, 0.75)
+texture = SubResource("Atlas_FlowersAlt")
+
+[node name="FlowerCenterSouthInnerWest" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-125, 250)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerCenterSouthInnerWest"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="FlowerCenterSouthInnerEast" type="Node2D" parent="FlowerBeds"]
+position = Vector2(125, 250)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerCenterSouthInnerEast"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="FlowerPlazaWestUpper" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-380, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerPlazaWestUpper"]
+position = Vector2(0, -26.95)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_FlowerRound")
+
+[node name="FlowerPlazaEastUpper" type="Node2D" parent="FlowerBeds"]
+position = Vector2(380, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerPlazaEastUpper"]
+position = Vector2(0, -26.95)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_FlowerRound")
+
+[node name="FlowerPlazaWestMiddle" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-380, 120)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerPlazaWestMiddle"]
+position = Vector2(0, -26.97)
+scale = Vector2(0.58, 0.58)
+texture = SubResource("Atlas_FlowerTriangle")
+
+[node name="FlowerPlazaEastMiddle" type="Node2D" parent="FlowerBeds"]
+position = Vector2(380, 120)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerPlazaEastMiddle"]
+position = Vector2(0, -26.97)
+scale = Vector2(0.58, 0.58)
+texture = SubResource("Atlas_FlowerTriangle")
+
+[node name="FlowerPlazaLowerWest" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-250, 285)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerPlazaLowerWest"]
+position = Vector2(0, -16.125)
+scale = Vector2(0.75, 0.75)
+texture = SubResource("Atlas_FlowersAlt")
+
+[node name="FlowerPlazaLowerEast" type="Node2D" parent="FlowerBeds"]
+position = Vector2(250, 285)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerPlazaLowerEast"]
+position = Vector2(0, -16.125)
+scale = Vector2(0.75, 0.75)
+texture = SubResource("Atlas_FlowersAlt")
+
+[node name="FlowerAxisLowerWest" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-185, 320)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerAxisLowerWest"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="FlowerAxisLowerEast" type="Node2D" parent="FlowerBeds"]
+position = Vector2(185, 320)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerAxisLowerEast"]
+position = Vector2(0, -17.36)
+scale = Vector2(0.62, 0.62)
+texture = SubResource("Atlas_FlowersSmall")
+
+[node name="FlowerAxisEdgeWest" type="Node2D" parent="FlowerBeds"]
+position = Vector2(-120, 345)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerAxisEdgeWest"]
+position = Vector2(0, -16.125)
+scale = Vector2(0.75, 0.75)
+texture = SubResource("Atlas_FlowersAlt")
+
+[node name="FlowerAxisEdgeEast" type="Node2D" parent="FlowerBeds"]
+position = Vector2(120, 345)
+
+[node name="Sprite2D" type="Sprite2D" parent="FlowerBeds/FlowerAxisEdgeEast"]
+position = Vector2(0, -16.125)
+scale = Vector2(0.75, 0.75)
+texture = SubResource("Atlas_FlowersAlt")
+
+[node name="BalloonsCenterNorthWest" type="Node2D" parent="Balloons"]
+position = Vector2(-310, -40)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsCenterNorthWest"]
+position = Vector2(0, -39.2)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_BalloonsA")
+
+[node name="BalloonsCenterNorthEast" type="Node2D" parent="Balloons"]
+position = Vector2(310, -40)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsCenterNorthEast"]
+position = Vector2(0, -38.36)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_BalloonsB")
+
+[node name="BalloonsCenterSouthWest" type="Node2D" parent="Balloons"]
+position = Vector2(-300, 210)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsCenterSouthWest"]
+position = Vector2(0, -37.99)
+scale = Vector2(0.58, 0.58)
+texture = SubResource("Atlas_BalloonsC")
+
+[node name="BalloonsCenterSouthEast" type="Node2D" parent="Balloons"]
+position = Vector2(300, 210)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsCenterSouthEast"]
+position = Vector2(0, -39.2)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_BalloonsA")
+
+[node name="BalloonsAxisLowerWest" type="Node2D" parent="Balloons"]
+position = Vector2(-190, 300)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsAxisLowerWest"]
+position = Vector2(0, -38.36)
+scale = Vector2(0.56, 0.56)
+texture = SubResource("Atlas_BalloonsB")
+
+[node name="BalloonsAxisLowerEast" type="Node2D" parent="Balloons"]
+position = Vector2(190, 300)
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloons/BalloonsAxisLowerEast"]
+position = Vector2(0, -37.99)
+scale = Vector2(0.58, 0.58)
+texture = SubResource("Atlas_BalloonsC")
+
+[node name="LampCenterNorthWest" type="Node2D" parent="Lamps"]
+position = Vector2(-320, -70)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampCenterNorthWest"]
+position = Vector2(0, -37.75)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_LampFlower")
+
+[node name="LampCenterNorthEast" type="Node2D" parent="Lamps"]
+position = Vector2(320, -70)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampCenterNorthEast"]
+position = Vector2(0, -37.75)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("Atlas_LampFlower")
+
+[node name="LampCenterWest" type="Node2D" parent="Lamps"]
+position = Vector2(-310, 65)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampCenterWest"]
+position = Vector2(0, -35.75)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_LampA")
+
+[node name="LampCenterEast" type="Node2D" parent="Lamps"]
+position = Vector2(310, 65)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampCenterEast"]
+position = Vector2(0, -36.04)
+scale = Vector2(0.53, 0.53)
+texture = SubResource("Atlas_LampB")
+
+[node name="LampCenterSouthWest" type="Node2D" parent="Lamps"]
+position = Vector2(-280, 230)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampCenterSouthWest"]
+position = Vector2(0, -38.7)
+scale = Vector2(0.45, 0.45)
+texture = SubResource("Atlas_LampBanner")
+
+[node name="LampCenterSouthEast" type="Node2D" parent="Lamps"]
+position = Vector2(280, 230)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampCenterSouthEast"]
+position = Vector2(0, -38.7)
+scale = Vector2(0.45, 0.45)
+texture = SubResource("Atlas_LampBanner")
+
+[node name="LampAxisLowerWest" type="Node2D" parent="Lamps"]
+position = Vector2(-150, 330)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampAxisLowerWest"]
+position = Vector2(0, -35.75)
+scale = Vector2(0.55, 0.55)
+texture = SubResource("Atlas_LampA")
+
+[node name="LampAxisLowerEast" type="Node2D" parent="Lamps"]
+position = Vector2(150, 330)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamps/LampAxisLowerEast"]
+position = Vector2(0, -36.04)
+scale = Vector2(0.53, 0.53)
+texture = SubResource("Atlas_LampB")

@@ -1,0 +1,77 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/main_map/drink_shop_worker_idle.png" id="1_worker_sheet"]
+[ext_resource type="Script" uid="uid://37noyirgtknc" path="res://scripts/npc.gd" id="2_npc_script"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_0"]
+atlas = ExtResource("1_worker_sheet")
+region = Rect2(16, 0, 292, 673)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_1"]
+atlas = ExtResource("1_worker_sheet")
+region = Rect2(315, 0, 292, 673)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_2"]
+atlas = ExtResource("1_worker_sheet")
+region = Rect2(592, 0, 292, 673)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_3"]
+atlas = ExtResource("1_worker_sheet")
+region = Rect2(871, 0, 292, 673)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_4"]
+atlas = ExtResource("1_worker_sheet")
+region = Rect2(1150, 0, 292, 673)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_5"]
+atlas = ExtResource("1_worker_sheet")
+region = Rect2(1442, 0, 292, 673)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_6"]
+atlas = ExtResource("1_worker_sheet")
+region = Rect2(1734, 0, 292, 673)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_worker_idle"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idle_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idle_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idle_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idle_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idle_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idle_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idle_6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_worker"]
+size = Vector2(24, 18)
+
+[node name="DrinkShopWorker" type="StaticBody2D" groups=["drink_shop_worker", "npc"]]
+script = ExtResource("2_npc_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -42)
+scale = Vector2(0.145, 0.145)
+sprite_frames = SubResource("SpriteFrames_worker_idle")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_worker")

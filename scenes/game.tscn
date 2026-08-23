@@ -2,370 +2,253 @@
 
 [ext_resource type="PackedScene" uid="uid://bl4cf0hyyhtbm" path="res://scenes/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://4y0iag1d8ktc" path="res://scenes/coin.tscn" id="2_coin"]
-[ext_resource type="Texture2D" uid="uid://bv2mo7a1pn6uh" path="res://assets/project_star/ground_stone_repeat.png" id="3_ground"]
+[ext_resource type="Texture2D" uid="uid://fuggu600178n" path="res://assets/main_map/full_map_background.png" id="3_full_map"]
 [ext_resource type="Script" uid="uid://du82y6vr13ac5" path="res://scripts/game_manager.gd" id="4_game_manager"]
 [ext_resource type="FontFile" uid="uid://dvtck01iuvd76" path="res://brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="5_font"]
 [ext_resource type="Script" uid="uid://cvhlg0e3fmuey" path="res://scripts/queue_entrance.gd" id="6_queue_entrance"]
 [ext_resource type="Script" uid="uid://ckxaeem58727a" path="res://scripts/score_hud.gd" id="7_score_hud"]
 [ext_resource type="Script" uid="uid://bemepujlmtrnn" path="res://scripts/score_placeholder_manager.gd" id="8_score_placeholder_manager"]
-[ext_resource type="Texture2D" uid="uid://dbjp3ngwiime6" path="res://assets/BackgroundImage/festival/festival_stage.png" id="9_stage"]
-[ext_resource type="Texture2D" uid="uid://ca4727wmgodqw" path="res://assets/BackgroundImage/festival/festival_vote_board.png" id="10_vote_board"]
-[ext_resource type="Texture2D" uid="uid://8vv4kxbnfyck" path="res://assets/BackgroundImage/festival/festival_bunting_long.png" id="12_bunting"]
-[ext_resource type="Texture2D" uid="uid://lb2eoqrlkg2v" path="res://assets/BackgroundImage/festival/festival_flower_bed.png" id="13_flower_bed"]
-[ext_resource type="Texture2D" uid="uid://w4rtub3mruvr" path="res://assets/BackgroundImage/festival/festival_ropes_long.png" id="14_ropes"]
-[ext_resource type="Texture2D" uid="uid://ceshrgew11k4i" path="res://assets/BackgroundImage/festival/festival_bench.png" id="15_bench"]
-[ext_resource type="Texture2D" uid="uid://dv7q3eim71rcb" path="res://assets/project_star/mission_board.png" id="16_notice_board"]
-[ext_resource type="Texture2D" uid="uid://bh1j80r2hel8w" path="res://assets/BackgroundImage/festival/festival_tree_round.png" id="17_tree_round"]
-[ext_resource type="Texture2D" uid="uid://c7pc2q4xnolb6" path="res://assets/BackgroundImage/festival/festival_flower_cart.png" id="18_flower_cart"]
-[ext_resource type="Texture2D" uid="uid://btw2cogbwjiut" path="res://assets/project_star/drink_stall.png" id="19_drink_booth"]
-[ext_resource type="Texture2D" uid="uid://d36jbre14tqua" path="res://assets/BackgroundImage/festival/festival_food_truck.png" id="20_food_truck"]
-[ext_resource type="Texture2D" uid="uid://c35441ju6177i" path="res://assets/project_star/registration_entrance.png" id="21_arch"]
 [ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="22_pause_menu"]
 [ext_resource type="PackedScene" uid="uid://brchrhujnygbu" path="res://scenes/npc.tscn" id="24_npc"]
+[ext_resource type="PackedScene" path="res://scenes/drink_shop_worker.tscn" id="26_drink_shop_worker"]
+[ext_resource type="PackedScene" uid="uid://r0cqes216fss" path="res://scenes/mission_board_worker.tscn" id="27_mission_board_worker"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_skyscraper_entrance"]
-size = Vector2(300, 76)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_big_building"]
+size = Vector2(345, 263)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mission_board"]
-size = Vector2(190, 42)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stage"]
+size = Vector2(444, 289)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ranking_screen"]
-size = Vector2(92, 36)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upper_left_garden"]
+size = Vector2(125, 321)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_merch_booth"]
-size = Vector2(170, 56)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upper_middle_garden"]
+size = Vector2(88.5, 290)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_drink_stall"]
-size = Vector2(190, 54)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upper_right_garden"]
+size = Vector2(477.5, 257)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vendor"]
-size = Vector2(26, 22)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mission_board_area"]
+size = Vector2(374, 168)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_voting_area"]
-size = Vector2(118, 38)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_merchandise_booth"]
+size = Vector2(238.5, 147)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_queue_entrance"]
-size = Vector2(132, 100)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_bench"]
+size = Vector2(84, 34)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tree"]
-size = Vector2(54, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right_bench"]
+size = Vector2(78, 34)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bench"]
-size = Vector2(84, 28)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lamp"]
+size = Vector2(26, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_flower_cart"]
-size = Vector2(96, 38)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_voting_garden_left"]
+size = Vector2(319, 103)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_voting_booth"]
+size = Vector2(189, 182)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_voting_garden_right"]
+size = Vector2(121, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drink_garden_left"]
+size = Vector2(216.5, 147)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drink_shop"]
+size = Vector2(199, 232)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drink_garden_right"]
+size = Vector2(236, 185)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bottom_left_garden"]
+size = Vector2(660, 147)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bottom_right_garden"]
+size = Vector2(688, 147)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_queue_interaction"]
+size = Vector2(210, 86)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_map_boundary_horizontal"]
-size = Vector2(3600, 80)
+size = Vector2(1597, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_map_boundary_vertical"]
-size = Vector2(80, 3600)
+size = Vector2(32, 1090)
 
 [node name="Game" type="Node2D" unique_id=1177641961]
 
-[node name="Ground" type="Node2D" parent="." unique_id=8664438]
+[node name="FullMapBackground" type="Sprite2D" parent="." unique_id=319333240]
 z_index = -100
+texture = ExtResource("3_full_map")
 
-[node name="GroundTile00" type="Sprite2D" parent="Ground" unique_id=703361754]
-position = Vector2(-1254, -1254)
-texture = ExtResource("3_ground")
+[node name="CollisionObjects" type="Node2D" parent="." unique_id=924333770]
 
-[node name="GroundTile01" type="Sprite2D" parent="Ground" unique_id=457299028]
-position = Vector2(0, -1254)
-texture = ExtResource("3_ground")
+[node name="BigBuildingCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=1472034024]
+position = Vector2(-471.5, -381.5)
 
-[node name="GroundTile02" type="Sprite2D" parent="Ground" unique_id=1118442639]
-position = Vector2(1254, -1254)
-texture = ExtResource("3_ground")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/BigBuildingCollision" unique_id=1550676398]
+shape = SubResource("RectangleShape2D_big_building")
 
-[node name="GroundTile10" type="Sprite2D" parent="Ground" unique_id=2005934719]
-position = Vector2(-1254, 0)
-texture = ExtResource("3_ground")
+[node name="StageRankingCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=223037670]
+position = Vector2(31, -368.5)
 
-[node name="GroundTile11" type="Sprite2D" parent="Ground" unique_id=1420905411]
-texture = ExtResource("3_ground")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/StageRankingCollision" unique_id=1477192587]
+shape = SubResource("RectangleShape2D_stage")
 
-[node name="GroundTile12" type="Sprite2D" parent="Ground" unique_id=1066344371]
-position = Vector2(1254, 0)
-texture = ExtResource("3_ground")
+[node name="UpperLeftTreesCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=1854858389]
+position = Vector2(-704, -352.5)
 
-[node name="GroundTile20" type="Sprite2D" parent="Ground" unique_id=2072179268]
-position = Vector2(-1254, 1254)
-texture = ExtResource("3_ground")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/UpperLeftTreesCollision" unique_id=1135217805]
+shape = SubResource("RectangleShape2D_upper_left_garden")
 
-[node name="GroundTile21" type="Sprite2D" parent="Ground" unique_id=774779887]
-position = Vector2(0, 1254)
-texture = ExtResource("3_ground")
+[node name="UpperMiddleTreesCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=1449758111]
+position = Vector2(-248.5, -352.5)
 
-[node name="GroundTile22" type="Sprite2D" parent="Ground" unique_id=163711910]
-position = Vector2(1254, 1254)
-texture = ExtResource("3_ground")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/UpperMiddleTreesCollision" unique_id=1208163826]
+position = Vector2(-9.75, -15.5)
+shape = SubResource("RectangleShape2D_upper_middle_garden")
+
+[node name="UpperRightTreesHedgesFencesCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=1494423955]
+position = Vector2(510, -353)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/UpperRightTreesHedgesFencesCollision" unique_id=1861519246]
+position = Vector2(17.75, -31.5)
+shape = SubResource("RectangleShape2D_upper_right_garden")
+
+[node name="MissionBoardAreaCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=2126523370]
+position = Vector2(-579.5, -69)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/MissionBoardAreaCollision" unique_id=234507642]
+position = Vector2(0, 41)
+shape = SubResource("RectangleShape2D_mission_board_area")
+
+[node name="MerchandiseBoothCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=688910604]
+position = Vector2(621, -78)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/MerchandiseBoothCollision" unique_id=188575947]
+position = Vector2(-22, -3.5)
+shape = SubResource("RectangleShape2D_merchandise_booth")
+
+[node name="FountainCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=1554848630]
+position = Vector2(-18, -42)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionObjects/FountainCollision" unique_id=2145664945]
+polygon = PackedVector2Array(0, -138, 92, -122, 145, -80, 170, -15, 158, 60, 110, 115, 0, 140, -110, 115, -158, 60, -170, -15, -145, -80, -92, -122)
+
+[node name="FountainLeftBenchCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=788221073]
+position = Vector2(-187.5, 35)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/FountainLeftBenchCollision" unique_id=1226809424]
+shape = SubResource("RectangleShape2D_left_bench")
+
+[node name="FountainRightBenchCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=414907521]
+position = Vector2(157.5, 35)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/FountainRightBenchCollision" unique_id=1551560639]
+shape = SubResource("RectangleShape2D_right_bench")
+
+[node name="FountainLeftLampCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=568419042]
+position = Vector2(-233.5, -3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/FountainLeftLampCollision" unique_id=287572488]
+shape = SubResource("RectangleShape2D_lamp")
+
+[node name="FountainRightLampCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=1765070102]
+position = Vector2(192.5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/FountainRightLampCollision" unique_id=1768802669]
+shape = SubResource("RectangleShape2D_lamp")
+
+[node name="VotingGardenLeftCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=1878680845]
+position = Vector2(-607, 196.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/VotingGardenLeftCollision" unique_id=1447480878]
+position = Vector2(0, 41)
+shape = SubResource("RectangleShape2D_voting_garden_left")
+
+[node name="VotingRegistrationBoothCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=1146831914]
+position = Vector2(-353, 191)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/VotingRegistrationBoothCollision" unique_id=177628719]
+shape = SubResource("RectangleShape2D_voting_booth")
+
+[node name="VotingGardenRightCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=1556759869]
+position = Vector2(-192.5, 196.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/VotingGardenRightCollision" unique_id=103299324]
+position = Vector2(-6, 12.5)
+shape = SubResource("RectangleShape2D_voting_garden_right")
+
+[node name="DrinkGardenLeftCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=1567183120]
+position = Vector2(213, 196.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/DrinkGardenLeftCollision" unique_id=1608629626]
+position = Vector2(10.25, 1)
+shape = SubResource("RectangleShape2D_drink_garden_left")
+
+[node name="DrinkShopCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=490865331]
+position = Vector2(431, 166)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/DrinkShopCollision" unique_id=263857444]
+shape = SubResource("RectangleShape2D_drink_shop")
+
+[node name="DrinkGardenRightCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=115417311]
+position = Vector2(648.5, 196.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/DrinkGardenRightCollision" unique_id=621853207]
+shape = SubResource("RectangleShape2D_drink_garden_right")
+
+[node name="BottomLeftTreesBushesFencesCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=1663070451]
+position = Vector2(-436.5, 439.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/BottomLeftTreesBushesFencesCollision" unique_id=755244545]
+shape = SubResource("RectangleShape2D_bottom_left_garden")
+
+[node name="BottomRightTreesBushesFencesCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=1632940814]
+position = Vector2(422.5, 439.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/BottomRightTreesBushesFencesCollision" unique_id=1569813944]
+shape = SubResource("RectangleShape2D_bottom_right_garden")
+
+[node name="InteractionAreas" type="Node2D" parent="." unique_id=1859738509]
+
+[node name="QueueEntranceArea" type="Area2D" parent="InteractionAreas" unique_id=527283069]
+position = Vector2(-353, 310)
+collision_mask = 2
+script = ExtResource("6_queue_entrance")
+
+[node name="InteractionTrigger" type="CollisionShape2D" parent="InteractionAreas/QueueEntranceArea" unique_id=1283226485]
+position = Vector2(1, -47)
+shape = SubResource("RectangleShape2D_queue_interaction")
+
+[node name="InteractionPoint" type="Marker2D" parent="InteractionAreas/QueueEntranceArea" unique_id=1706853469]
+position = Vector2(0, -43)
 
 [node name="MapObjects" type="Node2D" parent="." unique_id=2118902541]
 y_sort_enabled = true
 
 [node name="Player" parent="MapObjects" unique_id=2049840162 instance=ExtResource("1_player")]
-z_index = 0
-position = Vector2(0, 260)
+position = Vector2(-11, 469)
 move_speed = 165.0
 acceleration = 1200.0
 deceleration = 1400.0
+player_sprite_scale = Vector2(0.28, 0.28)
 
 [node name="Camera2D" type="Camera2D" parent="MapObjects/Player" unique_id=1594711468]
 zoom = Vector2(2.4, 2.4)
-limit_left = -1550
-limit_top = -1550
-limit_right = 1550
-limit_bottom = 1550
+limit_left = -766
+limit_top = -513
+limit_right = 767
+limit_bottom = 513
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
-[node name="SkyscraperEntrance" type="StaticBody2D" parent="MapObjects" unique_id=1680254131]
-position = Vector2(650, -640)
-
-[node name="Sprite2D" type="Sprite2D" parent="MapObjects/SkyscraperEntrance" unique_id=972000082]
-position = Vector2(0, -128)
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("9_stage")
-
-[node name="Label" type="Label" parent="MapObjects/SkyscraperEntrance" unique_id=930354450]
-offset_left = -108.0
-offset_top = -300.0
-offset_right = 108.0
-offset_bottom = -280.0
-theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
-theme_override_fonts/font = ExtResource("5_font")
-theme_override_font_sizes/font_size = 10
-text = "SKYSCRAPER"
-horizontal_alignment = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/SkyscraperEntrance" unique_id=315226424]
-position = Vector2(0, -38)
-shape = SubResource("RectangleShape2D_skyscraper_entrance")
-
-[node name="MissionBoard" type="StaticBody2D" parent="MapObjects" unique_id=469401875]
-position = Vector2(-650, -470)
-
-[node name="Sprite2D" type="Sprite2D" parent="MapObjects/MissionBoard" unique_id=1649530769]
-position = Vector2(0, -96)
-scale = Vector2(0.22, 0.22)
-texture = ExtResource("16_notice_board")
-
-[node name="Label" type="Label" parent="MapObjects/MissionBoard" unique_id=853943077]
-offset_left = -58.0
-offset_top = -98.0
-offset_right = 58.0
-offset_bottom = -84.0
-theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
-theme_override_fonts/font = ExtResource("5_font")
-theme_override_font_sizes/font_size = 7
-text = "MISSIONS"
-horizontal_alignment = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/MissionBoard" unique_id=237611989]
-position = Vector2(0, -18)
-shape = SubResource("RectangleShape2D_mission_board")
-
-[node name="IdolRankingScreen" type="StaticBody2D" parent="MapObjects" unique_id=1923708667]
-position = Vector2(120, -360)
-
-[node name="Sprite2D" type="Sprite2D" parent="MapObjects/IdolRankingScreen" unique_id=1204891479]
-position = Vector2(0, -74)
-scale = Vector2(0.62, 0.62)
-texture = ExtResource("10_vote_board")
-
-[node name="Label" type="Label" parent="MapObjects/IdolRankingScreen" unique_id=872379449]
-offset_left = -58.0
-offset_top = -128.0
-offset_right = 58.0
-offset_bottom = -114.0
-theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
-theme_override_fonts/font = ExtResource("5_font")
-theme_override_font_sizes/font_size = 7
-text = "RANKING"
-horizontal_alignment = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/IdolRankingScreen" unique_id=942712099]
-position = Vector2(0, -18)
-shape = SubResource("RectangleShape2D_ranking_screen")
-
-[node name="MerchandiseBooth" type="StaticBody2D" parent="MapObjects" unique_id=1699515275]
-position = Vector2(-580, 180)
-
-[node name="Sprite2D" type="Sprite2D" parent="MapObjects/MerchandiseBooth" unique_id=1015216786]
-position = Vector2(0, -68)
-scale = Vector2(0.72, 0.72)
-texture = ExtResource("20_food_truck")
-
-[node name="Label" type="Label" parent="MapObjects/MerchandiseBooth" unique_id=227360268]
-offset_left = -72.0
-offset_top = -134.0
-offset_right = 72.0
-offset_bottom = -120.0
-theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
-theme_override_fonts/font = ExtResource("5_font")
-theme_override_font_sizes/font_size = 7
-text = "MERCH"
-horizontal_alignment = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/MerchandiseBooth" unique_id=1667909599]
-position = Vector2(0, -24)
-shape = SubResource("RectangleShape2D_merch_booth")
-
-[node name="DrinkStall" type="StaticBody2D" parent="MapObjects" unique_id=1796452090]
-position = Vector2(360, 230)
-
-[node name="Sprite2D" type="Sprite2D" parent="MapObjects/DrinkStall" unique_id=1345320874]
-position = Vector2(0, -108)
-scale = Vector2(0.18, 0.18)
-texture = ExtResource("19_drink_booth")
-
-[node name="Label" type="Label" parent="MapObjects/DrinkStall" unique_id=2138376146]
-offset_left = -70.0
-offset_top = -148.0
-offset_right = 70.0
-offset_bottom = -134.0
-theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
-theme_override_fonts/font = ExtResource("5_font")
-theme_override_font_sizes/font_size = 7
-text = "DRINKS"
-horizontal_alignment = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/DrinkStall" unique_id=1257418124]
-position = Vector2(0, -24)
-shape = SubResource("RectangleShape2D_drink_stall")
-
-[node name="DrinkVendor" type="StaticBody2D" parent="MapObjects" unique_id=2022735983]
-position = Vector2(515, 265)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/DrinkVendor" unique_id=1676386689]
-position = Vector2(0, -12)
-shape = SubResource("RectangleShape2D_vendor")
-
-[node name="VotingArea" type="StaticBody2D" parent="MapObjects" unique_id=785759650]
-position = Vector2(-200, 520)
-
-[node name="Sprite2D" type="Sprite2D" parent="MapObjects/VotingArea" unique_id=1691862936]
-position = Vector2(0, -62)
-scale = Vector2(0.55, 0.55)
-texture = ExtResource("10_vote_board")
-
-[node name="Label" type="Label" parent="MapObjects/VotingArea" unique_id=223314238]
-offset_left = -58.0
-offset_top = -118.0
-offset_right = 58.0
-offset_bottom = -104.0
-theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
-theme_override_fonts/font = ExtResource("5_font")
-theme_override_font_sizes/font_size = 7
-text = "VOTING"
-horizontal_alignment = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/VotingArea" unique_id=1107208595]
-position = Vector2(0, -18)
-shape = SubResource("RectangleShape2D_voting_area")
-
-[node name="QueueEntrance" type="Area2D" parent="MapObjects" unique_id=1156184559]
-position = Vector2(-200, 700)
-collision_mask = 2
-script = ExtResource("6_queue_entrance")
-
-[node name="Visual" type="Sprite2D" parent="MapObjects/QueueEntrance" unique_id=1916602152]
-position = Vector2(0, -122)
-scale = Vector2(0.16, 0.16)
-texture = ExtResource("21_arch")
-
-[node name="Label" type="Label" parent="MapObjects/QueueEntrance" unique_id=654967762]
-offset_left = -58.0
-offset_top = -154.0
-offset_right = 58.0
-offset_bottom = -134.0
-theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
-theme_override_fonts/font = ExtResource("5_font")
-theme_override_font_sizes/font_size = 7
-text = "SIGN IN UP/W"
-horizontal_alignment = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/QueueEntrance" unique_id=578939423]
-position = Vector2(0, -28)
-shape = SubResource("RectangleShape2D_queue_entrance")
-
-[node name="InteractionPoint" type="Marker2D" parent="MapObjects/QueueEntrance" unique_id=1730826993]
-
 [node name="QueueNPC" parent="MapObjects" unique_id=283988453 instance=ExtResource("24_npc")]
-position = Vector2(-82, 710)
-
-[node name="TreeNorthWest" type="StaticBody2D" parent="MapObjects" unique_id=1337769775]
-position = Vector2(-940, -760)
-
-[node name="Sprite2D" type="Sprite2D" parent="MapObjects/TreeNorthWest" unique_id=343476080]
-position = Vector2(0, -64)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("17_tree_round")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/TreeNorthWest" unique_id=304037223]
-position = Vector2(0, -16)
-shape = SubResource("RectangleShape2D_tree")
-
-[node name="TreeNorthEast" type="StaticBody2D" parent="MapObjects" unique_id=2040705331]
-position = Vector2(1000, -660)
-
-[node name="Sprite2D" type="Sprite2D" parent="MapObjects/TreeNorthEast" unique_id=1722182911]
-position = Vector2(0, -64)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("17_tree_round")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/TreeNorthEast" unique_id=2040864228]
-position = Vector2(0, -16)
-shape = SubResource("RectangleShape2D_tree")
-
-[node name="RestBench" type="StaticBody2D" parent="MapObjects" unique_id=909634791]
-position = Vector2(680, 360)
-
-[node name="Sprite2D" type="Sprite2D" parent="MapObjects/RestBench" unique_id=705633385]
-position = Vector2(0, -18)
-scale = Vector2(0.55, 0.55)
-texture = ExtResource("15_bench")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/RestBench" unique_id=1102904455]
-position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_bench")
-
-[node name="FlowerCart" type="StaticBody2D" parent="MapObjects" unique_id=1892572424]
-position = Vector2(-900, 540)
-
-[node name="Sprite2D" type="Sprite2D" parent="MapObjects/FlowerCart" unique_id=1061926231]
-position = Vector2(0, -40)
-scale = Vector2(0.55, 0.55)
-texture = ExtResource("18_flower_cart")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapObjects/FlowerCart" unique_id=2084404605]
-position = Vector2(0, -16)
-shape = SubResource("RectangleShape2D_flower_cart")
-
-[node name="FlowerBedLeft" type="Sprite2D" parent="MapObjects" unique_id=13129746]
-position = Vector2(-360, -40)
-scale = Vector2(0.55, 0.55)
-texture = ExtResource("13_flower_bed")
-
-[node name="FlowerBedRight" type="Sprite2D" parent="MapObjects" unique_id=1524035819]
-position = Vector2(500, -40)
-scale = Vector2(0.55, 0.55)
-texture = ExtResource("13_flower_bed")
-
-[node name="CentralRopes" type="Sprite2D" parent="MapObjects" unique_id=9024370]
-position = Vector2(0, 90)
-scale = Vector2(0.48, 0.48)
-texture = ExtResource("14_ropes")
-
-[node name="BuntingNorth" type="Sprite2D" parent="MapObjects" unique_id=921589807]
-position = Vector2(0, -760)
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("12_bunting")
+position = Vector2(-227, 276)
 
 [node name="coin" parent="MapObjects" unique_id=1783570862 instance=ExtResource("2_coin")]
-position = Vector2(-420, 30)
+position = Vector2(-420, 80)
 
 [node name="coin2" parent="MapObjects" unique_id=804454266 instance=ExtResource("2_coin")]
 position = Vector2(-360, 30)
@@ -377,10 +260,10 @@ position = Vector2(240, 40)
 position = Vector2(300, 40)
 
 [node name="coin5" parent="MapObjects" unique_id=1968820394 instance=ExtResource("2_coin")]
-position = Vector2(560, -250)
+position = Vector2(400, -160)
 
 [node name="coin6" parent="MapObjects" unique_id=237308528 instance=ExtResource("2_coin")]
-position = Vector2(620, -250)
+position = Vector2(460, -120)
 
 [node name="coin7" parent="MapObjects" unique_id=1839963877 instance=ExtResource("2_coin")]
 position = Vector2(-760, 360)
@@ -388,33 +271,36 @@ position = Vector2(-760, 360)
 [node name="coin8" parent="MapObjects" unique_id=1435951843 instance=ExtResource("2_coin")]
 position = Vector2(-700, 360)
 
-[node name="NPC" parent="MapObjects" unique_id=1187534551 instance=ExtResource("24_npc")]
-position = Vector2(517, 262)
+[node name="DrinkShopWorker" parent="MapObjects" unique_id=1187534551 instance=ExtResource("26_drink_shop_worker")]
+position = Vector2(551, 268)
 
-[node name="CollisionObjects" type="Node2D" parent="." unique_id=950322824]
+[node name="MissionBoardWorker" parent="MapObjects" unique_id=463347216 instance=ExtResource("27_mission_board_worker")]
+position = Vector2(-405, 45)
 
-[node name="NorthBoundary" type="StaticBody2D" parent="CollisionObjects" unique_id=403319807]
-position = Vector2(0, -1800)
+[node name="MapBoundaries" type="Node2D" parent="." unique_id=342294701]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/NorthBoundary" unique_id=285150683]
+[node name="NorthBoundary" type="StaticBody2D" parent="MapBoundaries" unique_id=761171558]
+position = Vector2(0, -529)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapBoundaries/NorthBoundary" unique_id=1477097310]
 shape = SubResource("RectangleShape2D_map_boundary_horizontal")
 
-[node name="SouthBoundary" type="StaticBody2D" parent="CollisionObjects" unique_id=1088230157]
-position = Vector2(0, 1800)
+[node name="SouthBoundary" type="StaticBody2D" parent="MapBoundaries" unique_id=1370976004]
+position = Vector2(0, 529)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/SouthBoundary" unique_id=2022584208]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapBoundaries/SouthBoundary" unique_id=1181747135]
 shape = SubResource("RectangleShape2D_map_boundary_horizontal")
 
-[node name="WestBoundary" type="StaticBody2D" parent="CollisionObjects" unique_id=753987040]
-position = Vector2(-1800, 0)
+[node name="WestBoundary" type="StaticBody2D" parent="MapBoundaries" unique_id=1681716729]
+position = Vector2(-782.5, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/WestBoundary" unique_id=45478044]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapBoundaries/WestBoundary" unique_id=901287678]
 shape = SubResource("RectangleShape2D_map_boundary_vertical")
 
-[node name="EastBoundary" type="StaticBody2D" parent="CollisionObjects" unique_id=1498311246]
-position = Vector2(1800, 0)
+[node name="EastBoundary" type="StaticBody2D" parent="MapBoundaries" unique_id=211960762]
+position = Vector2(782.5, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/EastBoundary" unique_id=1055794476]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapBoundaries/EastBoundary" unique_id=1438526957]
 shape = SubResource("RectangleShape2D_map_boundary_vertical")
 
 [node name="ScorePlaceholderMarkers" type="Node2D" parent="." unique_id=874926767]
@@ -625,6 +511,6 @@ theme_override_fonts/font = ExtResource("5_font")
 theme_override_font_sizes/font_size = 8
 text = "WASD / ARROWS"
 
-[connection signal="body_entered" from="MapObjects/QueueEntrance" to="MapObjects/QueueEntrance" method="_on_body_entered"]
-[connection signal="body_exited" from="MapObjects/QueueEntrance" to="MapObjects/QueueEntrance" method="_on_body_exited"]
+[connection signal="body_entered" from="InteractionAreas/QueueEntranceArea" to="InteractionAreas/QueueEntranceArea" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractionAreas/QueueEntranceArea" to="InteractionAreas/QueueEntranceArea" method="_on_body_exited"]
 [connection signal="pressed" from="UI/SubmitScoreButton" to="GameManager" method="open_submit_window"]

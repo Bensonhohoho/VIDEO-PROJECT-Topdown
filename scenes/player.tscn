@@ -1,24 +1,23 @@
 [gd_scene format=3 uid="uid://bl4cf0hyyhtbm"]
 
 [ext_resource type="Script" uid="uid://ikbs73cjgpfb" path="res://scripts/player.gd" id="2_player_script"]
-[ext_resource type="SpriteFrames" uid="uid://bmlbwavvqqbqc" path="res://assets/sprites/player_sprite_frames.tres" id="3_player_sprite_frames"]
+[ext_resource type="SpriteFrames" uid="uid://ykah58iegf11" path="res://assets/sprites/player_sprite_frames_v2.tres" id="3_player_sprite_frames"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lj8jo"]
-radius = 17.0
+radius = 7.28011
 
 [node name="Player" type="CharacterBody2D" unique_id=709520129 groups=["player"]]
-z_index = 5
 collision_layer = 2
 script = ExtResource("2_player_script")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=787583113]
-position = Vector2(0, -43)
-scale = Vector2(0.28, 0.28)
+position = Vector2(-1.0000019, -23)
+scale = Vector2(0.15003906, 0.15003906)
 sprite_frames = ExtResource("3_player_sprite_frames")
 animation = &"idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=449194790]
-position = Vector2(0, -16)
+position = Vector2(0, -14)
 shape = SubResource("CircleShape2D_lj8jo")
 
 [node name="DustSpawnPoint" type="Marker2D" parent="." unique_id=1508021314]

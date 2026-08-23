@@ -7,6 +7,9 @@ signal died(source)
 @export var acceleration: float = 900.0
 @export var deceleration: float = 1200.0
 
+@export_group("Player Art")
+@export var player_sprite_scale := Vector2(0.38, 0.38)
+
 @export_group("Ground Materials")
 @export var normal_acceleration_multiplier: float = 1.0
 @export var normal_deceleration_multiplier: float = 1.0
@@ -80,8 +83,10 @@ func _update_animation(input_direction: Vector2) -> void:
 	var direction_name := _direction_to_animation_name(_last_direction)
 	var animation_name := "walk_%s" % direction_name if input_direction != Vector2.ZERO else "idle_%s" % direction_name
 
-	# Left and right are separate generated sheets, so do not mirror them here.
-	animated_sprite.flip_h = false
+	# The supplied side sheet faces left. Right-facing animations reuse it flipped.
+	animated_sprite.flip_h = _last_direction == Vector2.RIGHT
+	# All directions share one normalized atlas, so the visible size stays constant.
+	animated_sprite.scale = player_sprite_scale
 	_play_animation_with_fallback(StringName(animation_name))
 
 

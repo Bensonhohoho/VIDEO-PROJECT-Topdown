@@ -4,46 +4,56 @@
 [ext_resource type="Script" uid="uid://bjtknpt0nvv88" path="res://scripts/queue_game_manager.gd" id="3_queue_manager"]
 [ext_resource type="Script" uid="uid://o68fr5qkl843" path="res://scripts/obstacle_spawner.gd" id="4_obstacle_spawner"]
 [ext_resource type="Script" uid="uid://ckxaeem58727a" path="res://scripts/score_hud.gd" id="5_score_hud"]
-[ext_resource type="Texture2D" path="res://assets/BackgroundImage/queue/queue_floor_stone.png" id="6_queue_floor"]
+[ext_resource type="Texture2D" uid="uid://u808e32jj88q" path="res://assets/BackgroundImage/queue/queue_full_background.png" id="6_queue_background"]
 [ext_resource type="Texture2D" path="res://assets/placeholders/soda_icon.svg" id="7_soda_icon"]
+[ext_resource type="Curve2D" path="res://assets/BackgroundImage/queue/snake_queue_path.tres" id="8_snake_curve"]
 [ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="9_pause_menu"]
 [ext_resource type="PackedScene" path="res://scenes/queue_player.tscn" id="10_queue_player"]
 [ext_resource type="PackedScene" path="res://scenes/npc.tscn" id="11_npc"]
-
-[sub_resource type="Curve2D" id="Curve2D_queue_path"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 160, 240, 0, 0, 0, 0, 177, 77, 0, 0, 0, 0, 191, 56, 0, 0, 0, 0, 211, 41, 0, 0, 0, 0, 237, 32, 0, 0, 0, 0, 266, 34, 0, 0, 0, 0, 291, 41, 0, 0, 0, 0, 308, 58, 0, 0, 0, 0, 328, 326, 0, 0, 0, 0, 342, 354, 0, 0, 0, 0, 382, 377, 0, 0, 0, 0, 420, 368, 0, 0, 0, 0, 435, 325, 0, 0, 0, 0, 452, 94, 0, 0, 0, 0, 459, 58, 0, 0, 0, 0, 467, 35, 0, 0, 0, 0, 482, 26, 0, 0, 0, 0, 502, 19, 0, 0, 0, 0, 525, 27, 0, 0, 0, 0, 537, 40, 0, 0, 0, 0, 552, 82, 0, 0, 0, 0, 593, 317, 0, 0, 0, 0, 605, 332, 0, 0, 0, 0, 621, 341, 0, 0, 0, 0, 640, 342, 0, 0, 0, 0, 659, 335, 0, 0, 0, 0, 763, 293, 0, 0, 0, 0, 880, 240)
-}
-point_count = 28
+[ext_resource type="PackedScene" path="res://scenes/queue_retry_ui.tscn" id="13_retry_ui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_queue"]
-size = Vector2(260, 180)
+size = Vector2(160, 110)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_goal"]
-size = Vector2(96, 220)
+size = Vector2(100, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_boundary_horizontal"]
+size = Vector2(1472, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_boundary_vertical"]
+size = Vector2(32, 1112)
 
 [sub_resource type="LabelSettings" id="LabelSettings_result"]
 font_size = 32
 
 [node name="QueueMiniGame" type="Node2D" unique_id=809747258]
 
-[node name="Floor" type="Sprite2D" parent="."]
+[node name="LetterboxBackdrop" type="ColorRect" parent="."]
+z_index = -110
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0.035, 0.05, 0.04, 1)
+
+[node name="Background" type="Sprite2D" parent="."]
 z_index = -100
+position = Vector2(240, 0)
+scale = Vector2(0.994475, 0.994475)
 centered = false
-texture = ExtResource("6_queue_floor")
+texture = ExtResource("6_queue_background")
 
 [node name="Player" parent="." unique_id=624964848 instance=ExtResource("10_queue_player")]
-position = Vector2(160, 240)
+position = Vector2(379.2265, 583.7569)
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1219458551]
-position = Vector2(160, 240)
+position = Vector2(379.2265, 583.7569)
 
 [node name="QueuePath" type="Path2D" parent="." unique_id=1452800978]
-curve = SubResource("Curve2D_queue_path")
+curve = ExtResource("8_snake_curve")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="QueuePath" unique_id=489343888]
-position = Vector2(160, 240)
-rotates = false
+position = Vector2(379.2265, 583.7569)
 loop = false
 
 [node name="QueueZone" type="Area2D" parent="QueuePath/PathFollow2D" unique_id=2119984193]
@@ -55,10 +65,10 @@ shape = SubResource("RectangleShape2D_queue")
 
 [node name="Visual" type="Polygon2D" parent="QueuePath/PathFollow2D/QueueZone" unique_id=1714008565]
 color = Color(0.15, 0.85, 0.45, 0.25)
-polygon = PackedVector2Array(-130, -90, 130, -90, 130, 90, -130, 90)
+polygon = PackedVector2Array(-80, -55, 80, -55, 80, 55, -80, 55)
 
 [node name="GoalArea" type="Area2D" parent="." unique_id=988417655]
-position = Vector2(880, 240)
+position = Vector2(1532.8177, 606.6298)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalArea" unique_id=848613290]
@@ -66,13 +76,43 @@ shape = SubResource("RectangleShape2D_goal")
 
 [node name="Visual" type="Polygon2D" parent="GoalArea" unique_id=1887229558]
 color = Color(1, 0.8, 0.15, 0.35)
-polygon = PackedVector2Array(-48, -110, 48, -110, 48, 110, -48, 110)
+polygon = PackedVector2Array(-50, -70, 50, -70, 50, 70, -50, 70)
 
 [node name="ObstacleSpawner" type="Node2D" parent="." unique_id=1072120460]
 script = ExtResource("4_obstacle_spawner")
+min_spawn_y = 260.0
+max_spawn_y = 780.0
+spawn_x = 1660.0
+cleanup_x = 260.0
 
 [node name="Timer" type="Timer" parent="ObstacleSpawner" unique_id=2134601424]
 wait_time = 1.25
+
+[node name="Boundaries" type="Node2D" parent="."]
+
+[node name="NorthBoundary" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(960, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/NorthBoundary"]
+shape = SubResource("RectangleShape2D_boundary_horizontal")
+
+[node name="SouthBoundary" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(960, 1096)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/SouthBoundary"]
+shape = SubResource("RectangleShape2D_boundary_horizontal")
+
+[node name="WestBoundary" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(224, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/WestBoundary"]
+shape = SubResource("RectangleShape2D_boundary_vertical")
+
+[node name="EastBoundary" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(1696, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/EastBoundary"]
+shape = SubResource("RectangleShape2D_boundary_vertical")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1069946262]
 
@@ -154,9 +194,11 @@ horizontal_alignment = 2
 script = ExtResource("5_score_hud")
 display_mode = 1
 
+[node name="RetryOverlay" parent="UI" instance=ExtResource("13_retry_ui")]
+
 [node name="QueueGameManager" type="Node" parent="." unique_id=102062141]
 script = ExtResource("3_queue_manager")
-queue_zone_size = Vector2(260, 180)
+queue_zone_size = Vector2(160, 110)
 queue_move_speed = 70.0
 obstacle_speed = 150.0
 spawn_interval = 1.45

@@ -3,24 +3,21 @@ extends CharacterBody2D
 signal death_animation_finished
 
 @export var move_speed: float = 220.0
-@export var death_bounce_velocity: float = -300.0
-@export var death_fall_gravity: float = 900.0
 @export var death_animation_duration: float = 1.0
 
 var is_dead := false
 var input_enabled := true
 var _death_elapsed := 0.0
-var _death_target_y := 0.0
-var _death_max_duration := 0.0
 var _death_finished := false
 
 @onready var animated_sprite: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D") as AnimatedSprite2D
+@onready var pink_bubble_shield: Node2D = get_node_or_null("PinkBubbleShield") as Node2D
 
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
-		velocity.y += death_fall_gravity * delta
-		move_and_slide()
+		# Keep the death pose exactly where the projectile hit the player.
+		velocity = Vector2.ZERO
 		_update_death_animation(delta)
 		return
 
@@ -52,6 +49,7 @@ func reset_to_spawn(spawn_position: Vector2) -> void:
 	global_position = spawn_position
 	velocity = Vector2.ZERO
 	_set_collision_enabled(true)
+	set_shield_active(false, true)
 	_play_animation(&"idle")
 
 
@@ -60,15 +58,16 @@ func start_death_animation() -> void:
 		return
 
 	# Disable input and collision so queue-exit/obstacle callbacks cannot keep
-	# retriggering the fail animation while the player is falling away.
+	# retriggering the fail animation while the death pose is visible.
 	is_dead = true
 	input_enabled = false
-	velocity = Vector2(0.0, death_bounce_velocity)
+	velocity = Vector2.ZERO
 	_set_collision_enabled(false)
-	_play_animation(&"jump")
+	set_shield_active(false)
+	if animated_sprite != null:
+		animated_sprite.flip_h = false
+	_play_animation(&"dead")
 	_death_elapsed = 0.0
-	_death_target_y = _get_death_fall_target_y()
-	_death_max_duration = death_animation_duration + 1.0
 	_death_finished = false
 
 
@@ -78,6 +77,11 @@ func play_death_animation() -> void:
 		return
 
 	await death_animation_finished
+
+
+func set_shield_active(is_active: bool, immediate: bool = false) -> void:
+	if pink_bubble_shield != null and pink_bubble_shield.has_method("set_active"):
+		pink_bubble_shield.call("set_active", is_active, immediate)
 
 
 func _get_input_direction() -> Vector2:
@@ -100,9 +104,9 @@ func _update_movement_animation(input_direction: Vector2) -> void:
 		return
 
 	if input_direction.x > 0.0:
-		animated_sprite.flip_h = false
-	elif input_direction.x < 0.0:
 		animated_sprite.flip_h = true
+	elif input_direction.x < 0.0:
+		animated_sprite.flip_h = false
 
 	if input_direction.length_squared() == 0.0:
 		_play_animation(&"idle")
@@ -132,16 +136,7 @@ func _update_death_animation(delta: float) -> void:
 	if _death_finished:
 		return
 
-	# death_animation_duration is the minimum; if the bounce arc has not carried
-	# the player below the visible screen yet, wait briefly until it does.
 	_death_elapsed += delta
-	var minimum_time_passed := _death_elapsed >= death_animation_duration
-	var below_screen := global_position.y >= _death_target_y
-	var timed_out := _death_elapsed >= _death_max_duration
-	if minimum_time_passed and (below_screen or timed_out):
+	if _death_elapsed >= death_animation_duration:
 		_death_finished = true
 		death_animation_finished.emit()
-
-
-func _get_death_fall_target_y() -> float:
-	return get_viewport_rect().size.y + 96.0

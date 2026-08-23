@@ -1,5 +1,7 @@
 extends Node
 
+const DRINK_FLYBY_TEXTURE: Texture2D = preload("res://assets/player/player_drink.png")
+
 @export var player_path: NodePath = ^"../Player"
 @export var spawn_point_path: NodePath = ^"../SpawnPoint"
 @export var path_follow_path: NodePath = ^"../QueuePath/PathFollow2D"
@@ -12,6 +14,11 @@ extends Node
 @export var drink_uses_label_path: NodePath = ^"../UI/DrinkUsesLabel"
 @export var buff_time_label_path: NodePath = ^"../UI/BuffTimeLabel"
 @export var drink_icon_path: NodePath = ^"../UI/DrinkIcon"
+@export var ui_layer_path: NodePath = ^"../UI"
+@export var retry_overlay_path: NodePath = ^"../UI/RetryOverlay"
+@export var retry_message_label_path: NodePath = ^"../UI/RetryOverlay/CenterContainer/PanelContainer/VBoxContainer/MessageLabel"
+@export var retry_count_label_path: NodePath = ^"../UI/RetryOverlay/CenterContainer/PanelContainer/VBoxContainer/RetryCountLabel"
+@export var retry_button_path: NodePath = ^"../UI/RetryOverlay/CenterContainer/PanelContainer/VBoxContainer/RetryButton"
 @export var queue_zone_size: Vector2 = Vector2(240.0, 160.0)
 @export var queue_move_speed: float = 80.0
 @export var obstacle_speed: float = 180.0
@@ -19,6 +26,8 @@ extends Node
 @export var score_reward: int = 10
 @export var drink_uses_per_minigame: int = 2
 @export var drink_buff_duration: float = 3.0
+@export var drink_flyby_duration: float = 2.0
+@export var drink_flyby_size: Vector2 = Vector2(190.0, 222.0)
 @export var npc_count: int = 4
 @export var npc_spacing: float = 64.0
 @export var npc_safety_margin: float = 16.0
@@ -49,6 +58,11 @@ var reward_label: Label
 var drink_uses_label: Label
 var buff_time_label: Label
 var drink_icon: TextureRect
+var ui_layer: CanvasLayer
+var retry_overlay: Control
+var retry_message_label: Label
+var retry_count_label: Label
+var retry_button: Button
 
 var fail_count := 0
 var drink_uses_remaining := 0
@@ -60,7 +74,10 @@ var is_resetting := false
 var is_changing_scene := false
 var is_playing_fail_feedback := false
 var is_death_sequence_playing := false
+var is_awaiting_retry := false
 var queue_npc_entries: Array[Dictionary] = []
+var drink_flyby: TextureRect
+var drink_flyby_tween: Tween
 
 
 func _ready() -> void:
@@ -77,6 +94,11 @@ func _ready() -> void:
 	drink_uses_label = get_node_or_null(drink_uses_label_path) as Label
 	buff_time_label = get_node_or_null(buff_time_label_path) as Label
 	drink_icon = get_node_or_null(drink_icon_path) as TextureRect
+	ui_layer = get_node_or_null(ui_layer_path) as CanvasLayer
+	retry_overlay = get_node_or_null(retry_overlay_path) as Control
+	retry_message_label = get_node_or_null(retry_message_label_path) as Label
+	retry_count_label = get_node_or_null(retry_count_label_path) as Label
+	retry_button = get_node_or_null(retry_button_path) as Button
 
 	if player == null or spawn_point == null or path_follow == null or queue_zone == null or goal_area == null:
 		push_error("QueueGameManager is missing one or more required nodes.")
@@ -93,6 +115,9 @@ func _ready() -> void:
 
 	if obstacle_spawner != null and obstacle_spawner.has_signal("player_hit_obstacle"):
 		obstacle_spawner.connect("player_hit_obstacle", _on_obstacle_spawner_player_hit_obstacle)
+
+	if retry_button != null:
+		retry_button.pressed.connect(_on_retry_button_pressed)
 
 	DebugFlags.godmode_changed.connect(_on_debug_flags_godmode_changed)
 
@@ -124,13 +149,16 @@ func reset_minigame() -> void:
 	is_resetting = true
 	is_playing_fail_feedback = false
 	is_death_sequence_playing = false
+	is_awaiting_retry = false
 	game_started = false
 	game_won = false
 	player_has_entered_queue = false
 	drink_buff_time_left = 0.0
+	_stop_drink_flyby()
 
 	_show_result("")
 	_show_reward("")
+	_hide_retry_ui()
 	_update_fail_count_label()
 	_update_drink_ui()
 
@@ -174,13 +202,15 @@ func start_death_sequence(message: String = "Out of line!", use_hit_stop: bool =
 	if DebugFlags.is_godmode_enabled():
 		return
 
-	if game_won or is_changing_scene or is_death_sequence_playing:
+	if game_won or is_changing_scene or is_death_sequence_playing or is_awaiting_retry:
 		return
 
 	print("death sequence started")
 	game_started = false
 	is_playing_fail_feedback = true
 	is_death_sequence_playing = true
+	_set_player_shield_active(false)
+	_stop_drink_flyby()
 	_stop_active_systems()
 
 	_run_death_sequence.call_deferred(message, use_hit_stop)
@@ -193,7 +223,7 @@ func _run_death_sequence(message: String, use_hit_stop: bool) -> void:
 	await _play_fail_feedback()
 
 	print("death sequence finished, now applying fail logic")
-	await _apply_fail_logic(message)
+	_apply_fail_logic(message)
 
 
 func _apply_fail_logic(message: String) -> void:
@@ -202,17 +232,11 @@ func _apply_fail_logic(message: String) -> void:
 	is_playing_fail_feedback = false
 	is_death_sequence_playing = false
 	is_resetting = true
+	is_awaiting_retry = true
 
 	_update_fail_count_label()
 	_show_result(message)
-
-	await get_tree().create_timer(reset_delay).timeout
-
-	if fail_count >= max(1, max_fail_count):
-		SaveManager.reset_queue_fail_count()
-		_return_to_main_scene()
-	else:
-		_change_to_current_queue_level_or_reset()
+	_show_retry_ui(message)
 
 
 func win_minigame() -> void:
@@ -230,6 +254,8 @@ func win_minigame() -> void:
 
 	_stop_active_systems()
 	drink_buff_time_left = 0.0
+	_set_player_shield_active(false)
+	_stop_drink_flyby()
 	_update_drink_ui()
 	_show_reward(_get_reward_message())
 
@@ -301,7 +327,13 @@ func _handle_queue_exit() -> void:
 	# Let same-frame goal detection resolve before treating the queue exit as a
 	# loss. This keeps the finish line from feeling unfair when the zone edge and
 	# goal overlap in the same physics tick.
-	await get_tree().physics_frame
+	if not is_inside_tree():
+		return
+
+	var scene_tree := get_tree()
+	await scene_tree.physics_frame
+	if not is_inside_tree():
+		return
 
 	if game_won or is_resetting or is_changing_scene or is_death_sequence_playing:
 		return
@@ -392,7 +424,7 @@ func _hit_stop(duration: float) -> void:
 
 
 func _play_fail_feedback() -> void:
-	# Shake runs in parallel with the player falling away.
+	# Shake runs in parallel with the stationary player death pose.
 	_shake_camera()
 
 	if player != null and player.has_signal("death_animation_finished") and player.has_method("start_death_animation"):
@@ -473,6 +505,54 @@ func _show_reward(message: String) -> void:
 	reward_label.visible = not message.is_empty()
 
 
+func _show_retry_ui(message: String) -> void:
+	var retries_remaining := _get_retries_remaining()
+
+	if retry_message_label != null:
+		retry_message_label.text = message
+
+	if retry_count_label != null:
+		retry_count_label.text = "Retries left: %d" % retries_remaining
+
+	if retry_button != null:
+		retry_button.text = "Retry" if retries_remaining > 0 else "Return"
+		retry_button.disabled = false
+
+	if retry_overlay != null:
+		retry_overlay.visible = true
+
+	if retry_button != null:
+		retry_button.grab_focus()
+
+
+func _hide_retry_ui() -> void:
+	if retry_overlay != null:
+		retry_overlay.visible = false
+
+	if retry_button != null:
+		retry_button.disabled = false
+
+
+func _on_retry_button_pressed() -> void:
+	if not is_awaiting_retry or is_changing_scene:
+		return
+
+	is_awaiting_retry = false
+	if retry_button != null:
+		retry_button.disabled = true
+
+	if _get_retries_remaining() <= 0:
+		SaveManager.reset_queue_fail_count()
+		_return_to_main_scene()
+	else:
+		_hide_retry_ui()
+		_change_to_current_queue_level_or_reset()
+
+
+func _get_retries_remaining() -> int:
+	return maxi(0, max(1, max_fail_count) - fail_count)
+
+
 func _get_reward_message() -> String:
 	if score_reward > 0:
 		return "Reward: +%d Score" % score_reward
@@ -515,6 +595,8 @@ func _use_drink() -> void:
 	# The drink only ignores obstacles. Queue-zone exits still fail normally.
 	drink_uses_remaining -= 1
 	drink_buff_time_left = drink_buff_duration
+	_set_player_shield_active(true)
+	_play_drink_flyby()
 	_update_drink_ui()
 
 
@@ -523,11 +605,84 @@ func _update_drink_buff(delta: float) -> void:
 		return
 
 	drink_buff_time_left = max(0.0, drink_buff_time_left - delta)
+	if drink_buff_time_left <= 0.0:
+		_set_player_shield_active(false)
 	_update_drink_ui()
 
 
 func _is_drink_buff_active() -> bool:
 	return drink_buff_time_left > 0.0
+
+
+func _set_player_shield_active(is_active: bool) -> void:
+	if player != null and player.has_method("set_shield_active"):
+		player.call("set_shield_active", is_active)
+
+
+func _play_drink_flyby() -> void:
+	if ui_layer == null or drink_flyby_duration <= 0.0:
+		return
+
+	_stop_drink_flyby()
+	drink_flyby = TextureRect.new()
+	drink_flyby.name = "DrinkSkillFlyby"
+	drink_flyby.texture = DRINK_FLYBY_TEXTURE
+	drink_flyby.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	drink_flyby.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	drink_flyby.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	drink_flyby.z_index = 100
+	drink_flyby.size = drink_flyby_size
+	drink_flyby.pivot_offset = drink_flyby_size * 0.5
+	ui_layer.add_child(drink_flyby)
+	_update_drink_flyby(0.0)
+
+	drink_flyby_tween = create_tween()
+	drink_flyby_tween.set_process_mode(Tween.TWEEN_PROCESS_IDLE)
+	drink_flyby_tween.tween_method(_update_drink_flyby, 0.0, 1.0, drink_flyby_duration)
+	drink_flyby_tween.tween_callback(_finish_drink_flyby.bind(drink_flyby))
+
+
+func _update_drink_flyby(raw_progress: float) -> void:
+	if not is_instance_valid(drink_flyby):
+		return
+
+	# This monotonic curve is fastest at both ends and slowest at the midpoint.
+	# A shallow vertical arc makes the picture read as a flyby rather than a HUD slide.
+	var travel_progress := raw_progress + 0.82 * sin(TAU * raw_progress) / TAU
+	var viewport_size := get_viewport().get_visible_rect().size
+	var start_x := -drink_flyby_size.x - 32.0
+	var end_x := viewport_size.x + 32.0
+	var center_y := viewport_size.y * 0.56 - drink_flyby_size.y * 0.5
+	var arc_height := minf(140.0, viewport_size.y * 0.13)
+
+	drink_flyby.position = Vector2(
+		lerpf(start_x, end_x, travel_progress),
+		center_y - sin(PI * travel_progress) * arc_height
+	)
+	drink_flyby.rotation = lerpf(-0.12, 0.12, travel_progress)
+
+	var fade_in := clampf(raw_progress / 0.06, 0.0, 1.0)
+	var fade_out := clampf((1.0 - raw_progress) / 0.06, 0.0, 1.0)
+	drink_flyby.modulate.a = minf(fade_in, fade_out)
+
+
+func _finish_drink_flyby(effect: TextureRect) -> void:
+	if is_instance_valid(effect):
+		effect.queue_free()
+
+	if effect == drink_flyby:
+		drink_flyby = null
+		drink_flyby_tween = null
+
+
+func _stop_drink_flyby() -> void:
+	if drink_flyby_tween != null:
+		drink_flyby_tween.kill()
+		drink_flyby_tween = null
+
+	if is_instance_valid(drink_flyby):
+		drink_flyby.queue_free()
+	drink_flyby = null
 
 
 func _update_drink_ui() -> void:
