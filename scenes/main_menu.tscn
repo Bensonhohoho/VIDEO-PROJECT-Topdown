@@ -1,7 +1,86 @@
-[gd_scene format=3]
+[gd_scene load_steps=11 format=3]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_main_menu"]
-[ext_resource type="Texture2D" path="res://assets/BackgroundImage/T_Stage_01.png" id="2_background"]
+[ext_resource type="Texture2D" path="res://assets/main_map/full_map_background.png" id="2_background"]
+[ext_resource type="Script" path="res://scripts/pastel_event_overlay.gd" id="3_overlay"]
+[ext_resource type="FontFile" path="res://brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="4_font"]
+[ext_resource type="FontFile" path="res://brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="5_bold_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_menu_panel"]
+bg_color = Color(1, 0.963, 0.893, 0.96)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.91, 0.57, 0.7, 0.96)
+corner_radius_top_left = 34
+corner_radius_top_right = 34
+corner_radius_bottom_right = 34
+corner_radius_bottom_left = 34
+shadow_color = Color(0.38, 0.23, 0.34, 0.2)
+shadow_size = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_ribbon"]
+bg_color = Color(0.94, 0.61, 0.72, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.88, 0.69, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_button_normal"]
+bg_color = Color(0.95, 0.7, 0.78, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.89, 0.72, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_button_hover"]
+bg_color = Color(0.98, 0.76, 0.83, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.96, 0.8, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0.58, 0.3, 0.46, 0.2)
+shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_button_pressed"]
+bg_color = Color(0.84, 0.54, 0.68, 1)
+border_width_left = 3
+border_width_top = 5
+border_width_right = 3
+border_width_bottom = 2
+border_color = Color(1, 0.89, 0.72, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_button_disabled"]
+bg_color = Color(0.83, 0.81, 0.79, 0.72)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.92, 0.88, 0.82, 0.7)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -19,18 +98,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_background")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Tint" type="ColorRect" parent="."]
+[node name="CreamWash" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.02, 0.04, 0.06, 0.45)
+mouse_filter = 2
+color = Color(1, 0.946, 0.86, 0.34)
+
+[node name="PastelEventOverlay" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_overlay")
 
 [node name="MenuPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -39,53 +130,161 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -220.0
-offset_top = -170.0
-offset_right = 220.0
-offset_bottom = 170.0
+offset_left = -325.0
+offset_top = -338.0
+offset_right = 325.0
+offset_bottom = 338.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBox_menu_panel")
+
+[node name="Ribbon" type="Panel" parent="MenuPanel"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -225.0
+offset_top = -27.0
+offset_right = 225.0
+offset_bottom = 25.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBox_ribbon")
+
+[node name="Label" type="Label" parent="MenuPanel/Ribbon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.975, 0.9, 1)
+theme_override_colors/font_outline_color = Color(0.53, 0.3, 0.43, 0.5)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_bold_font")
+theme_override_font_sizes/font_size = 20
+text = "★  IDOL GARDEN FAN DAY  ★"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MenuContent" type="VBoxContainer" parent="MenuPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 36.0
-offset_top = 32.0
-offset_right = -36.0
-offset_bottom = -32.0
+offset_left = 62.0
+offset_top = 49.0
+offset_right = -62.0
+offset_bottom = -42.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 18
+theme_override_constants/separation = 14
 alignment = 1
 
 [node name="TitleLabel" type="Label" parent="MenuPanel/MenuContent"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "Stay In Line"
+theme_override_colors/font_color = Color(0.49, 0.25, 0.4, 1)
+theme_override_colors/font_outline_color = Color(1, 0.86, 0.67, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_bold_font")
+theme_override_font_sizes/font_size = 58
+text = "STAY IN LINE!"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="MenuPanel/MenuContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.51, 0.42, 0.49, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 21
+text = "A tiny fan meeting in a blooming plaza"
+horizontal_alignment = 1
+
+[node name="StarDivider" type="Label" parent="MenuPanel/MenuContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.83, 0.61, 0.34, 1)
+theme_override_fonts/font = ExtResource("5_bold_font")
+theme_override_font_sizes/font_size = 18
+text = "·  ☆  ·  ♡  ·  ☆  ·"
+horizontal_alignment = 1
+
+[node name="ProgressLabel" type="Label" parent="MenuPanel/MenuContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.31, 0.47, 1)
+theme_override_fonts/font = ExtResource("5_bold_font")
+theme_override_font_sizes/font_size = 20
+text = "ROUND 1 OF 3  •  0 COMPLETE"
 horizontal_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="MenuPanel/MenuContent"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Score: 0\nTarget: 0 / 30"
+theme_override_colors/font_color = Color(0.38, 0.48, 0.36, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 18
+text = "Fan Score  0     Submitted  0 / 30"
 horizontal_alignment = 1
 
-[node name="ContinueButton" type="Button" parent="MenuPanel/MenuContent"]
-custom_minimum_size = Vector2(280, 52)
+[node name="StoryLabel" type="Label" parent="MenuPanel/MenuContent"]
+custom_minimum_size = Vector2(0, 54)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.51, 0.43, 0.45, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 17
+text = "Three visits. Three keepsakes.\nWhat will the celebration leave behind?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContinueButton" type="Button" parent="MenuPanel/MenuContent"]
+custom_minimum_size = Vector2(420, 64)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.38, 0.2, 0.34, 1)
+theme_override_colors/font_hover_color = Color(0.33, 0.16, 0.29, 1)
+theme_override_colors/font_disabled_color = Color(0.49, 0.47, 0.48, 0.7)
+theme_override_fonts/font = ExtResource("5_bold_font")
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBox_button_normal")
+theme_override_styles/hover = SubResource("StyleBox_button_hover")
+theme_override_styles/pressed = SubResource("StyleBox_button_pressed")
+theme_override_styles/focus = SubResource("StyleBox_button_hover")
+theme_override_styles/disabled = SubResource("StyleBox_button_disabled")
 text = "Continue"
 
 [node name="NewGameButton" type="Button" parent="MenuPanel/MenuContent"]
-custom_minimum_size = Vector2(280, 52)
+custom_minimum_size = Vector2(420, 64)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.38, 0.2, 0.34, 1)
+theme_override_colors/font_hover_color = Color(0.33, 0.16, 0.29, 1)
+theme_override_fonts/font = ExtResource("5_bold_font")
 theme_override_font_sizes/font_size = 24
-text = "New Game"
+theme_override_styles/normal = SubResource("StyleBox_button_normal")
+theme_override_styles/hover = SubResource("StyleBox_button_hover")
+theme_override_styles/pressed = SubResource("StyleBox_button_pressed")
+theme_override_styles/focus = SubResource("StyleBox_button_hover")
+text = "Start New Game"
 
 [node name="ExitButton" type="Button" parent="MenuPanel/MenuContent"]
-custom_minimum_size = Vector2(280, 52)
+custom_minimum_size = Vector2(420, 56)
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.42, 0.34, 0.43, 1)
+theme_override_colors/font_hover_color = Color(0.33, 0.16, 0.29, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBox_button_disabled")
+theme_override_styles/hover = SubResource("StyleBox_button_hover")
+theme_override_styles/pressed = SubResource("StyleBox_button_pressed")
+theme_override_styles/focus = SubResource("StyleBox_button_hover")
 text = "Exit to Desktop"
+
+[node name="FooterBanner" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -52.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.39, 0.27, 0.38, 0.85)
+theme_override_colors/font_outline_color = Color(1, 0.95, 0.86, 0.9)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 18
+text = "Bows, cheers, and one shared garden — please leave it kinder than you found it."
+horizontal_alignment = 1

@@ -18,6 +18,9 @@ signal died(source)
 @export var ice_acceleration_multiplier: float = 0.55
 @export var ice_deceleration_multiplier: float = 0.18
 
+@export_group("Pushable Litter")
+@export var litter_push_impulse: float = 10.0
+
 @export_group("Footsteps")
 # Drop sound files into these slots in the inspector. Empty streams are skipped.
 @export var normal_footstep_stream: AudioStream
@@ -52,6 +55,7 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, _get_current_deceleration() * delta)
 
 	move_and_slide()
+	_push_litter_from_slide_collisions()
 	_update_animation(input_direction)
 	_update_footsteps(delta, input_direction)
 
@@ -67,6 +71,24 @@ func _get_movement_input() -> Vector2:
 
 	# Normalizing keeps diagonal movement from being faster than cardinal movement.
 	return direction.normalized() if direction.length_squared() > 1.0 else direction
+
+
+func _push_litter_from_slide_collisions() -> void:
+	var pushed_body_ids: Dictionary = {}
+	for collision_index in get_slide_collision_count():
+		var collision := get_slide_collision(collision_index)
+		var rigid_body := collision.get_collider() as RigidBody2D
+		if rigid_body == null or not rigid_body.is_in_group("pushable_litter"):
+			continue
+
+		var body_id := rigid_body.get_instance_id()
+		if pushed_body_ids.has(body_id):
+			continue
+		pushed_body_ids[body_id] = true
+
+		var push_direction := -collision.get_normal()
+		var contact_offset := collision.get_position() - rigid_body.global_position
+		rigid_body.apply_impulse(push_direction * litter_push_impulse, contact_offset)
 
 
 func _get_cardinal_direction(input_direction: Vector2) -> Vector2:

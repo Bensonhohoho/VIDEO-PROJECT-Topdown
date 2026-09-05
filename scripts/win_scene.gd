@@ -2,57 +2,70 @@ extends Control
 
 @export_file("*.tscn") var game_scene_path := "res://scenes/game.tscn"
 @export_file("*.tscn") var main_menu_scene_path := "res://scenes/main_menu.tscn"
-@export var level_target_score := 30
-@export var attempts_label_path: NodePath = ^"WinPanel/WinContent/AttemptsLabel"
-@export var score_label_path: NodePath = ^"WinPanel/WinContent/ScoreLabel"
-@export var replay_button_path: NodePath = ^"WinPanel/WinContent/ButtonRow/ReplayButton"
-@export var main_menu_button_path: NodePath = ^"WinPanel/WinContent/ButtonRow/MainMenuButton"
+@export var completion_label_path: NodePath = ^"ClearPanel/ClearContent/CompletionLabel"
+@export var stats_label_path: NodePath = ^"ClearPanel/ClearContent/ReportPanel/StatsLabel"
+@export var restart_button_path: NodePath = ^"ClearPanel/ClearContent/ButtonRow/RestartButton"
+@export var main_menu_button_path: NodePath = ^"ClearPanel/ClearContent/ButtonRow/MainMenuButton"
+@export var quit_button_path: NodePath = ^"ClearPanel/ClearContent/QuitButton"
 
-var attempts_label: Label
-var score_label: Label
-var replay_button: Button
+var completion_label: Label
+var stats_label: Label
+var restart_button: Button
 var main_menu_button: Button
+var quit_button: Button
 
 
 func _ready() -> void:
 	Engine.time_scale = 1.0
 	get_tree().paused = false
 
-	attempts_label = get_node_or_null(attempts_label_path) as Label
-	score_label = get_node_or_null(score_label_path) as Label
-	replay_button = get_node_or_null(replay_button_path) as Button
+	completion_label = get_node_or_null(completion_label_path) as Label
+	stats_label = get_node_or_null(stats_label_path) as Label
+	restart_button = get_node_or_null(restart_button_path) as Button
 	main_menu_button = get_node_or_null(main_menu_button_path) as Button
+	quit_button = get_node_or_null(quit_button_path) as Button
 
-	if replay_button != null:
-		replay_button.pressed.connect(_on_replay_pressed)
-		replay_button.grab_focus()
+	if restart_button != null:
+		restart_button.pressed.connect(_on_restart_pressed)
 	if main_menu_button != null:
 		main_menu_button.pressed.connect(_on_main_menu_pressed)
+		main_menu_button.grab_focus()
+	if quit_button != null:
+		quit_button.pressed.connect(_on_quit_pressed)
 
 	_update_result_text()
 
 
-func _on_replay_pressed() -> void:
-	SaveManager.set_score(0)
-	SaveManager.start_new_round(level_target_score)
-	var error := get_tree().change_scene_to_file(game_scene_path)
-	if error != OK:
-		push_error("Win scene could not replay game scene: " + game_scene_path)
+func _on_restart_pressed() -> void:
+	SaveManager.reset_progress_for_testing(false)
+	_change_scene(game_scene_path, "restart")
 
 
 func _on_main_menu_pressed() -> void:
-	var error := get_tree().change_scene_to_file(main_menu_scene_path)
+	_change_scene(main_menu_scene_path, "title")
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+
+
+func _change_scene(scene_path: String, scene_description: String) -> void:
+	var error := get_tree().change_scene_to_file(scene_path)
 	if error != OK:
-		push_error("Win scene could not return to main menu: " + main_menu_scene_path)
+		push_error("Clear screen could not open %s scene: %s" % [scene_description, scene_path])
 
 
 func _update_result_text() -> void:
-	if attempts_label != null:
-		attempts_label.text = "Stay In Line attempts: %d" % SaveManager.get_queue_attempt_count()
+	if completion_label != null:
+		completion_label.text = "%d / %d ROUNDS COMPLETE" % [
+			SaveManager.get_rounds_completed(),
+			SaveManager.get_required_rounds()
+		]
 
-	if score_label != null:
-		score_label.text = "Score: %d / %d\nRemaining Score: %d" % [
+	if stats_label != null:
+		stats_label.text = "Submitted score   %d / %d\nQueue attempts    %d\nFan score left    %d" % [
 			SaveManager.get_round_score(),
 			SaveManager.get_target_score(),
+			SaveManager.get_queue_attempt_count(),
 			SaveManager.get_score()
 		]

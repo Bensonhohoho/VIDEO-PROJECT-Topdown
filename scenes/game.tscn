@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://brchrhujnygbu" path="res://scenes/npc.tscn" id="24_npc"]
 [ext_resource type="PackedScene" path="res://scenes/drink_shop_worker.tscn" id="26_drink_shop_worker"]
 [ext_resource type="PackedScene" uid="uid://r0cqes216fss" path="res://scenes/mission_board_worker.tscn" id="27_mission_board_worker"]
+[ext_resource type="Script" path="res://scripts/bottle_litter_group.gd" id="28_bottle_litter"]
+[ext_resource type="Script" path="res://scripts/trash_dump_area.gd" id="29_trash_dump"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_big_building"]
 size = Vector2(345, 263)
@@ -76,11 +78,87 @@ size = Vector2(1597, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_map_boundary_vertical"]
 size = Vector2(32, 1090)
 
+[sub_resource type="StyleBoxFlat" id="StyleBox_round_progress"]
+bg_color = Color(1, 0.952, 0.86, 0.92)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.9, 0.59, 0.7, 0.95)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0.35, 0.23, 0.31, 0.18)
+shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_action_button"]
+bg_color = Color(0.94, 0.67, 0.76, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.88, 0.68, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_action_button_hover"]
+bg_color = Color(0.8, 0.72, 0.9, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.92, 0.72, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_submit_panel"]
+bg_color = Color(1, 0.961, 0.9, 0.98)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.75, 0.64, 0.86, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_color = Color(0.31, 0.21, 0.33, 0.24)
+shadow_size = 14
+
 [node name="Game" type="Node2D" unique_id=1177641961]
 
 [node name="FullMapBackground" type="Sprite2D" parent="." unique_id=319333240]
 z_index = -100
 texture = ExtResource("3_full_map")
+
+[node name="EnvironmentProgression" type="Node2D" parent="." unique_id=379371819]
+
+[node name="BottlesRound1" type="Node2D" parent="EnvironmentProgression" unique_id=458419974]
+z_index = -1
+script = ExtResource("28_bottle_litter")
+bottle_positions = PackedVector2Array(-438, 82, -270, 185, 315, 286, 580, 74, -108, 330, 226, 78)
+
+[node name="BottlesRound2" type="Node2D" parent="EnvironmentProgression" unique_id=1679663634]
+z_index = -1
+script = ExtResource("28_bottle_litter")
+reveal_round = 2
+bottle_positions = PackedVector2Array(-635, 91, -392, -187, -154, -178, 148, -174, 365, -184, 654, 176, -42, 396, 489, 360)
+
+[node name="BottlesRound3" type="Node2D" parent="EnvironmentProgression" unique_id=121937545]
+z_index = -1
+script = ExtResource("28_bottle_litter")
+reveal_round = 3
+bottle_positions = PackedVector2Array(-704, -98, -552, 286, -309, 367, 103, 372, 374, 386, 650, 329, 703, -177, 502, -282, -251, -235, 251, -247)
+
+[node name="TrashDumpArea" type="Node2D" parent="EnvironmentProgression" unique_id=1043285344]
+z_index = -1
+position = Vector2(0, 232)
+script = ExtResource("29_trash_dump")
 
 [node name="CollisionObjects" type="Node2D" parent="." unique_id=924333770]
 
@@ -344,6 +422,53 @@ script = ExtResource("4_game_manager")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1337485004]
 
+[node name="RoundProgressPanel" type="Panel" parent="UI" unique_id=1281420307]
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 382.0
+offset_bottom = 104.0
+theme_override_styles/panel = SubResource("StyleBox_round_progress")
+
+[node name="Content" type="MarginContainer" parent="UI/RoundProgressPanel" unique_id=392739498]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 10
+
+[node name="RoundProgressLabel" type="Label" parent="UI/RoundProgressPanel/Content" unique_id=450529309]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.36, 0.25, 0.38, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 16
+text = "EVENT ROUNDS  0 / 3
+Garden is tidy"
+vertical_alignment = 1
+
+[node name="ProgressToast" type="Label" parent="UI" unique_id=2110495492]
+visible = false
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 460.0
+offset_top = 132.0
+offset_right = -460.0
+offset_bottom = 232.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.79, 1)
+theme_override_colors/font_outline_color = Color(0.48, 0.25, 0.42, 0.9)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 24
+text = "ROUND 1 / 3 COMPLETE
+More empty bottles have appeared in the plaza."
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ScoreLabel" type="Label" parent="UI" unique_id=322714244]
 anchors_preset = 1
 anchor_left = 1.0
@@ -386,19 +511,33 @@ offset_top = 82.0
 offset_right = -16.0
 offset_bottom = 114.0
 theme_override_font_sizes/font_size = 14
-text = "Submit Score"
+theme_override_styles/normal = SubResource("StyleBox_action_button")
+theme_override_styles/pressed = SubResource("StyleBox_action_button_hover")
+theme_override_styles/hover = SubResource("StyleBox_action_button_hover")
+text = "Submit Event Score"
 
 [node name="VictoryLabel" type="Label" parent="UI" unique_id=2042738882]
 visible = false
-offset_left = -152.0
-offset_top = -12.0
-offset_right = 188.0
-offset_bottom = 24.0
-theme_override_colors/font_color = Color(0.95, 0.78, 0.1, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -105.0
+offset_right = 480.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.91, 0.68, 1)
+theme_override_colors/font_outline_color = Color(0.43, 0.22, 0.38, 0.94)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("5_font")
-theme_override_font_sizes/font_size = 16
-text = "Victory! Goal Completed"
+theme_override_font_sizes/font_size = 31
+text = "FINAL ROUND COMPLETE
+The celebration left something behind..."
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="SubmitScoreWindow" type="Control" parent="UI" unique_id=275593149]
@@ -409,10 +548,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -180.0
-offset_top = -132.0
-offset_right = 180.0
-offset_bottom = 132.0
+offset_left = -290.0
+offset_top = -150.0
+offset_right = 290.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -422,23 +561,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBox_submit_panel")
 
 [node name="TitleLabel" type="Label" parent="UI/SubmitScoreWindow/Panel" unique_id=775288929]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 16.0
-offset_right = 340.0
+offset_right = 560.0
 offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.47, 0.28, 0.44, 1)
+theme_override_fonts/font = ExtResource("5_font")
 theme_override_font_sizes/font_size = 22
-text = "Submit Score"
+text = "STAMP THIS EVENT ROUND"
 horizontal_alignment = 1
 
 [node name="CurrentScoreLabel" type="Label" parent="UI/SubmitScoreWindow/Panel" unique_id=215166925]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 58.0
-offset_right = 336.0
+offset_right = 556.0
 offset_bottom = 84.0
+theme_override_colors/font_color = Color(0.39, 0.34, 0.43, 1)
+theme_override_fonts/font = ExtResource("5_font")
 theme_override_font_sizes/font_size = 18
 text = "Current Score: 0"
 
@@ -446,8 +590,10 @@ text = "Current Score: 0"
 layout_mode = 0
 offset_left = 24.0
 offset_top = 88.0
-offset_right = 336.0
+offset_right = 556.0
 offset_bottom = 114.0
+theme_override_colors/font_color = Color(0.39, 0.34, 0.43, 1)
+theme_override_fonts/font = ExtResource("5_font")
 theme_override_font_sizes/font_size = 18
 text = "Required Submit Score: 10"
 
@@ -455,8 +601,10 @@ text = "Required Submit Score: 10"
 layout_mode = 0
 offset_left = 24.0
 offset_top = 118.0
-offset_right = 336.0
+offset_right = 556.0
 offset_bottom = 144.0
+theme_override_colors/font_color = Color(0.39, 0.34, 0.43, 1)
+theme_override_fonts/font = ExtResource("5_font")
 theme_override_font_sizes/font_size = 18
 text = "Level Target Score: 30"
 
@@ -464,8 +612,10 @@ text = "Level Target Score: 30"
 layout_mode = 0
 offset_left = 24.0
 offset_top = 148.0
-offset_right = 336.0
+offset_right = 556.0
 offset_bottom = 174.0
+theme_override_colors/font_color = Color(0.39, 0.34, 0.43, 1)
+theme_override_fonts/font = ExtResource("5_font")
 theme_override_font_sizes/font_size = 18
 text = "Submitted Score: 0 / 30"
 
@@ -474,7 +624,7 @@ visible = false
 layout_mode = 0
 offset_left = 24.0
 offset_top = 178.0
-offset_right = 336.0
+offset_right = 556.0
 offset_bottom = 204.0
 theme_override_colors/font_color = Color(0.9, 0.15, 0.1, 1)
 theme_override_font_sizes/font_size = 16
@@ -483,20 +633,26 @@ horizontal_alignment = 1
 
 [node name="ButtonRow" type="HBoxContainer" parent="UI/SubmitScoreWindow/Panel" unique_id=1281230876]
 layout_mode = 0
-offset_left = 84.0
+offset_left = 158.0
 offset_top = 216.0
-offset_right = 336.0
+offset_right = 422.0
 offset_bottom = 250.0
 theme_override_constants/separation = 12
 
 [node name="ConfirmButton" type="Button" parent="UI/SubmitScoreWindow/Panel/ButtonRow" unique_id=626380456]
 custom_minimum_size = Vector2(112, 32)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBox_action_button")
+theme_override_styles/pressed = SubResource("StyleBox_action_button_hover")
+theme_override_styles/hover = SubResource("StyleBox_action_button_hover")
 text = "Confirm"
 
 [node name="CancelButton" type="Button" parent="UI/SubmitScoreWindow/Panel/ButtonRow" unique_id=719800503]
 custom_minimum_size = Vector2(112, 32)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBox_action_button")
+theme_override_styles/pressed = SubResource("StyleBox_action_button_hover")
+theme_override_styles/hover = SubResource("StyleBox_action_button_hover")
 text = "Cancel"
 
 [node name="PauseMenu" parent="." unique_id=1542305349 instance=ExtResource("22_pause_menu")]

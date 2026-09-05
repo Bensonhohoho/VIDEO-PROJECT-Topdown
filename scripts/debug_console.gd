@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 const TOGGLE_KEY_UNICODE := [96, 126]
+const SCORE_CHEAT_AMOUNT := 10
 
 var commands: Dictionary = {}
 var panel: PanelContainer
@@ -20,11 +21,17 @@ func _ready() -> void:
 	register_command("godmode", _cmd_godmode)
 	register_command("scoretozero", _cmd_score_to_zero)
 	register_command("addscore", _cmd_add_score)
+	register_command("resetprogress", _cmd_reset_progress)
 	register_command("help", _cmd_help)
 	_set_open(false)
 
 
 func _input(event: InputEvent) -> void:
+	if _is_score_cheat_event(event):
+		_grant_hidden_score()
+		get_viewport().set_input_as_handled()
+		return
+
 	if _is_console_toggle_event(event):
 		_set_open(not visible)
 		get_viewport().set_input_as_handled()
@@ -156,12 +163,24 @@ func _cmd_add_score(args: PackedStringArray) -> void:
 	_set_status("score: %d (+%d)" % [SaveManager.get_score(), amount])
 
 
+func _cmd_reset_progress(_args: PackedStringArray) -> void:
+	SaveManager.reset_progress_for_testing(false)
+	_set_status("progress reset: round 0 / %d, score 0" % SaveManager.get_required_rounds())
+
+
+func _grant_hidden_score() -> void:
+	# Editor/debug convenience only. This does not register a queue attempt,
+	# queue success, submission, or completed round.
+	SaveManager.add_score(SCORE_CHEAT_AMOUNT)
+	print("Debug score shortcut: +%d (total %d)" % [SCORE_CHEAT_AMOUNT, SaveManager.get_score()])
+
+
 func _cmd_help(_args: PackedStringArray) -> void:
 	_set_status(_get_command_list_text())
 
 
 func _get_command_list_text() -> String:
-	return "Commands: godmode | godmode on | godmode off | scoreToZero | addScore <amount> | help"
+	return "Commands: godmode | scoreToZero | addScore <amount> | resetProgress | help"
 
 
 func _is_console_toggle_event(event: InputEvent) -> bool:
@@ -174,6 +193,16 @@ func _is_console_toggle_event(event: InputEvent) -> bool:
 		or key_event.keycode == KEY_F10 \
 		or key_event.physical_keycode == KEY_F10 \
 		or TOGGLE_KEY_UNICODE.has(key_event.unicode)
+
+
+func _is_score_cheat_event(event: InputEvent) -> bool:
+	var key_event := event as InputEventKey
+	if key_event == null or not key_event.pressed or key_event.echo:
+		return false
+
+	return key_event.ctrl_pressed \
+		and key_event.shift_pressed \
+		and (key_event.keycode == KEY_F8 or key_event.physical_keycode == KEY_F8)
 
 
 func _is_escape_key(event: InputEvent) -> bool:

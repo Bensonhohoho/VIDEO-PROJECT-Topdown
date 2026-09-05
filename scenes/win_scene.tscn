@@ -1,7 +1,86 @@
-[gd_scene format=3]
+[gd_scene load_steps=11 format=3]
 
 [ext_resource type="Script" path="res://scripts/win_scene.gd" id="1_win_scene"]
-[ext_resource type="Texture2D" path="res://assets/BackgroundImage/T-Vote.png" id="2_background"]
+[ext_resource type="Texture2D" path="res://assets/main_map/full_map_background.png" id="2_background"]
+[ext_resource type="Script" path="res://scripts/pastel_event_overlay.gd" id="3_overlay"]
+[ext_resource type="FontFile" path="res://brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="4_font"]
+[ext_resource type="FontFile" path="res://brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="5_bold_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_clear_panel"]
+bg_color = Color(1, 0.963, 0.9, 0.97)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.72, 0.61, 0.83, 1)
+corner_radius_top_left = 38
+corner_radius_top_right = 38
+corner_radius_bottom_right = 38
+corner_radius_bottom_left = 38
+shadow_color = Color(0.34, 0.24, 0.39, 0.23)
+shadow_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_report"]
+bg_color = Color(0.94, 0.86, 0.93, 0.9)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.81, 0.69, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_button_normal"]
+bg_color = Color(0.72, 0.66, 0.86, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.88, 0.69, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_button_hover"]
+bg_color = Color(0.82, 0.74, 0.91, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.96, 0.8, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0.42, 0.3, 0.5, 0.2)
+shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_button_pressed"]
+bg_color = Color(0.62, 0.55, 0.78, 1)
+border_width_left = 3
+border_width_top = 5
+border_width_right = 3
+border_width_bottom = 2
+border_color = Color(1, 0.88, 0.69, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_quit"]
+bg_color = Color(0.94, 0.76, 0.81, 0.74)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.89, 0.6, 0.7, 0.8)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [node name="WinScene" type="Control"]
 layout_mode = 3
@@ -19,78 +98,182 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_background")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Tint" type="ColorRect" parent="."]
+[node name="RoseWash" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.03, 0.035, 0.045, 0.42)
+mouse_filter = 2
+color = Color(0.995, 0.89, 0.88, 0.5)
 
-[node name="WinPanel" type="Panel" parent="."]
+[node name="PastelEventOverlay" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_overlay")
+
+[node name="ClearPanel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -260.0
-offset_top = -180.0
-offset_right = 260.0
-offset_bottom = 180.0
+offset_left = -410.0
+offset_top = -374.0
+offset_right = 410.0
+offset_bottom = 374.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBox_clear_panel")
 
-[node name="WinContent" type="VBoxContainer" parent="WinPanel"]
+[node name="TopBow" type="Label" parent="ClearPanel"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -110.0
+offset_top = -38.0
+offset_right = 110.0
+offset_bottom = 24.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.9, 0.54, 0.68, 1)
+theme_override_colors/font_outline_color = Color(1, 0.9, 0.68, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_bold_font")
+theme_override_font_sizes/font_size = 36
+text = "୨୧  ★  ୨୧"
+horizontal_alignment = 1
+
+[node name="ClearContent" type="VBoxContainer" parent="ClearPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 36.0
-offset_top = 30.0
-offset_right = -36.0
-offset_bottom = -30.0
+offset_left = 70.0
+offset_top = 42.0
+offset_right = -70.0
+offset_bottom = -38.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 15
 alignment = 1
 
-[node name="TitleLabel" type="Label" parent="WinPanel/WinContent"]
+[node name="EyebrowLabel" type="Label" parent="ClearPanel/ClearContent"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "You Win!"
+theme_override_colors/font_color = Color(0.55, 0.39, 0.56, 1)
+theme_override_fonts/font = ExtResource("5_bold_font")
+theme_override_font_sizes/font_size = 21
+text = "★  GAME CLEAR  ★"
 horizontal_alignment = 1
 
-[node name="AttemptsLabel" type="Label" parent="WinPanel/WinContent"]
+[node name="TitleLabel" type="Label" parent="ClearPanel/ClearContent"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Stay In Line attempts: 0"
+theme_override_colors/font_color = Color(0.54, 0.29, 0.48, 1)
+theme_override_colors/font_outline_color = Color(1, 0.83, 0.66, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("5_bold_font")
+theme_override_font_sizes/font_size = 54
+text = "EVENT COMPLETE!"
 horizontal_alignment = 1
 
-[node name="ScoreLabel" type="Label" parent="WinPanel/WinContent"]
+[node name="CompletionLabel" type="Label" parent="ClearPanel/ClearContent"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Score: 0 / 30\nRemaining Score: 0"
+theme_override_colors/font_color = Color(0.46, 0.55, 0.39, 1)
+theme_override_fonts/font = ExtResource("5_bold_font")
+theme_override_font_sizes/font_size = 25
+text = "3 / 3 ROUNDS COMPLETE"
 horizontal_alignment = 1
 
-[node name="ButtonRow" type="HBoxContainer" parent="WinPanel/WinContent"]
+[node name="ReportPanel" type="Panel" parent="ClearPanel/ClearContent"]
+custom_minimum_size = Vector2(0, 154)
 layout_mode = 2
-theme_override_constants/separation = 14
+theme_override_styles/panel = SubResource("StyleBox_report")
+
+[node name="StatsLabel" type="Label" parent="ClearPanel/ClearContent/ReportPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = 22.0
+offset_right = -34.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.4, 0.34, 0.45, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 21
+text = "Submitted score   30 / 30\nQueue attempts    3\nFan score left    0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReflectionLabel" type="Label" parent="ClearPanel/ClearContent"]
+custom_minimum_size = Vector2(0, 102)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.48, 0.38, 0.43, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 20
+text = "The cheers fade, but the bottles remain.\nLoving something can still leave a cost—\nnext time, let the garden keep its sparkle too."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StarDivider" type="Label" parent="ClearPanel/ClearContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.83, 0.61, 0.34, 1)
+theme_override_fonts/font = ExtResource("5_bold_font")
+theme_override_font_sizes/font_size = 17
+text = "·  ☆  ·  ♡  ·  ☆  ·"
+horizontal_alignment = 1
+
+[node name="ButtonRow" type="HBoxContainer" parent="ClearPanel/ClearContent"]
+layout_mode = 2
+theme_override_constants/separation = 18
 alignment = 1
 
-[node name="ReplayButton" type="Button" parent="WinPanel/WinContent/ButtonRow"]
-custom_minimum_size = Vector2(160, 48)
+[node name="RestartButton" type="Button" parent="ClearPanel/ClearContent/ButtonRow"]
+custom_minimum_size = Vector2(250, 62)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.28, 0.21, 0.36, 1)
+theme_override_fonts/font = ExtResource("5_bold_font")
 theme_override_font_sizes/font_size = 22
-text = "Replay"
+theme_override_styles/normal = SubResource("StyleBox_button_normal")
+theme_override_styles/hover = SubResource("StyleBox_button_hover")
+theme_override_styles/pressed = SubResource("StyleBox_button_pressed")
+theme_override_styles/focus = SubResource("StyleBox_button_hover")
+text = "Restart Event"
 
-[node name="MainMenuButton" type="Button" parent="WinPanel/WinContent/ButtonRow"]
-custom_minimum_size = Vector2(220, 48)
+[node name="MainMenuButton" type="Button" parent="ClearPanel/ClearContent/ButtonRow"]
+custom_minimum_size = Vector2(250, 62)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.28, 0.21, 0.36, 1)
+theme_override_fonts/font = ExtResource("5_bold_font")
 theme_override_font_sizes/font_size = 22
-text = "Back to Main Menu"
+theme_override_styles/normal = SubResource("StyleBox_button_normal")
+theme_override_styles/hover = SubResource("StyleBox_button_hover")
+theme_override_styles/pressed = SubResource("StyleBox_button_pressed")
+theme_override_styles/focus = SubResource("StyleBox_button_hover")
+text = "Return to Title"
+
+[node name="QuitButton" type="Button" parent="ClearPanel/ClearContent"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.43, 0.31, 0.4, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("StyleBox_quit")
+theme_override_styles/hover = SubResource("StyleBox_button_hover")
+theme_override_styles/pressed = SubResource("StyleBox_button_pressed")
+theme_override_styles/focus = SubResource("StyleBox_button_hover")
+text = "Quit"
