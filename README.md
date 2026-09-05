@@ -4,6 +4,10 @@
 
 As the event continues, discarded bottles accumulate around the plaza. Completing the third round reveals the full environmental cost behind the celebration.
 
+## Play the Game
+
+[Download the release](https://github.com/Bensonhohoho/VIDEO-PROJECT-Topdown/releases/tag/Game) to play the packaged game.
+
 ## Running the Game
 
 1. Open `project.godot` with Godot 4.6 or a compatible Godot 4 version.
