@@ -1,0 +1,232 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/post_round_choice.gd" id="1_choice_script"]
+[ext_resource type="FontFile" uid="uid://dvtck01iuvd76" path="res://brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="2_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_panel"]
+bg_color = Color(1, 0.968, 0.89, 0.99)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.89, 0.67, 0.82, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_color = Color(0.27, 0.17, 0.3, 0.3)
+shadow_size = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_keep"]
+bg_color = Color(1, 0.78, 0.86, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.84, 0.55, 0.72, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_keep_hover"]
+bg_color = Color(0.95, 0.7, 0.83, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.75, 0.47, 0.68, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_clean"]
+bg_color = Color(0.76, 0.9, 0.75, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.49, 0.7, 0.54, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_clean_hover"]
+bg_color = Color(0.68, 0.85, 0.72, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.39, 0.62, 0.5, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_card_pink"]
+bg_color = Color(1, 0.9, 0.94, 0.82)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_card_green"]
+bg_color = Color(0.9, 0.96, 0.88, 0.82)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[node name="PostRoundChoice" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_choice_script")
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.24, 0.17, 0.3, 0.7)
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(820, 650)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBox_panel")
+
+[node name="Margin" type="MarginContainer" parent="Center/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 38
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 38
+
+[node name="Content" type="VBoxContainer" parent="Center/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="RoundLabel" type="Label" parent="Center/Panel/Margin/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.3, 0.52, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 25
+text = "ROUND 1 OF 3 COMPLETE"
+horizontal_alignment = 1
+
+[node name="Prompt" type="Label" parent="Center/Panel/Margin/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.36, 0.29, 0.4, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "The event is getting busier.\nWhat do you want to do next?"
+horizontal_alignment = 1
+
+[node name="Divider" type="HSeparator" parent="Center/Panel/Margin/Content"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Choices" type="HBoxContainer" parent="Center/Panel/Margin/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 22
+
+[node name="KeepGoingCard" type="PanelContainer" parent="Center/Panel/Margin/Content/Choices"]
+custom_minimum_size = Vector2(350, 310)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBox_card_pink")
+
+[node name="CardMargin" type="MarginContainer" parent="Center/Panel/Margin/Content/Choices/KeepGoingCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 24
+
+[node name="CardContent" type="VBoxContainer" parent="Center/Panel/Margin/Content/Choices/KeepGoingCard/CardMargin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="KeepGoingButton" type="Button" parent="Center/Panel/Margin/Content/Choices/KeepGoingCard/CardMargin/CardContent"]
+custom_minimum_size = Vector2(0, 74)
+layout_mode = 2
+focus_neighbor_right = NodePath("../../../../CleanupCard/CardMargin/CardContent/CleanupButton")
+theme_override_colors/font_color = Color(0.39, 0.2, 0.36, 1)
+theme_override_colors/font_hover_color = Color(0.31, 0.15, 0.3, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBox_keep")
+theme_override_styles/hover = SubResource("StyleBox_keep_hover")
+theme_override_styles/pressed = SubResource("StyleBox_keep_hover")
+theme_override_styles/focus = SubResource("StyleBox_keep_hover")
+text = "KEEP GOING"
+
+[node name="Description" type="Label" parent="Center/Panel/Margin/Content/Choices/KeepGoingCard/CardMargin/CardContent"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.37, 0.3, 0.4, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Continue participating\nand focus on your\nevent progress."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CleanupCard" type="PanelContainer" parent="Center/Panel/Margin/Content/Choices"]
+custom_minimum_size = Vector2(350, 310)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBox_card_green")
+
+[node name="CardMargin" type="MarginContainer" parent="Center/Panel/Margin/Content/Choices/CleanupCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 24
+
+[node name="CardContent" type="VBoxContainer" parent="Center/Panel/Margin/Content/Choices/CleanupCard/CardMargin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="CleanupButton" type="Button" parent="Center/Panel/Margin/Content/Choices/CleanupCard/CardMargin/CardContent"]
+custom_minimum_size = Vector2(0, 74)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../KeepGoingCard/CardMargin/CardContent/KeepGoingButton")
+theme_override_colors/font_color = Color(0.2, 0.37, 0.28, 1)
+theme_override_colors/font_hover_color = Color(0.13, 0.3, 0.22, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBox_clean")
+theme_override_styles/hover = SubResource("StyleBox_clean_hover")
+theme_override_styles/pressed = SubResource("StyleBox_clean_hover")
+theme_override_styles/focus = SubResource("StyleBox_clean_hover")
+text = "CLEAN UP"
+
+[node name="Description" type="Label" parent="Center/Panel/Margin/Content/Choices/CleanupCard/CardMargin/CardContent"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.34, 0.37, 0.35, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Spend time dealing with\nthe waste left behind."
+horizontal_alignment = 1
+vertical_alignment = 1

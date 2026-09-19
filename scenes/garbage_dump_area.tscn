@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/garbage_dump_area.gd" id="1_dump"]
+
+[node name="GarbageDumpArea" type="Node2D"]
+visible = false
+z_index = -1
+script = ExtResource("1_dump")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="BottlePile" type="Node2D" parent="."]
+
+[node name="TrashSprites" type="Node2D" parent="."]

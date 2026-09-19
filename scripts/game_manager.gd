@@ -19,6 +19,11 @@ extends Node
 @export var submit_warning_label_path: NodePath = ^"../UI/SubmitScoreWindow/Panel/WarningLabel"
 @export var submit_confirm_button_path: NodePath = ^"../UI/SubmitScoreWindow/Panel/ButtonRow/ConfirmButton"
 @export var submit_cancel_button_path: NodePath = ^"../UI/SubmitScoreWindow/Panel/ButtonRow/CancelButton"
+@export var submit_score_button_path: NodePath = ^"../UI/SubmitScoreButton"
+@export var post_round_choice_path: NodePath = ^"../UI/PostRoundChoice"
+@export var final_cleanup_panel_path: NodePath = ^"../UI/FinalCleanupPanel"
+@export var final_cleanup_status_path: NodePath = ^"../UI/FinalCleanupPanel/Panel/StatusLabel"
+@export var finish_cleanup_button_path: NodePath = ^"../UI/FinalCleanupPanel/Panel/FinishButton"
 
 var is_game_over := false
 var victory_label: Label
@@ -32,8 +37,16 @@ var submit_progress_label: Label
 var submit_warning_label: Label
 var submit_confirm_button: Button
 var submit_cancel_button: Button
+var submit_score_button: Button
+var post_round_choice: Control
+var final_cleanup_panel: Control
+var final_cleanup_status: Label
+var finish_cleanup_button: Button
 var is_changing_scene := false
 var progress_toast_tween: Tween
+var is_awaiting_round_choice := false
+var pending_choice_round := 0
+var is_final_result_sequence_playing := false
 
 
 func _ready():
@@ -49,6 +62,11 @@ func _ready():
 	submit_warning_label = get_node_or_null(submit_warning_label_path) as Label
 	submit_confirm_button = get_node_or_null(submit_confirm_button_path) as Button
 	submit_cancel_button = get_node_or_null(submit_cancel_button_path) as Button
+	submit_score_button = get_node_or_null(submit_score_button_path) as Button
+	post_round_choice = get_node_or_null(post_round_choice_path) as Control
+	final_cleanup_panel = get_node_or_null(final_cleanup_panel_path) as Control
+	final_cleanup_status = get_node_or_null(final_cleanup_status_path) as Label
+	finish_cleanup_button = get_node_or_null(finish_cleanup_button_path) as Button
 
 	# Start a fresh one-round goal only once. Returning from minigames keeps the
 	# same autoload round state until the target has been reached.
@@ -63,9 +81,19 @@ func _ready():
 		SaveManager.submit_failed.connect(_on_submit_failed)
 	if not SaveManager.progression_changed.is_connected(_on_progression_changed):
 		SaveManager.progression_changed.connect(_on_progression_changed)
+	if not SaveManager.trash_state_changed.is_connected(_on_trash_state_changed):
+		SaveManager.trash_state_changed.connect(_on_trash_state_changed)
+	if post_round_choice != null and post_round_choice.has_signal("choice_selected"):
+		post_round_choice.connect("choice_selected", _on_round_choice_selected)
+	if finish_cleanup_button != null:
+		finish_cleanup_button.pressed.connect(_on_finish_cleanup_pressed)
 	_setup_submit_window()
+	if final_cleanup_panel != null:
+		final_cleanup_panel.visible = false
 	_update_round_progress_label()
 	_update_victory_state()
+	if SaveManager.has_pending_round_choice():
+		_show_pending_round_choice()
 
 	var player = get_tree().get_first_node_in_group("player")
 	if player != null and player.has_signal("died"):
@@ -83,6 +111,8 @@ func _exit_tree() -> void:
 		SaveManager.submit_failed.disconnect(_on_submit_failed)
 	if SaveManager.progression_changed.is_connected(_on_progression_changed):
 		SaveManager.progression_changed.disconnect(_on_progression_changed)
+	if SaveManager.trash_state_changed.is_connected(_on_trash_state_changed):
+		SaveManager.trash_state_changed.disconnect(_on_trash_state_changed)
 
 
 func add_point():
@@ -112,21 +142,11 @@ func _on_player_died(_source: Node = null) -> void:
 func _on_round_completed(current_score: int, current_target_score: int) -> void:
 	if is_changing_scene:
 		return
-
-	# Keep the plaza visible for a moment so the third litter layer and backstage
-	# dump are seen before the final report screen.
-	is_game_over = true
-	_stop_player_for_victory()
-	_hide_submit_window()
-	_focus_camera_on_final_waste()
-	if victory_label != null:
-		victory_label.text = "FINAL ROUND COMPLETE\nThe celebration left something behind..."
-		victory_label.visible = true
-
-	await get_tree().create_timer(final_reveal_delay).timeout
-	if not is_inside_tree():
+	if SaveManager.has_pending_round_choice():
+		_show_pending_round_choice()
 		return
-	_go_to_win_scene(current_score, current_target_score)
+
+	_handle_final_round_ready(current_score, current_target_score)
 
 
 func _on_score_changed(_new_score: int) -> void:
@@ -140,10 +160,22 @@ func _on_round_score_changed(_current_score: int, _current_target_score: int) ->
 
 func _on_progression_changed(completed: int, required: int, cleared: bool) -> void:
 	_update_round_progress_label()
+	if SaveManager.has_pending_round_choice():
+		_show_pending_round_choice()
+		return
 	if not cleared and completed > 0:
 		_show_progress_toast(
 			"ROUND %d / %d COMPLETE\nMore empty bottles have appeared in the plaza." % [completed, required]
 		)
+
+
+func _on_trash_state_changed(
+	_total_generated: int,
+	_total_cleaned: int,
+	_carried: int,
+	_cleanup_enabled: bool
+) -> void:
+	_update_final_cleanup_status()
 
 
 func _setup_submit_window() -> void:
@@ -163,13 +195,16 @@ func _setup_submit_window() -> void:
 
 
 func open_submit_window() -> void:
-	if submit_window == null or SaveManager.is_game_cleared():
+	if submit_window == null or SaveManager.is_game_cleared() or is_awaiting_round_choice:
 		return
 
 	_update_submit_window_text()
 	if submit_warning_label != null:
 		submit_warning_label.visible = false
 	submit_window.visible = true
+	var tutorial_manager := get_tree().get_first_node_in_group("main_tutorial_manager")
+	if tutorial_manager != null and tutorial_manager.has_method("request_score_submission_tutorial"):
+		tutorial_manager.call("request_score_submission_tutorial")
 
 
 func _hide_submit_window() -> void:
@@ -214,8 +249,14 @@ func _on_submit_failed(message: String) -> void:
 
 
 func _update_victory_state() -> void:
-	if SaveManager.is_game_cleared():
-		_go_to_win_scene(SaveManager.get_round_score(), SaveManager.get_target_score())
+	if SaveManager.is_game_cleared() and not SaveManager.has_pending_round_choice():
+		var saved_result := SaveManager.get_final_environment_result()
+		if saved_result != SaveManager.FINAL_RESULT_NONE:
+			_go_to_win_scene(SaveManager.get_round_score(), SaveManager.get_target_score())
+		elif SaveManager.is_cleanup_mode_enabled() and _is_final_cleanup_incomplete():
+			_enter_final_cleanup()
+		else:
+			_evaluate_and_show_final_result()
 	elif victory_label != null:
 		victory_label.visible = false
 	if progress_toast_label != null:
@@ -235,7 +276,7 @@ func _update_round_progress_label() -> void:
 		2:
 			waste_text = "Bottle waste is building up"
 		3:
-			waste_text = "Backstage dump revealed"
+			waste_text = "Final result pending"
 	round_progress_label.text = "EVENT ROUNDS  %d / %d\n%s" % [completed, required, waste_text]
 
 
@@ -252,6 +293,148 @@ func _show_progress_toast(message: String) -> void:
 	progress_toast_tween.tween_interval(2.0)
 	progress_toast_tween.tween_property(progress_toast_label, "modulate:a", 0.0, 0.45)
 	progress_toast_tween.tween_callback(progress_toast_label.hide)
+
+
+func _show_pending_round_choice() -> void:
+	if post_round_choice == null:
+		push_error("GameManager cannot show the required post-round choice overlay.")
+		return
+
+	var choice_round := SaveManager.get_pending_choice_round()
+	if choice_round <= 0:
+		return
+
+	is_awaiting_round_choice = true
+	pending_choice_round = choice_round
+	_hide_submit_window()
+	if submit_score_button != null:
+		submit_score_button.disabled = true
+	_stop_player_for_victory()
+	post_round_choice.call("present", choice_round, SaveManager.get_required_rounds())
+
+
+func _on_round_choice_selected(choice: String) -> void:
+	if not is_awaiting_round_choice:
+		return
+
+	if not SaveManager.record_round_choice(choice, pending_choice_round):
+		post_round_choice.call("present", pending_choice_round, SaveManager.get_required_rounds())
+		return
+
+	is_awaiting_round_choice = false
+	pending_choice_round = 0
+	post_round_choice.call("hide_choice")
+
+	# This normally advances one round at a time. The extra check also migrates
+	# an older save cleanly if it already contains multiple completed rounds.
+	if SaveManager.has_pending_round_choice():
+		_show_pending_round_choice()
+		return
+
+	if SaveManager.is_game_cleared():
+		if choice == SaveManager.CHOICE_CLEANUP and _is_final_cleanup_incomplete():
+			_enter_final_cleanup()
+		else:
+			_evaluate_and_show_final_result()
+		return
+
+	_resume_player_after_choice()
+	if submit_score_button != null:
+		submit_score_button.disabled = false
+	_show_progress_toast(
+		"ROUND %d / %d COMPLETE" % [
+			SaveManager.get_rounds_completed(),
+			SaveManager.get_required_rounds()
+		]
+	)
+
+
+func _resume_player_after_choice() -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	if player != null:
+		player.set_physics_process(true)
+
+
+func _handle_final_round_ready(current_score: int, current_target_score: int) -> void:
+	if SaveManager.is_cleanup_mode_enabled() and _is_final_cleanup_incomplete():
+		_enter_final_cleanup()
+		return
+	_evaluate_and_show_final_result(current_score, current_target_score)
+
+
+func _is_final_cleanup_incomplete() -> bool:
+	return SaveManager.get_total_trash_cleaned() < SaveManager.get_total_trash_generated()
+
+
+func _enter_final_cleanup() -> void:
+	is_game_over = false
+	_hide_submit_window()
+	if submit_score_button != null:
+		submit_score_button.disabled = true
+	if victory_label != null:
+		victory_label.visible = false
+	if final_cleanup_panel != null:
+		final_cleanup_panel.visible = true
+	_update_final_cleanup_status()
+	_resume_player_after_choice()
+
+
+func _update_final_cleanup_status() -> void:
+	if final_cleanup_status == null:
+		return
+	final_cleanup_status.text = "Trash Cleaned: %d / %d    Carrying: %d" % [
+		SaveManager.get_total_trash_cleaned(),
+		SaveManager.get_total_trash_generated(),
+		SaveManager.get_carried_trash()
+	]
+
+
+func _on_finish_cleanup_pressed() -> void:
+	if not SaveManager.is_game_cleared() or is_final_result_sequence_playing:
+		return
+	_evaluate_and_show_final_result()
+
+
+func _evaluate_and_show_final_result(
+	current_score: int = -1,
+	current_target_score: int = -1
+) -> void:
+	if is_final_result_sequence_playing or is_changing_scene:
+		return
+
+	var result := SaveManager.evaluate_final_environment_result()
+	if result == SaveManager.FINAL_RESULT_NONE:
+		return
+
+	is_final_result_sequence_playing = true
+	is_game_over = true
+	_stop_player_for_victory()
+	_hide_submit_window()
+	if final_cleanup_panel != null:
+		final_cleanup_panel.visible = false
+
+	if result == SaveManager.FINAL_RESULT_WASTE:
+		_focus_camera_on_final_waste()
+
+	if victory_label != null:
+		var result_heading := (
+			"CLEAN RESULT"
+			if result == SaveManager.FINAL_RESULT_CLEAN
+			else "WASTE RESULT"
+		)
+		victory_label.text = "%s\nTrash Cleaned: %d / %d" % [
+			result_heading,
+			SaveManager.get_total_trash_cleaned(),
+			SaveManager.get_total_trash_generated()
+		]
+		victory_label.visible = true
+
+	await get_tree().create_timer(final_reveal_delay).timeout
+	if not is_inside_tree():
+		return
+	var final_score := SaveManager.get_round_score() if current_score < 0 else current_score
+	var final_target := SaveManager.get_target_score() if current_target_score < 0 else current_target_score
+	_go_to_win_scene(final_score, final_target)
 
 
 func _go_to_win_scene(current_score: int, current_target_score: int) -> void:
@@ -300,7 +483,7 @@ func _stop_player_for_victory() -> void:
 
 
 func _focus_camera_on_final_waste() -> void:
-	var dump_area := get_tree().get_first_node_in_group("trash_dump_area") as Node2D
+	var dump_area := get_tree().get_first_node_in_group("garbage_dump_area") as Node2D
 	var camera := get_viewport().get_camera_2d()
 	if dump_area == null or camera == null:
 		return

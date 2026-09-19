@@ -8,12 +8,19 @@
 [ext_resource type="Script" uid="uid://cvhlg0e3fmuey" path="res://scripts/queue_entrance.gd" id="6_queue_entrance"]
 [ext_resource type="Script" uid="uid://ckxaeem58727a" path="res://scripts/score_hud.gd" id="7_score_hud"]
 [ext_resource type="Script" uid="uid://bemepujlmtrnn" path="res://scripts/score_placeholder_manager.gd" id="8_score_placeholder_manager"]
+[ext_resource type="Texture2D" uid="uid://fkd2goqjl5tu" path="res://assets/BackgroundImage/游戏3_-_实验底图.png" id="21_5newe"]
 [ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="22_pause_menu"]
 [ext_resource type="PackedScene" uid="uid://brchrhujnygbu" path="res://scenes/npc.tscn" id="24_npc"]
-[ext_resource type="PackedScene" path="res://scenes/drink_shop_worker.tscn" id="26_drink_shop_worker"]
 [ext_resource type="PackedScene" uid="uid://r0cqes216fss" path="res://scenes/mission_board_worker.tscn" id="27_mission_board_worker"]
-[ext_resource type="Script" path="res://scripts/bottle_litter_group.gd" id="28_bottle_litter"]
-[ext_resource type="Script" path="res://scripts/trash_dump_area.gd" id="29_trash_dump"]
+[ext_resource type="PackedScene" path="res://scenes/garbage_dump_area.tscn" id="29_garbage_dump"]
+[ext_resource type="PackedScene" path="res://scenes/post_round_choice.tscn" id="30_post_round_choice"]
+[ext_resource type="Script" path="res://scripts/trash_system.gd" id="31_trash_system"]
+[ext_resource type="PackedScene" path="res://scenes/trash_bin.tscn" id="32_trash_bin"]
+[ext_resource type="PackedScene" path="res://scenes/trash_hud.tscn" id="33_trash_hud"]
+[ext_resource type="Script" uid="uid://bqkcspuc2ar45" path="res://scripts/main_tutorial_manager.gd" id="34_tutorial_manager"]
+[ext_resource type="PackedScene" path="res://scenes/tutorial_overlay.tscn" id="35_tutorial_overlay"]
+[ext_resource type="PackedScene" path="res://scenes/objective_hud.tscn" id="36_objective_hud"]
+[ext_resource type="PackedScene" path="res://scenes/tutorial_waypoint.tscn" id="37_tutorial_waypoint"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_big_building"]
 size = Vector2(345, 263)
@@ -31,7 +38,7 @@ size = Vector2(88.5, 290)
 size = Vector2(477.5, 257)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mission_board_area"]
-size = Vector2(374, 168)
+size = Vector2(374, 198)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_merchandise_booth"]
 size = Vector2(238.5, 147)
@@ -46,7 +53,7 @@ size = Vector2(78, 34)
 size = Vector2(26, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_voting_garden_left"]
-size = Vector2(319, 103)
+size = Vector2(319, 140)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_voting_booth"]
 size = Vector2(189, 182)
@@ -58,7 +65,7 @@ size = Vector2(121, 160)
 size = Vector2(216.5, 147)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_drink_shop"]
-size = Vector2(199, 232)
+size = Vector2(199, 160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_drink_garden_right"]
 size = Vector2(236, 185)
@@ -138,27 +145,56 @@ texture = ExtResource("3_full_map")
 
 [node name="EnvironmentProgression" type="Node2D" parent="." unique_id=379371819]
 
-[node name="BottlesRound1" type="Node2D" parent="EnvironmentProgression" unique_id=458419974]
-z_index = -1
-script = ExtResource("28_bottle_litter")
-bottle_positions = PackedVector2Array(-438, 82, -270, 185, 315, 286, 580, 74, -108, 330, 226, 78)
+[node name="TrashSystem" type="Node2D" parent="EnvironmentProgression" unique_id=1152640722]
+script = ExtResource("31_trash_system")
 
-[node name="BottlesRound2" type="Node2D" parent="EnvironmentProgression" unique_id=1679663634]
+[node name="TrashItems" type="Node2D" parent="EnvironmentProgression/TrashSystem" unique_id=390234712]
 z_index = -1
-script = ExtResource("28_bottle_litter")
-reveal_round = 2
-bottle_positions = PackedVector2Array(-635, 91, -392, -187, -154, -178, 148, -174, 365, -184, 654, 176, -42, 396, 489, 360)
 
-[node name="BottlesRound3" type="Node2D" parent="EnvironmentProgression" unique_id=121937545]
-z_index = -1
-script = ExtResource("28_bottle_litter")
-reveal_round = 3
-bottle_positions = PackedVector2Array(-704, -98, -552, 286, -309, 367, 103, 372, 374, 386, 650, 329, 703, -177, 502, -282, -251, -235, 251, -247)
+[node name="TrashSpawnPoints" type="Node2D" parent="EnvironmentProgression/TrashSystem" unique_id=2114922777]
 
-[node name="TrashDumpArea" type="Node2D" parent="EnvironmentProgression" unique_id=1043285344]
-z_index = -1
+[node name="Round1" type="Node2D" parent="EnvironmentProgression/TrashSystem/TrashSpawnPoints" unique_id=615066635]
+
+[node name="Spawn01" type="Marker2D" parent="EnvironmentProgression/TrashSystem/TrashSpawnPoints/Round1" unique_id=2071596469]
+position = Vector2(-420, 80)
+
+[node name="Spawn02" type="Marker2D" parent="EnvironmentProgression/TrashSystem/TrashSpawnPoints/Round1" unique_id=1472173614]
+position = Vector2(-280, 320)
+
+[node name="Spawn03" type="Marker2D" parent="EnvironmentProgression/TrashSystem/TrashSpawnPoints/Round1" unique_id=1382505123]
+position = Vector2(315, 315)
+
+[node name="Spawn04" type="Marker2D" parent="EnvironmentProgression/TrashSystem/TrashSpawnPoints/Round1" unique_id=1835116760]
+position = Vector2(580, 320)
+
+[node name="Spawn05" type="Marker2D" parent="EnvironmentProgression/TrashSystem/TrashSpawnPoints/Round1" unique_id=1622703262]
+position = Vector2(-100, 330)
+
+[node name="Round2" type="Node2D" parent="EnvironmentProgression/TrashSystem/TrashSpawnPoints" unique_id=767209525]
+
+[node name="Spawn01" type="Marker2D" parent="EnvironmentProgression/TrashSystem/TrashSpawnPoints/Round2" unique_id=1904747105]
+position = Vector2(-650, 120)
+
+[node name="Spawn02" type="Marker2D" parent="EnvironmentProgression/TrashSystem/TrashSpawnPoints/Round2" unique_id=1373811443]
+position = Vector2(-390, -170)
+
+[node name="Spawn03" type="Marker2D" parent="EnvironmentProgression/TrashSystem/TrashSpawnPoints/Round2" unique_id=1251659794]
+position = Vector2(-220, -160)
+
+[node name="Spawn04" type="Marker2D" parent="EnvironmentProgression/TrashSystem/TrashSpawnPoints/Round2" unique_id=2020679358]
+position = Vector2(220, -170)
+
+[node name="Spawn05" type="Marker2D" parent="EnvironmentProgression/TrashSystem/TrashSpawnPoints/Round2" unique_id=1526936572]
+position = Vector2(400, -165)
+
+[node name="Spawn06" type="Marker2D" parent="EnvironmentProgression/TrashSystem/TrashSpawnPoints/Round2" unique_id=430194898]
+position = Vector2(735, 40)
+
+[node name="Spawn07" type="Marker2D" parent="EnvironmentProgression/TrashSystem/TrashSpawnPoints/Round2" unique_id=1989745744]
+position = Vector2(35, 335)
+
+[node name="GarbageDumpArea" parent="EnvironmentProgression" unique_id=1848368434 instance=ExtResource("29_garbage_dump")]
 position = Vector2(0, 232)
-script = ExtResource("29_trash_dump")
 
 [node name="CollisionObjects" type="Node2D" parent="." unique_id=924333770]
 
@@ -198,7 +234,7 @@ shape = SubResource("RectangleShape2D_upper_right_garden")
 position = Vector2(-579.5, -69)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/MissionBoardAreaCollision" unique_id=234507642]
-position = Vector2(0, 41)
+position = Vector2(0, 26)
 shape = SubResource("RectangleShape2D_mission_board_area")
 
 [node name="MerchandiseBoothCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=688910604]
@@ -242,7 +278,7 @@ shape = SubResource("RectangleShape2D_lamp")
 position = Vector2(-607, 196.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/VotingGardenLeftCollision" unique_id=1447480878]
-position = Vector2(0, 41)
+position = Vector2(0, 22.5)
 shape = SubResource("RectangleShape2D_voting_garden_left")
 
 [node name="VotingRegistrationBoothCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=1146831914]
@@ -269,6 +305,7 @@ shape = SubResource("RectangleShape2D_drink_garden_left")
 position = Vector2(431, 166)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionObjects/DrinkShopCollision" unique_id=263857444]
+position = Vector2(0, 36)
 shape = SubResource("RectangleShape2D_drink_shop")
 
 [node name="DrinkGardenRightCollision" type="StaticBody2D" parent="CollisionObjects" unique_id=115417311]
@@ -303,8 +340,38 @@ shape = SubResource("RectangleShape2D_queue_interaction")
 [node name="InteractionPoint" type="Marker2D" parent="InteractionAreas/QueueEntranceArea" unique_id=1706853469]
 position = Vector2(0, -43)
 
+[node name="ContextPrompt" type="Label" parent="InteractionAreas/QueueEntranceArea" unique_id=1091647869]
+visible = false
+z_index = 20
+offset_left = -86.0
+offset_top = -126.0
+offset_right = 86.0
+offset_bottom = -82.0
+theme_override_colors/font_color = Color(1, 0.95, 0.8, 1)
+theme_override_colors/font_outline_color = Color(0.42, 0.25, 0.39, 0.95)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 11
+text = "Enter the queue
+Press W / ↑"
+horizontal_alignment = 1
+
+[node name="TutorialGuides" type="Node2D" parent="." unique_id=447057967]
+
+[node name="QueueEntranceGuide" parent="TutorialGuides" unique_id=853877533 instance=ExtResource("37_tutorial_waypoint")]
+visible = false
+position = Vector2(-353, 190)
+
+[node name="TrashBinGuide" parent="TutorialGuides" unique_id=630663156 instance=ExtResource("37_tutorial_waypoint")]
+visible = false
+position = Vector2(700, 225)
+guide_color = Color(0.64, 0.86, 0.7, 1)
+
 [node name="MapObjects" type="Node2D" parent="." unique_id=2118902541]
 y_sort_enabled = true
+
+[node name="TrashBin" parent="MapObjects" unique_id=1657302285 instance=ExtResource("32_trash_bin")]
+position = Vector2(700, 330)
 
 [node name="Player" parent="MapObjects" unique_id=2049840162 instance=ExtResource("1_player")]
 position = Vector2(-11, 469)
@@ -324,6 +391,9 @@ position_smoothing_speed = 8.0
 
 [node name="QueueNPC" parent="MapObjects" unique_id=283988453 instance=ExtResource("24_npc")]
 position = Vector2(-227, 276)
+
+[node name="QueueNPC2" parent="MapObjects" unique_id=75585039 instance=ExtResource("24_npc")]
+position = Vector2(547, 242)
 
 [node name="coin" parent="MapObjects" unique_id=1783570862 instance=ExtResource("2_coin")]
 position = Vector2(-420, 80)
@@ -348,9 +418,6 @@ position = Vector2(-760, 360)
 
 [node name="coin8" parent="MapObjects" unique_id=1435951843 instance=ExtResource("2_coin")]
 position = Vector2(-700, 360)
-
-[node name="DrinkShopWorker" parent="MapObjects" unique_id=1187534551 instance=ExtResource("26_drink_shop_worker")]
-position = Vector2(551, 268)
 
 [node name="MissionBoardWorker" parent="MapObjects" unique_id=463347216 instance=ExtResource("27_mission_board_worker")]
 position = Vector2(-405, 45)
@@ -420,7 +487,14 @@ script = ExtResource("8_score_placeholder_manager")
 unique_name_in_owner = true
 script = ExtResource("4_game_manager")
 
+[node name="TutorialManager" type="Node" parent="." unique_id=593491126]
+script = ExtResource("34_tutorial_manager")
+
 [node name="UI" type="CanvasLayer" parent="." unique_id=1337485004]
+
+[node name="TrashHUD" parent="UI" unique_id=1470623689 instance=ExtResource("33_trash_hud")]
+
+[node name="ObjectiveHUD" parent="UI" unique_id=1944455985 instance=ExtResource("36_objective_hud")]
 
 [node name="RoundProgressPanel" type="Panel" parent="UI" unique_id=1281420307]
 offset_left = 18.0
@@ -655,6 +729,59 @@ theme_override_styles/pressed = SubResource("StyleBox_action_button_hover")
 theme_override_styles/hover = SubResource("StyleBox_action_button_hover")
 text = "Cancel"
 
+[node name="FinalCleanupPanel" type="Control" parent="UI" unique_id=1206309856]
+visible = false
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_top = -148.0
+offset_right = 270.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="UI/FinalCleanupPanel" unique_id=1119118322]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBox_submit_panel")
+
+[node name="StatusLabel" type="Label" parent="UI/FinalCleanupPanel/Panel" unique_id=1630428115]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 17.0
+offset_right = 516.0
+offset_bottom = 51.0
+theme_override_colors/font_color = Color(0.39, 0.34, 0.43, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 18
+text = "Trash Cleaned: 0 / 12    Carrying: 0"
+horizontal_alignment = 1
+
+[node name="FinishButton" type="Button" parent="UI/FinalCleanupPanel/Panel" unique_id=1362770821]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 65.0
+offset_right = 370.0
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBox_action_button")
+theme_override_styles/pressed = SubResource("StyleBox_action_button_hover")
+theme_override_styles/hover = SubResource("StyleBox_action_button_hover")
+text = "Finish Cleanup"
+
+[node name="PostRoundChoice" parent="UI" unique_id=282152825 instance=ExtResource("30_post_round_choice")]
+
+[node name="TutorialOverlay" parent="UI" unique_id=1210055398 instance=ExtResource("35_tutorial_overlay")]
+
 [node name="PauseMenu" parent="." unique_id=1542305349 instance=ExtResource("22_pause_menu")]
 
 [node name="ControlsHint" type="Label" parent="." unique_id=2061467082]
@@ -666,6 +793,10 @@ theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
 theme_override_fonts/font = ExtResource("5_font")
 theme_override_font_sizes/font_size = 8
 text = "WASD / ARROWS"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1374529021]
+z_index = 2
+texture = ExtResource("21_5newe")
 
 [connection signal="body_entered" from="InteractionAreas/QueueEntranceArea" to="InteractionAreas/QueueEntranceArea" method="_on_body_entered"]
 [connection signal="body_exited" from="InteractionAreas/QueueEntranceArea" to="InteractionAreas/QueueEntranceArea" method="_on_body_exited"]

@@ -22,6 +22,7 @@ func _ready() -> void:
 	register_command("scoretozero", _cmd_score_to_zero)
 	register_command("addscore", _cmd_add_score)
 	register_command("resetprogress", _cmd_reset_progress)
+	register_command("resettutorials", _cmd_reset_tutorials)
 	register_command("help", _cmd_help)
 	_set_open(false)
 
@@ -168,6 +169,11 @@ func _cmd_reset_progress(_args: PackedStringArray) -> void:
 	_set_status("progress reset: round 0 / %d, score 0" % SaveManager.get_required_rounds())
 
 
+func _cmd_reset_tutorials(_args: PackedStringArray) -> void:
+	SaveManager.reset_tutorial_progress()
+	_set_status("tutorial progress reset; reload the current scene to replay tutorials")
+
+
 func _grant_hidden_score() -> void:
 	# Editor/debug convenience only. This does not register a queue attempt,
 	# queue success, submission, or completed round.
@@ -180,7 +186,7 @@ func _cmd_help(_args: PackedStringArray) -> void:
 
 
 func _get_command_list_text() -> String:
-	return "Commands: godmode | scoreToZero | addScore <amount> | resetProgress | help"
+	return "Commands: godmode | scoreToZero | addScore <amount> | resetProgress | resetTutorials | help"
 
 
 func _is_console_toggle_event(event: InputEvent) -> bool:

@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="11_pause_menu"]
 [ext_resource type="PackedScene" uid="uid://bttieae6rkwql" path="res://scenes/queue_player.tscn" id="12_queue_player"]
 [ext_resource type="PackedScene" path="res://scenes/queue_retry_ui.tscn" id="13_retry_ui"]
+[ext_resource type="PackedScene" path="res://scenes/tutorial_overlay.tscn" id="14_tutorial_overlay"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_queue"]
 size = Vector2(160, 110)
@@ -194,6 +195,8 @@ script = ExtResource("5_score_hud")
 display_mode = 1
 
 [node name="RetryOverlay" parent="UI" instance=ExtResource("13_retry_ui")]
+
+[node name="TutorialOverlay" parent="UI" instance=ExtResource("14_tutorial_overlay")]
 
 [node name="QueueGameManager" type="Node" parent="." unique_id=102062141]
 script = ExtResource("3_queue_manager")

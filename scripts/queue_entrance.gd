@@ -37,11 +37,20 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 
 	player_in_range = body
+	SaveManager.mark_tutorial_seen("queue_entrance")
+	_update_context_prompt(true)
 
 
 func _on_body_exited(body: Node2D) -> void:
 	if body == player_in_range:
 		player_in_range = null
+		_update_context_prompt(false)
+
+
+func _update_context_prompt(should_show: bool) -> void:
+	var prompt := get_node_or_null("ContextPrompt") as Label
+	if prompt != null:
+		prompt.visible = should_show
 
 
 func _enter_target_scene() -> void:

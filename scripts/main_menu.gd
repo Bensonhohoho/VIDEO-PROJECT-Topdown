@@ -58,7 +58,8 @@ func _exit_tree() -> void:
 
 
 func _on_continue_pressed() -> void:
-	if SaveManager.is_game_cleared():
+	if SaveManager.is_game_cleared() \
+		and SaveManager.get_final_environment_result() != SaveManager.FINAL_RESULT_NONE:
 		_change_scene(clear_scene_path, "clear")
 		return
 	_change_scene(game_scene_path, "game")
@@ -115,4 +116,8 @@ func _update_menu_state() -> void:
 
 	if continue_button != null:
 		continue_button.disabled = not SaveManager.has_continue_data()
-		continue_button.text = "View Ending" if cleared else "Continue"
+		continue_button.text = (
+			"View Ending"
+			if cleared and SaveManager.get_final_environment_result() != SaveManager.FINAL_RESULT_NONE
+			else "Continue"
+		)

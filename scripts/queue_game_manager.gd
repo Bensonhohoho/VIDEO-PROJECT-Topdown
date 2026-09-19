@@ -19,6 +19,7 @@ const DRINK_FLYBY_TEXTURE: Texture2D = preload("res://assets/player/player_drink
 @export var retry_message_label_path: NodePath = ^"../UI/RetryOverlay/CenterContainer/PanelContainer/VBoxContainer/MessageLabel"
 @export var retry_count_label_path: NodePath = ^"../UI/RetryOverlay/CenterContainer/PanelContainer/VBoxContainer/RetryCountLabel"
 @export var retry_button_path: NodePath = ^"../UI/RetryOverlay/CenterContainer/PanelContainer/VBoxContainer/RetryButton"
+@export var tutorial_overlay_path: NodePath = ^"../UI/TutorialOverlay"
 @export var queue_zone_size: Vector2 = Vector2(240.0, 160.0)
 @export var queue_move_speed: float = 80.0
 @export var obstacle_speed: float = 180.0
@@ -63,6 +64,7 @@ var retry_overlay: Control
 var retry_message_label: Label
 var retry_count_label: Label
 var retry_button: Button
+var tutorial_overlay: Control
 
 var fail_count := 0
 var drink_uses_remaining := 0
@@ -99,6 +101,7 @@ func _ready() -> void:
 	retry_message_label = get_node_or_null(retry_message_label_path) as Label
 	retry_count_label = get_node_or_null(retry_count_label_path) as Label
 	retry_button = get_node_or_null(retry_button_path) as Button
+	tutorial_overlay = get_node_or_null(tutorial_overlay_path) as Control
 
 	if player == null or spawn_point == null or path_follow == null or queue_zone == null or goal_area == null:
 		push_error("QueueGameManager is missing one or more required nodes.")
@@ -118,10 +121,15 @@ func _ready() -> void:
 
 	if retry_button != null:
 		retry_button.pressed.connect(_on_retry_button_pressed)
+	if tutorial_overlay != null and tutorial_overlay.has_signal("dismissed"):
+		tutorial_overlay.connect("dismissed", _on_tutorial_overlay_dismissed)
 
 	DebugFlags.godmode_changed.connect(_on_debug_flags_godmode_changed)
 
-	reset_minigame()
+	if not SaveManager.is_tutorial_seen("queue_minigame") and tutorial_overlay != null:
+		_show_queue_tutorial()
+	else:
+		reset_minigame()
 
 
 func _exit_tree() -> void:
@@ -144,7 +152,7 @@ func _physics_process(delta: float) -> void:
 	_update_queue_npc_positions()
 
 
-func reset_minigame() -> void:
+func reset_minigame(start_gameplay: bool = true) -> void:
 	# Reset only the mini-game state so fail_count survives between attempts.
 	is_resetting = true
 	is_playing_fail_feedback = false
@@ -170,15 +178,22 @@ func reset_minigame() -> void:
 	else:
 		player.global_position = spawn_point.global_position
 
-	if queue_zone.has_method("start_moving"):
-		queue_zone.call("start_moving")
-	_set_queue_npcs_active(true)
+	if start_gameplay:
+		if player.get("input_enabled") != null:
+			player.set("input_enabled", true)
+		if queue_zone.has_method("start_moving"):
+			queue_zone.call("start_moving")
+		_set_queue_npcs_active(true)
 
-	if obstacle_spawner != null:
-		if obstacle_spawner.has_method("reset_spawning"):
-			obstacle_spawner.call("reset_spawning")
-		elif obstacle_spawner.has_method("start_spawning"):
-			obstacle_spawner.call("start_spawning")
+		if obstacle_spawner != null:
+			if obstacle_spawner.has_method("reset_spawning"):
+				obstacle_spawner.call("reset_spawning")
+			elif obstacle_spawner.has_method("start_spawning"):
+				obstacle_spawner.call("start_spawning")
+	else:
+		if player.get("input_enabled") != null:
+			player.set("input_enabled", false)
+		_stop_active_systems()
 
 	# Area overlap lists are most reliable after physics has processed the new
 	# player and queue positions.
@@ -191,7 +206,25 @@ func reset_minigame() -> void:
 		player_has_entered_queue = true
 
 	is_resetting = false
-	game_started = true
+	game_started = start_gameplay
+
+
+func _show_queue_tutorial() -> void:
+	reset_minigame(false)
+	tutorial_overlay.call(
+		"present",
+		"queue_minigame",
+		"STAY IN LINE",
+		"Stay inside the moving safe zone.\n\nGREEN ZONE\nStay inside it.\n\nRED OBSTACLES\nAvoid them.\n\nCOLD DRINK\nTemporarily protects you from obstacles.\n\nUse movement controls to stay inside the safe zone until you reach the end.",
+		"START"
+	)
+
+
+func _on_tutorial_overlay_dismissed(tutorial_id: String) -> void:
+	if tutorial_id != "queue_minigame":
+		return
+	SaveManager.mark_tutorial_seen("queue_minigame")
+	reset_minigame()
 
 
 func fail_minigame(message: String = "Out of line!", use_hit_stop: bool = false) -> void:

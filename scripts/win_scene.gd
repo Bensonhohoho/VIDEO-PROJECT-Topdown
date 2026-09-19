@@ -57,13 +57,23 @@ func _change_scene(scene_path: String, scene_description: String) -> void:
 
 func _update_result_text() -> void:
 	if completion_label != null:
-		completion_label.text = "%d / %d ROUNDS COMPLETE" % [
-			SaveManager.get_rounds_completed(),
-			SaveManager.get_required_rounds()
-		]
+		var result := SaveManager.get_final_environment_result()
+		if result == SaveManager.FINAL_RESULT_CLEAN:
+			completion_label.text = "CLEAN RESULT"
+		elif result == SaveManager.FINAL_RESULT_WASTE:
+			completion_label.text = "WASTE RESULT"
+		else:
+			completion_label.text = "%d / %d ROUNDS COMPLETE" % [
+				SaveManager.get_rounds_completed(),
+				SaveManager.get_required_rounds()
+			]
 
 	if stats_label != null:
-		stats_label.text = "Submitted score   %d / %d\nQueue attempts    %d\nFan score left    %d" % [
+		stats_label.text = "Rounds completed  %d / %d\nTrash cleaned     %d / %d\nSubmitted score   %d / %d\nQueue attempts    %d\nFan score left    %d" % [
+			SaveManager.get_rounds_completed(),
+			SaveManager.get_required_rounds(),
+			SaveManager.get_total_trash_cleaned(),
+			SaveManager.get_total_trash_generated(),
 			SaveManager.get_round_score(),
 			SaveManager.get_target_score(),
 			SaveManager.get_queue_attempt_count(),
